@@ -1,0 +1,26 @@
+digraph Transition{
+
+ethernet_t ["shape" = rectangle, "label" = "ethernet_t(ethernet_t.etherType)"]
+
+ipv4_t ["shape" = rectangle, "label" = "ipv4_t(ipv4_t.fragOffset; ipv4_t.ihl; ipv4_t.version; ipv4_t.protocol)"]
+
+opaque_option_t ["shape" = rectangle, "label" = "opaque_option_t(ipv4_t.protocol)"]
+
+tcp_t ["shape" = rectangle, "label" = "tcp_t"]
+
+udp_t ["shape" = rectangle, "label" = "udp_t"]
+
+ethernet_t -> ipv4_t ["shape" = rectangle, "label" = "(2048)"]
+
+ipv4_t -> opaque_option_t ["shape" = rectangle, "label" = "(0..8191; 6; 0..15; _)"]
+
+ipv4_t -> tcp_t ["shape" = rectangle, "label" = "(0..8191; 5; 0..15; 6)"]
+
+ipv4_t -> udp_t ["shape" = rectangle, "label" = "(0..8191; 5; 0..15; 17)"]
+
+opaque_option_t -> tcp_t ["shape" = rectangle, "label" = "(6)"]
+
+opaque_option_t -> udp_t ["shape" = rectangle, "label" = "(17)"]
+
+}
+

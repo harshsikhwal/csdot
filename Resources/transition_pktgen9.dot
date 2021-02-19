@@ -1,0 +1,32 @@
+digraph Transition{
+
+ethernet_t ["shape" = rectangle, "label" = "ethernet_t(ethernet_t.etherType)","color" = lightskyblue]
+
+ipv4_t ["shape" = rectangle, "label" = "ipv4_t(ipv4_t.protocol)"]
+
+ixia_signature_t_0 ["shape" = rectangle, "label" = "ixia_signature_t_0","color" = lightskyblue]
+
+udp_t ["shape" = rectangle, "label" = "udp_t","color" = lightskyblue]
+
+ixia_extended_instrum_t ["shape" = rectangle, "label" = "ixia_extended_instrum_t","color" = lightskyblue]
+
+pktgen_ethernet_t ["shape" = rectangle, "label" = "pktgen_ethernet_t(pktgen_ethernet_t.etherType)"]
+
+ethernet_t -> ipv4_t ["shape" = rectangle, "label" = "(2048)","color" = red4]
+
+ethernet_t -> ixia_signature_t_0 ["shape" = rectangle, "label" = "(default)"]
+
+ipv4_t -> ixia_signature_t_0 ["shape" = rectangle, "label" = "(default)","color" = green4]
+
+ipv4_t -> udp_t ["shape" = rectangle, "label" = "(17)","color" = green4]
+
+ixia_signature_t_0 -> ixia_extended_instrum_t ["shape" = rectangle, "label" = "(always)"]
+
+pktgen_ethernet_t -> ipv4_t ["shape" = rectangle, "label" = "(2048)"]
+
+pktgen_ethernet_t -> ixia_signature_t_0 ["shape" = rectangle, "label" = "(default)","color" = green4]
+
+udp_t -> ixia_signature_t_0 ["shape" = rectangle, "label" = "(always)"]
+
+}
+

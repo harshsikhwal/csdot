@@ -1,0 +1,100 @@
+digraph Transition{
+
+cpu_h ["shape" = rectangle, "label" = "cpu_h(cpu_h.ether_type)"]
+
+ipv4_h ["shape" = rectangle, "label" = "ipv4_h(ipv4_h.protocol; ipv4_h.flags; ipv4_h.frag_offset; ipv4_h.ihl)"]
+
+ipv6_h ["shape" = rectangle, "label" = "ipv6_h(ipv6_h.next_hdr)"]
+
+vlan_tag_h ["shape" = rectangle, "label" = "vlan_tag_h(vlan_tag_h.ether_type)"]
+
+ethernet_h ["shape" = rectangle, "label" = "ethernet_h(ethernet_h.ether_type)"]
+
+arp_h ["shape" = rectangle, "label" = "arp_h"]
+
+fabric_h ["shape" = rectangle, "label" = "fabric_h"]
+
+mpls_h ["shape" = rectangle, "label" = "mpls_h(mpls_h.bos)"]
+
+icmp_h ["shape" = rectangle, "label" = "icmp_h","color" = lightskyblue]
+
+igmp_h ["shape" = rectangle, "label" = "igmp_h","color" = lightskyblue]
+
+opaque_option_h ["shape" = rectangle, "label" = "opaque_option_h(ipv4_h.protocol)","color" = lightskyblue]
+
+tcp_h ["shape" = rectangle, "label" = "tcp_h","color" = lightskyblue]
+
+udp_h ["shape" = rectangle, "label" = "udp_h(udp_h.dst_port)","color" = lightskyblue]
+
+switch_bridged_metadata_t ["shape" = rectangle, "label" = "switch_bridged_metadata_t"]
+
+switch_mirror_metadata_t ["shape" = rectangle, "label" = "switch_mirror_metadata_t"]
+
+vxlan_h ["shape" = rectangle, "label" = "vxlan_h"]
+
+cpu_h -> ipv4_h ["shape" = rectangle, "label" = "(2048)"]
+
+cpu_h -> ipv6_h ["shape" = rectangle, "label" = "(34525)"]
+
+cpu_h -> vlan_tag_h ["shape" = rectangle, "label" = "(37120)"]
+
+ethernet_h -> arp_h ["shape" = rectangle, "label" = "(2054)"]
+
+ethernet_h -> fabric_h ["shape" = rectangle, "label" = "(36864)"]
+
+ethernet_h -> ipv4_h ["shape" = rectangle, "label" = "(2048)"]
+
+ethernet_h -> ipv6_h ["shape" = rectangle, "label" = "(34525)"]
+
+ethernet_h -> mpls_h ["shape" = rectangle, "label" = "(34887)"]
+
+ethernet_h -> vlan_tag_h ["shape" = rectangle, "label" = "(37120)"]
+
+fabric_h -> cpu_h ["shape" = rectangle, "label" = "(always)"]
+
+ipv4_h -> icmp_h ["shape" = rectangle, "label" = "(ip-proto; _; _; _)","color" = green4]
+
+ipv4_h -> igmp_h ["shape" = rectangle, "label" = "(ip-proto; _; _; _)","color" = green4]
+
+ipv4_h -> opaque_option_h ["shape" = rectangle, "label" = "(_; 0..7; 0..8191; 6)","color" = green4]
+
+ipv4_h -> tcp_h ["shape" = rectangle, "label" = "(ip-proto; _; _; _)","color" = green4]
+
+ipv4_h -> udp_h ["shape" = rectangle, "label" = "(ip-proto; _; _; _)","color" = green4]
+
+ipv6_h -> icmp_h ["shape" = rectangle, "label" = "(58)","color" = green4]
+
+ipv6_h -> tcp_h ["shape" = rectangle, "label" = "(6)","color" = green4]
+
+ipv6_h -> udp_h ["shape" = rectangle, "label" = "(17)","color" = green4]
+
+mpls_h -> ipv4_h ["shape" = rectangle, "label" = "(1)"]
+
+mpls_h -> ipv6_h ["shape" = rectangle, "label" = "(1)"]
+
+mpls_h -> mpls_h ["shape" = rectangle, "label" = "(0)"]
+
+opaque_option_h -> icmp_h ["shape" = rectangle, "label" = "(1)"]
+
+opaque_option_h -> igmp_h ["shape" = rectangle, "label" = "(2)"]
+
+opaque_option_h -> tcp_h ["shape" = rectangle, "label" = "(6)"]
+
+opaque_option_h -> udp_h ["shape" = rectangle, "label" = "(17)"]
+
+switch_bridged_metadata_t -> ethernet_h ["shape" = rectangle, "label" = "(always)"]
+
+switch_mirror_metadata_t -> ethernet_h ["shape" = rectangle, "label" = "(always)"]
+
+udp_h -> vxlan_h ["shape" = rectangle, "label" = "(4789)","color" = red4]
+
+vlan_tag_h -> ipv4_h ["shape" = rectangle, "label" = "(2048)"]
+
+vlan_tag_h -> ipv6_h ["shape" = rectangle, "label" = "(34525)"]
+
+vlan_tag_h -> vlan_tag_h ["shape" = rectangle, "label" = "(33024)"]
+
+vxlan_h -> ethernet_h ["shape" = rectangle, "label" = "(always)"]
+
+}
+

@@ -1,0 +1,92 @@
+digraph Transition{
+
+ecpri_t ["shape" = rectangle, "label" = "ecpri_t(ecpri_t.type)"]
+
+ecpri_t_msg_type_0 ["shape" = rectangle, "label" = "ecpri_t_msg_type_0(ecpri_t.concatenation)"]
+
+ecpri_t_msg_type_1 ["shape" = rectangle, "label" = "ecpri_t_msg_type_1(ecpri_t.concatenation)"]
+
+ecpri_t_msg_type_2 ["shape" = rectangle, "label" = "ecpri_t_msg_type_2(ecpri_t.concatenation)"]
+
+ecpri_t_msg_type_3 ["shape" = rectangle, "label" = "ecpri_t_msg_type_3(ecpri_t.concatenation)"]
+
+ecpri_t_msg_type_4 ["shape" = rectangle, "label" = "ecpri_t_msg_type_4(ecpri_t.concatenation)"]
+
+ecpri_t_msg_type_5 ["shape" = rectangle, "label" = "ecpri_t_msg_type_5(ecpri_t.concatenation)"]
+
+ecpri_t_msg_type_6 ["shape" = rectangle, "label" = "ecpri_t_msg_type_6(ecpri_t.concatenation)"]
+
+ecpri_t_msg_type_7 ["shape" = rectangle, "label" = "ecpri_t_msg_type_7"]
+
+ecpri_t_msg_type_8 ["shape" = rectangle, "label" = "ecpri_t_msg_type_8(ecpri_t.concatenation)"]
+
+ecpri_t_msg_type_9 ["shape" = rectangle, "label" = "ecpri_t_msg_type_9(ecpri_t.concatenation)"]
+
+ecpri_t_msg_type_7_event ["shape" = rectangle, "label" = "ecpri_t_msg_type_7_event(ecpri_t.concatenation; ecpri_t_msg_type_7.number)"]
+
+ethernet_t ["shape" = rectangle, "label" = "ethernet_t(ethernet_t.ethertype)"]
+
+ipv4_t ["shape" = rectangle, "label" = "ipv4_t(ipv4_t.protocol)"]
+
+ipv6_t ["shape" = rectangle, "label" = "ipv6_t(ipv6_t.nextHdr)"]
+
+udp ["shape" = rectangle, "label" = "udp(udp.port)"]
+
+ecpri_t -> ecpri_t_msg_type_0 ["shape" = rectangle, "label" = "(0)"]
+
+ecpri_t -> ecpri_t_msg_type_1 ["shape" = rectangle, "label" = "(1)"]
+
+ecpri_t -> ecpri_t_msg_type_2 ["shape" = rectangle, "label" = "(2)"]
+
+ecpri_t -> ecpri_t_msg_type_3 ["shape" = rectangle, "label" = "(3)"]
+
+ecpri_t -> ecpri_t_msg_type_4 ["shape" = rectangle, "label" = "(4)"]
+
+ecpri_t -> ecpri_t_msg_type_5 ["shape" = rectangle, "label" = "(5)"]
+
+ecpri_t -> ecpri_t_msg_type_6 ["shape" = rectangle, "label" = "(6)"]
+
+ecpri_t -> ecpri_t_msg_type_7 ["shape" = rectangle, "label" = "(7)"]
+
+ecpri_t -> ecpri_t_msg_type_8 ["shape" = rectangle, "label" = "(8..63)"]
+
+ecpri_t -> ecpri_t_msg_type_9 ["shape" = rectangle, "label" = "(default)"]
+
+ecpri_t_msg_type_0 -> ecpri_t ["shape" = rectangle, "label" = "(1)"]
+
+ecpri_t_msg_type_1 -> ecpri_t ["shape" = rectangle, "label" = "(1)"]
+
+ecpri_t_msg_type_2 -> ecpri_t ["shape" = rectangle, "label" = "(1)"]
+
+ecpri_t_msg_type_3 -> ecpri_t ["shape" = rectangle, "label" = "(1)"]
+
+ecpri_t_msg_type_4 -> ecpri_t ["shape" = rectangle, "label" = "(1)"]
+
+ecpri_t_msg_type_5 -> ecpri_t ["shape" = rectangle, "label" = "(1)"]
+
+ecpri_t_msg_type_6 -> ecpri_t ["shape" = rectangle, "label" = "(1)"]
+
+ecpri_t_msg_type_7 -> ecpri_t_msg_type_7_event ["shape" = rectangle, "label" = "(always)"]
+
+ecpri_t_msg_type_7_event -> ecpri_t ["shape" = rectangle, "label" = "(1; 2)"]
+
+ecpri_t_msg_type_7_event -> ecpri_t_msg_type_7_event ["shape" = rectangle, "label" = "(default; default)"]
+
+ecpri_t_msg_type_8 -> ecpri_t ["shape" = rectangle, "label" = "(1)"]
+
+ecpri_t_msg_type_9 -> ecpri_t ["shape" = rectangle, "label" = "(1)"]
+
+ethernet_t -> ecpri_t ["shape" = rectangle, "label" = "(44798)"]
+
+ethernet_t -> ipv4_t ["shape" = rectangle, "label" = "(2048)"]
+
+ethernet_t -> ipv6_t ["shape" = rectangle, "label" = "(34525)"]
+
+ipv4_t -> udp ["shape" = rectangle, "label" = "(23)"]
+
+ipv6_t -> udp ["shape" = rectangle, "label" = "(23)"]
+
+udp -> ecpri_t ["shape" = rectangle, "label" = "(7777)"]
+
+}
+

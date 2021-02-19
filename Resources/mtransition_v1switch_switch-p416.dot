@@ -1,0 +1,224 @@
+digraph Transition{
+
+erspan_header_t3_t_0 ["shape" = rectangle, "label" = "erspan_header_t3_t_0"]
+
+ethernet_t ["shape" = rectangle, "label" = "ethernet_t(ethernet_t.etherType)"]
+
+fabric_header_t ["shape" = rectangle, "label" = "fabric_header_t(fabric_header_t.packetType)"]
+
+ipv4_t ["shape" = rectangle, "label" = "ipv4_t(ipv4_t.fragOffset, ipv4_t.ihl, ipv4_t.protocol)","color" = lightskyblue]
+
+ipv6_t ["shape" = rectangle, "label" = "ipv6_t(ipv6_t.nextHdr)"]
+
+llc_header_t ["shape" = rectangle, "label" = "llc_header_t(llc_header_t.dsap, llc_header_t.ssap)","color" = lightskyblue]
+
+mpls_t ["shape" = rectangle, "label" = "mpls_t(mpls_t.bos)"]
+
+vlan_tag_t ["shape" = rectangle, "label" = "vlan_tag_t(vlan_tag_t.etherType)"]
+
+fabric_header_cpu_t ["shape" = rectangle, "label" = "fabric_header_cpu_t(fabric_header_cpu_t.reasonCode)","color" = lightskyblue]
+
+fabric_header_sflow_t ["shape" = rectangle, "label" = "fabric_header_sflow_t","color" = lightskyblue]
+
+fabric_payload_header_t ["shape" = rectangle, "label" = "fabric_payload_header_t(fabric_payload_header_t.etherType)"]
+
+fabric_header_mirror_t ["shape" = rectangle, "label" = "fabric_header_mirror_t","color" = lightskyblue]
+
+fabric_header_multicast_t ["shape" = rectangle, "label" = "fabric_header_multicast_t"]
+
+fabric_header_unicast_t ["shape" = rectangle, "label" = "fabric_header_unicast_t","color" = lightskyblue]
+
+genv_t ["shape" = rectangle, "label" = "genv_t(genv_t.optLen, genv_t.protoType, genv_t.ver)","color" = lightskyblue]
+
+gre_t ["shape" = rectangle, "label" = "gre_t(gre_t.C, gre_t.K, gre_t.R, gre_t.S, gre_t.flags, gre_t.proto, gre_t.recurse, gre_t.s, gre_t.ver)","color" = lightskyblue]
+
+nvgre_t ["shape" = rectangle, "label" = "nvgre_t"]
+
+int_egress_port_id_header_t ["shape" = rectangle, "label" = "int_egress_port_id_header_t"]
+
+int_q_congestion_header_t ["shape" = rectangle, "label" = "int_q_congestion_header_t"]
+
+int_egress_port_tx_utilization_header_t ["shape" = rectangle, "label" = "int_egress_port_tx_utilization_header_t"]
+
+int_value_t ["shape" = rectangle, "label" = "int_value_t(int_value_t.bos)","color" = lightskyblue]
+
+int_header_t ["shape" = rectangle, "label" = "int_header_t(int_header_t.rsvd1, int_header_t.total_hop_cnt)","color" = lightskyblue]
+
+int_switch_id_header_t ["shape" = rectangle, "label" = "int_switch_id_header_t"]
+
+int_hop_latency_header_t ["shape" = rectangle, "label" = "int_hop_latency_header_t"]
+
+int_q_occupancy_header_t ["shape" = rectangle, "label" = "int_q_occupancy_header_t"]
+
+int_ingress_port_id_header_t ["shape" = rectangle, "label" = "int_ingress_port_id_header_t"]
+
+int_ingress_tstamp_header_t ["shape" = rectangle, "label" = "int_ingress_tstamp_header_t"]
+
+icmp_t ["shape" = rectangle, "label" = "icmp_t"]
+
+tcp_t ["shape" = rectangle, "label" = "tcp_t","color" = lightskyblue]
+
+udp_t ["shape" = rectangle, "label" = "udp_t(udp_t.dstPort)"]
+
+snap_header_t ["shape" = rectangle, "label" = "snap_header_t(snap_header_t.type_)","color" = lightskyblue]
+
+sflow_hdr_t ["shape" = rectangle, "label" = "sflow_hdr_t"]
+
+vxlan_gpe_t ["shape" = rectangle, "label" = "vxlan_gpe_t(vxlan_gpe_t.flags, vxlan_gpe_t.next_proto)","color" = lightskyblue]
+
+vxlan_t ["shape" = rectangle, "label" = "vxlan_t","color" = lightskyblue]
+
+vxlan_gpe_int_header_t ["shape" = rectangle, "label" = "vxlan_gpe_int_header_t"]
+
+erspan_header_t3_t_0 -> ethernet_t ["shape" = rectangle, "label" = "(always)"]
+
+ethernet_t -> fabric_header_t ["shape" = rectangle, "label" = "(36864)"]
+
+ethernet_t -> ipv4_t ["shape" = rectangle, "label" = "(ethertype)","color" = green4]
+
+ethernet_t -> ipv6_t ["shape" = rectangle, "label" = "(34525)"]
+
+ethernet_t -> llc_header_t ["shape" = rectangle, "label" = "(ethertype)","color" = green4]
+
+ethernet_t -> mpls_t ["shape" = rectangle, "label" = "(34887)"]
+
+ethernet_t -> vlan_tag_t ["shape" = rectangle, "label" = "(37120)"]
+
+fabric_header_cpu_t -> fabric_header_sflow_t ["shape" = rectangle, "label" = "(4)"]
+
+fabric_header_cpu_t -> fabric_payload_header_t ["shape" = rectangle, "label" = "(eth_withfcs)","color" = red4]
+
+fabric_header_mirror_t -> fabric_payload_header_t ["shape" = rectangle, "label" = "(eth_withfcs)","color" = red4]
+
+fabric_header_multicast_t -> fabric_payload_header_t ["shape" = rectangle, "label" = "(always)"]
+
+fabric_header_sflow_t -> fabric_payload_header_t ["shape" = rectangle, "label" = "(eth_withfcs)","color" = red4]
+
+fabric_header_t -> fabric_header_cpu_t ["shape" = rectangle, "label" = "(ethertype)","color" = green4]
+
+fabric_header_t -> fabric_header_mirror_t ["shape" = rectangle, "label" = "(ethertype)","color" = green4]
+
+fabric_header_t -> fabric_header_multicast_t ["shape" = rectangle, "label" = "(2)"]
+
+fabric_header_t -> fabric_header_unicast_t ["shape" = rectangle, "label" = "(ethertype)","color" = green4]
+
+fabric_header_unicast_t -> fabric_payload_header_t ["shape" = rectangle, "label" = "(eth_withfcs)","color" = red4]
+
+fabric_payload_header_t -> ipv4_t ["shape" = rectangle, "label" = "(ethertype)","color" = green4]
+
+fabric_payload_header_t -> ipv6_t ["shape" = rectangle, "label" = "(34525)"]
+
+fabric_payload_header_t -> llc_header_t ["shape" = rectangle, "label" = "(ethertype)","color" = green4]
+
+fabric_payload_header_t -> mpls_t ["shape" = rectangle, "label" = "(34887)"]
+
+fabric_payload_header_t -> vlan_tag_t ["shape" = rectangle, "label" = "(37120)"]
+
+genv_t -> ethernet_t ["shape" = rectangle, "label" = "(etch)","color" = red4]
+
+genv_t -> ipv4_t ["shape" = rectangle, "label" = "(0, 2048)"]
+
+genv_t -> ipv6_t ["shape" = rectangle, "label" = "(eth_withfcs)","color" = red4]
+
+gre_t -> erspan_header_t3_t_0 ["shape" = rectangle, "label" = "(eth_withfcs)","color" = red4]
+
+gre_t -> ipv4_t ["shape" = rectangle, "label" = "(0, 2048)"]
+
+gre_t -> ipv6_t ["shape" = rectangle, "label" = "(eth_withfcs)","color" = red4]
+
+gre_t -> nvgre_t ["shape" = rectangle, "label" = "(eth_withfcs)","color" = red4]
+
+int_egress_port_id_header_t -> int_q_congestion_header_t ["shape" = rectangle, "label" = "(always)"]
+
+int_egress_port_tx_utilization_header_t -> int_value_t ["shape" = rectangle, "label" = "(ethertype)","color" = green4]
+
+int_header_t -> int_switch_id_header_t ["shape" = rectangle, "label" = "(eth_withfcs)","color" = red4]
+
+int_header_t -> int_value_t ["shape" = rectangle, "label" = "(0&&15, 0&&0)"]
+
+int_hop_latency_header_t -> int_q_occupancy_header_t ["shape" = rectangle, "label" = "(always)"]
+
+int_ingress_port_id_header_t -> int_hop_latency_header_t ["shape" = rectangle, "label" = "(always)"]
+
+int_ingress_tstamp_header_t -> int_egress_port_id_header_t ["shape" = rectangle, "label" = "(always)"]
+
+int_q_congestion_header_t -> int_egress_port_tx_utilization_header_t ["shape" = rectangle, "label" = "(always)"]
+
+int_q_occupancy_header_t -> int_ingress_tstamp_header_t ["shape" = rectangle, "label" = "(always)"]
+
+int_switch_id_header_t -> int_ingress_port_id_header_t ["shape" = rectangle, "label" = "(always)"]
+
+int_value_t -> ethernet_t ["shape" = rectangle, "label" = "(etch)","color" = red4]
+
+int_value_t -> int_value_t ["shape" = rectangle, "label" = "(0)"]
+
+ipv4_t -> gre_t ["shape" = rectangle, "label" = "(0, 5, 47)"]
+
+ipv4_t -> icmp_t ["shape" = rectangle, "label" = "(eth_withfcs)","color" = red4]
+
+ipv4_t -> ipv4_t ["shape" = rectangle, "label" = "(0, 5, 4)"]
+
+ipv4_t -> ipv6_t ["shape" = rectangle, "label" = "(eth_withfcs)","color" = red4]
+
+ipv4_t -> tcp_t ["shape" = rectangle, "label" = "(0, 5, 6)"]
+
+ipv4_t -> udp_t ["shape" = rectangle, "label" = "(eth_withfcs)","color" = red4]
+
+ipv6_t -> gre_t ["shape" = rectangle, "label" = "(ethertype)","color" = green4]
+
+ipv6_t -> icmp_t ["shape" = rectangle, "label" = "(58)"]
+
+ipv6_t -> ipv4_t ["shape" = rectangle, "label" = "(ethertype)","color" = green4]
+
+ipv6_t -> ipv6_t ["shape" = rectangle, "label" = "(41)"]
+
+ipv6_t -> tcp_t ["shape" = rectangle, "label" = "(ethertype)","color" = green4]
+
+ipv6_t -> udp_t ["shape" = rectangle, "label" = "(17)"]
+
+llc_header_t -> snap_header_t ["shape" = rectangle, "label" = "(170)"]
+
+mpls_t -> ethernet_t ["shape" = rectangle, "label" = "(1)"]
+
+mpls_t -> ipv4_t ["shape" = rectangle, "label" = "(ethertype)","color" = green4]
+
+mpls_t -> ipv6_t ["shape" = rectangle, "label" = "(1)"]
+
+mpls_t -> mpls_t ["shape" = rectangle, "label" = "(0)"]
+
+nvgre_t -> ethernet_t ["shape" = rectangle, "label" = "(always)"]
+
+snap_header_t -> ipv4_t ["shape" = rectangle, "label" = "(2048)"]
+
+snap_header_t -> ipv6_t ["shape" = rectangle, "label" = "(eth_withfcs)","color" = red4]
+
+snap_header_t -> mpls_t ["shape" = rectangle, "label" = "(eth_withfcs)","color" = red4]
+
+snap_header_t -> vlan_tag_t ["shape" = rectangle, "label" = "(eth_withfcs)","color" = red4]
+
+udp_t -> genv_t ["shape" = rectangle, "label" = "(ethertype)","color" = green4]
+
+udp_t -> sflow_hdr_t ["shape" = rectangle, "label" = "(6343)"]
+
+udp_t -> vxlan_gpe_t ["shape" = rectangle, "label" = "(ethertype)","color" = green4]
+
+udp_t -> vxlan_t ["shape" = rectangle, "label" = "(ethertype)","color" = green4]
+
+vlan_tag_t -> ipv4_t ["shape" = rectangle, "label" = "(ethertype)","color" = green4]
+
+vlan_tag_t -> ipv6_t ["shape" = rectangle, "label" = "(34525)"]
+
+vlan_tag_t -> mpls_t ["shape" = rectangle, "label" = "(34887)"]
+
+vlan_tag_t -> vlan_tag_t ["shape" = rectangle, "label" = "(33024)"]
+
+vxlan_gpe_int_header_t -> int_header_t ["shape" = rectangle, "label" = "(ethertype)","color" = green4]
+
+vxlan_gpe_t -> ethernet_t ["shape" = rectangle, "label" = "(etch)","color" = red4]
+
+vxlan_gpe_t -> vxlan_gpe_int_header_t ["shape" = rectangle, "label" = "(eth_withfcs)","color" = red4]
+
+vxlan_t -> ethernet_t ["shape" = rectangle, "label" = "(etch)","color" = red4]
+
+}
+

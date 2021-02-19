@@ -1,0 +1,11 @@
+strict digraph {
+	node [label="\N"];
+	graph [bb="0,0,297,212"];
+	ethernet_t [label="ethernet_t(ethernet_t.etherType)", shape=rectangle, pos="147,194", width="2.7014", height="0.5"];
+	ipv4_t [label="ipv4_t(ipv4_t.ihl; ipv4_t.protocol; ipv4_t.version)", shape=rectangle, pos="147,106", width="4.0833", height="0.5"];
+	tcp_t [label="tcp_t(ipv4_t.dscp)", shape=rectangle, color=lightskyblue, pos="76,18", width="1.6944", height="0.5"];
+	udp_t [label="udp_t(ipv4_t.dscp)", shape=rectangle, color=lightskyblue, pos="218,18", width="1.7292", height="0.5"];
+	ethernet_t -> ipv4_t [shape=rectangle, label="(2048)", pos="e,147,124.08 147,175.6 147,163.75 147,147.82 147,134.29", lp="165.5,150"];
+	ipv4_t -> tcp_t [shape=rectangle, label="(5..15; ip-proto)", color=green4, pos="e,83.749,36.046 123.4,87.842 117,82.545 110.36,76.407 105,70 98.733,62.507 93.091,53.47 88.486,45.098", lp="150.5,62"];
+	ipv4_t -> udp_t [shape=rectangle, label="(0..15; ip-proto)", color=green4, pos="e,213.14,36.333 176.42,87.904 183.49,82.806 190.55,76.753 196,70 201.74,62.88 206.25,54.033 209.65,45.716", lp="251.5,62"];
+}
