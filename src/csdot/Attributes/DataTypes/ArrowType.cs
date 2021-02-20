@@ -4,7 +4,7 @@ using System.Text;
 
 namespace csdot.Attributes.DataTypes
 {
-	public class ArrowType
+	public static class ArrowType
 	{
 		public static string normal = "normal";
 		public static string dot = "dot";

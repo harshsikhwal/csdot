@@ -4,7 +4,11 @@ using System.Text;
 
 namespace csdot.Attributes
 {
-	public class SubgraphAttribute
+	public class SubgraphAttribute : IDotAttribute
 	{
+		public string AttributesToString()
+		{
+			return "";
+		}
 	}
 }

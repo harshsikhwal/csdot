@@ -1,14 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+	<LangVersion>latest</LangVersion>
     <ApplicationIcon />
     <OutputType>Exe</OutputType>
     <StartupObject>csdot.Test</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Attributes\Constants\" />
+    <Compile Remove="Attributes\Constants\**" />
+    <EmbeddedResource Remove="Attributes\Constants\**" />
+    <None Remove="Attributes\Constants\**" />
   </ItemGroup>
 
 </Project>

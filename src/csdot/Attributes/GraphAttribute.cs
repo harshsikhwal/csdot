@@ -5,22 +5,33 @@ using csdot.Attributes.Types;
 
 namespace csdot.Attributes
 {
-	public class GraphAttribute
+	public class GraphAttribute : IDotAttribute
 	{
-		Dictionary<string, IAttribute> AttributeMap = new Dictionary<string, IAttribute>();
-		Background _background;
-		BoundingBox bb;
-		// BackgroundColor bgcolor;
-		public ColorScheme colorscheme = new ColorScheme();
+
+		public Background _background = new Background();
+		public BoundingBox bb = new BoundingBox();
+		public BgColor bgcolor = new BgColor();
+		// public ColorScheme colorscheme = new ColorScheme();
 		// Charset charset;
+		public Epsilon epsilon = new Epsilon();
+		public Fontname fontname = new Fontname();
+		public Fontsize fontsize = new Fontsize();
+		public Forcelabels forcelabels = new Forcelabels();
+		public InputScale inputscale = new InputScale(); 
 		public Label label = new Label();
-		// List<IA>
 
-		public void RemoveAttribute()
+		public string AttributesToString()
 		{
-
+			string attribute = "";
+			if (_background.Set)
+			{
+				attribute = attribute + " " + _background.TranslateToString();
+			}
+			if (bb.Set)
+			{
+				attribute = (null == attribute) ? attribute + " " + bb.TranslateToString() : attribute + ", " + bb.TranslateToString();
+			}
+			return attribute;
 		}
-
-
 	}
 }

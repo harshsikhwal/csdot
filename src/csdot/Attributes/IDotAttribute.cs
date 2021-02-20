@@ -4,9 +4,8 @@ using System.Text;
 
 namespace csdot.Attributes
 {
-	interface IAttribute
+	interface IDotAttribute
 	{
-		public bool Set { get; set; }
-		public string TranslateToString();
+		public string AttributesToString();
 	}
 }

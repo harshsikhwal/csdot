@@ -6,5 +6,15 @@ namespace csdot
 {
 	public interface IDot
 	{
+		public string type { get; set; }
+		public Guid uid { get; }
+
+		public string ID
+		{
+			get;
+			set;
+		}
+
+		public string ElementToString();
 	}
 }

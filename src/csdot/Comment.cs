@@ -4,7 +4,15 @@ using System.Text;
 
 namespace csdot
 {
-	class Comment
+	public class Comment : IDot
 	{
+		public string type { get; set; } = "comment";
+		public Guid uid { get; }
+		public string ID { get; set; }
+
+		public string ElementToString()
+		{
+			return "";
+		}
 	}
 }

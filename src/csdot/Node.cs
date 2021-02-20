@@ -7,6 +7,10 @@ namespace csdot
 {
 	public class Node : IDot
 	{
+		public string type { get; set; } = "node";
+		public Guid uid { get;  }
+		public string ID { get; set; }
+
 		private NodeAttribute m_attribute = new NodeAttribute();
 
 		public NodeAttribute Attribute
@@ -17,7 +21,15 @@ namespace csdot
 			}
 		}
 
+		public Node(string i_id)
+		{
+			ID = i_id;
+			uid = new Guid();
+		}
 
-
+		public string ElementToString()
+		{
+			return ID + " [ " + Attribute.AttributesToString() + " ]";
+		}
 	}
 }
