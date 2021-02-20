@@ -24,7 +24,19 @@ namespace csdot.Attributes
 			}
 			if (color.Set)
 			{
-				attribute = (null == attribute) ? attribute + " " + color.TranslateToString() : attribute + ", " + color.TranslateToString();
+				attribute = ("" == attribute) ? attribute + " " + color.TranslateToString() : attribute + ", " + color.TranslateToString();
+			}
+			if (fontname.Set)
+			{
+				attribute = ("" == attribute) ? attribute + " " + fontname.TranslateToString() : attribute + ", " + fontname.TranslateToString();
+			}
+			if (fontsize.Set)
+			{
+				attribute = ("" == attribute) ? attribute + " " + fontsize.TranslateToString() : attribute + ", " + fontsize.TranslateToString();
+			}
+			if (label.Set)
+			{
+				attribute = ("" == attribute) ? attribute + " " + label.TranslateToString() : attribute + ", " + label.TranslateToString();
 			}
 			return attribute;
 		}

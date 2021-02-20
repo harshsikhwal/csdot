@@ -29,7 +29,35 @@ namespace csdot.Attributes
 			}
 			if (bb.Set)
 			{
-				attribute = (null == attribute) ? attribute + " " + bb.TranslateToString() : attribute + ", " + bb.TranslateToString();
+				attribute = ("" == attribute) ? attribute + " " + bb.TranslateToString() : attribute + ", " + bb.TranslateToString();
+			}
+			if (bgcolor.Set)
+			{
+				attribute = ("" == attribute) ? attribute + " " + bgcolor.TranslateToString() : attribute + ", " + bgcolor.TranslateToString();
+			}
+			if (epsilon.Set)
+			{
+				attribute = ("" == attribute) ? attribute + " " + epsilon.TranslateToString() : attribute + ", " + epsilon.TranslateToString();
+			}
+			if (fontname.Set)
+			{
+				attribute = ("" == attribute) ? attribute + " " + fontname.TranslateToString() : attribute + ", " + fontname.TranslateToString();
+			}
+			if (fontsize.Set)
+			{
+				attribute = ("" == attribute) ? attribute + " " + fontsize.TranslateToString() : attribute + ", " + fontsize.TranslateToString();
+			}
+			if (forcelabels.Set)
+			{
+				attribute = ("" == attribute) ? attribute + " " + forcelabels.TranslateToString() : attribute + ", " + forcelabels.TranslateToString();
+			}
+			if (inputscale.Set)
+			{
+				attribute = ("" == attribute) ? attribute + " " + inputscale.TranslateToString() : attribute + ", " + inputscale.TranslateToString();
+			}
+			if (label.Set)
+			{
+				attribute = ("" == attribute) ? attribute + " " + label.TranslateToString() : attribute + ", " + label.TranslateToString();
 			}
 			return attribute;
 		}

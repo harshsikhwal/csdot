@@ -25,7 +25,7 @@ namespace csdot
 		public Subgraph(string i_id)
 		{
 			ID = i_id;
-			uid = new Guid();
+			uid = Guid.NewGuid();
 		}
 
 		public void AddElement(IDot i_dot)

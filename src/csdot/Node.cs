@@ -24,12 +24,12 @@ namespace csdot
 		public Node(string i_id)
 		{
 			ID = i_id;
-			uid = new Guid();
+			uid = Guid.NewGuid();
 		}
 
 		public string ElementToString()
 		{
-			return ID + " [ " + Attribute.AttributesToString() + " ]";
+			return ID + " [" + Attribute.AttributesToString() + "]";
 		}
 	}
 }

@@ -24,7 +24,7 @@ namespace csdot
 		public Cluster(string i_id)
 		{
 			ID = i_id;
-			uid = new Guid();
+			uid = Guid.NewGuid();
 		}
 
 		public string ElementToString()

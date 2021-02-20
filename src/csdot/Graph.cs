@@ -21,7 +21,7 @@ namespace csdot
 		public Graph(string i_id)
 		{
 			ID = i_id;
-			uid = new Guid();
+			uid = Guid.NewGuid();
 		}
 
 		public void AddElement(IDot i_dot)
@@ -49,7 +49,7 @@ namespace csdot
 			{
 				graphbuilder = graphbuilder + dotElement.ElementToString() + "\n";
 			}
-			graphbuilder = "}";
+			graphbuilder = graphbuilder + "}";
 			
 			return graphbuilder;
 		}

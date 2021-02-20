@@ -26,31 +26,31 @@ namespace csdot.Attributes
 			}
 			if (color.Set)
 			{
-				attribute = (null == attribute) ? attribute + " " + color.TranslateToString() : attribute + ", " + color.TranslateToString();
+				attribute = ("" == attribute) ? attribute + " " + color.TranslateToString() : attribute + ", " + color.TranslateToString();
 			}
 			if (fixedSize.Set)
 			{
-				attribute = (null == attribute) ? attribute + " " + fixedSize.TranslateToString() : attribute + ", " + fixedSize.TranslateToString();
+				attribute = ("" == attribute) ? attribute + " " + fixedSize.TranslateToString() : attribute + ", " + fixedSize.TranslateToString();
 			}
 			if (fontname.Set)
 			{
-				attribute = (null == attribute) ? attribute + " " + fontname.TranslateToString() : attribute + ", " + fontname.TranslateToString();
+				attribute = ("" == attribute) ? attribute + " " + fontname.TranslateToString() : attribute + ", " + fontname.TranslateToString();
 			}
 			if (fontsize.Set)
 			{
-				attribute = (null == attribute) ? attribute + " " + fontsize.TranslateToString() : attribute + ", " + fontsize.TranslateToString();
+				attribute = ("" == attribute) ? attribute + " " + fontsize.TranslateToString() : attribute + ", " + fontsize.TranslateToString();
 			}
 			if (height.Set)
 			{
-				attribute = (null == attribute) ? attribute + " " + height.TranslateToString() : attribute + ", " + height.TranslateToString();
+				attribute = ("" == attribute) ? attribute + " " + height.TranslateToString() : attribute + ", " + height.TranslateToString();
 			}
 			if (label.Set)
 			{
-				attribute = (null == attribute) ? attribute + " " + label.TranslateToString() : attribute + ", " + label.TranslateToString();
+				attribute = ("" == attribute) ? attribute + " " + label.TranslateToString() : attribute + ", " + label.TranslateToString();
 			}
 			if (shape.Set)
 			{
-				attribute = (null == attribute) ? attribute + " " + shape.TranslateToString() : attribute + ", " + shape.TranslateToString();
+				attribute = ("" == attribute) ? attribute + " " + shape.TranslateToString() : attribute + ", " + shape.TranslateToString();
 			}
 			return attribute;
 		}

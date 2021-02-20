@@ -36,11 +36,13 @@ namespace csdot.Attributes.Types
 
 		public void SetDefault()
 		{
+			Set = true;
 			Value = 1;
 		}
 
 		public void SetMinimum()
 		{
+			Set = true;
 			Value = 1;
 		}
 
@@ -78,6 +80,7 @@ namespace csdot.Attributes.Types
 
 		public void SetDefault()
 		{
+			Set = true;
 			Value = ArrowType.normal;
 		}
 		public string TranslateToString()
@@ -112,6 +115,7 @@ namespace csdot.Attributes.Types
 
 		public void SetDefault()
 		{
+			Set = true;
 			Value = 1.0;
 		}
 
@@ -122,6 +126,7 @@ namespace csdot.Attributes.Types
 
 		public void SetMinimum()
 		{
+			Set = true;
 			Value = 0.0;
 		}
 
@@ -158,6 +163,7 @@ namespace csdot.Attributes.Types
 
 		public void SetDefault()
 		{
+			Set = true;
 			Value = ArrowType.normal;
 		}
 
@@ -271,6 +277,7 @@ namespace csdot.Attributes.Types
 
 		public void SetDefault()
 		{
+			Set = true;
 			Value = false;
 		}
 
@@ -306,6 +313,7 @@ namespace csdot.Attributes.Types
 
 		public void SetDefault()
 		{
+			Set = true;
 			Value = "black";
 		}
 
@@ -343,6 +351,7 @@ namespace csdot.Attributes.Types
 
 		public void SetDefault()
 		{
+			Set = true;
 			Value = 0.001;
 		}
 
@@ -382,6 +391,7 @@ namespace csdot.Attributes.Types
 
 		public void SetDefault()
 		{
+			Set = true;
 			Value = false;
 		}
 
@@ -417,6 +427,7 @@ namespace csdot.Attributes.Types
 
 		public void SetDefault()
 		{
+			Set = true;
 			Value = "Times-Roman";
 		}
 
@@ -454,6 +465,7 @@ namespace csdot.Attributes.Types
 
 		public void SetDefault()
 		{
+			Set = true;
 			Value = 14.0;
 		}
 
@@ -464,6 +476,7 @@ namespace csdot.Attributes.Types
 
 		public void SetMinimum()
 		{
+			Set = true;
 			Value = 1.0;
 		}
 
@@ -501,6 +514,7 @@ namespace csdot.Attributes.Types
 
 		public void SetDefault()
 		{
+			Set = true;
 			Value = true;
 		}
 
@@ -540,6 +554,7 @@ namespace csdot.Attributes.Types
 
 		public void SetDefault()
 		{
+			Set = true;
 			Value = 0.5;
 		}
 
@@ -550,6 +565,7 @@ namespace csdot.Attributes.Types
 
 		public void SetMinimum()
 		{
+			Set = true;
 			Value = 0.02;
 		}
 
@@ -648,6 +664,7 @@ namespace csdot.Attributes.Types
 
 		public void SetDefault()
 		{
+			Set = true;
 			Value = -25.0;
 		}
 
@@ -658,6 +675,7 @@ namespace csdot.Attributes.Types
 
 		public void SetMinimum()
 		{
+			Set = true;
 			Value = -180.0;
 		}
 
@@ -697,6 +715,7 @@ namespace csdot.Attributes.Types
 
 		public void SetDefault()
 		{
+			Set = true;
 			Value = 1;
 		}
 
@@ -707,6 +726,7 @@ namespace csdot.Attributes.Types
 
 		public void SetMinimum()
 		{
+			Set = true;
 			Value = 0.0;
 		}
 
@@ -742,6 +762,7 @@ namespace csdot.Attributes.Types
 
 		public void SetDefault()
 		{
+			Set = true;
 			Value = ShapeTypes.ellipse;
 		}
 
