@@ -7,10 +7,9 @@ namespace csdot.Attributes
 {
 	public class ClusterAttribute : IDotAttribute
 	{
+		public Area area = new Area();
 		public BgColor bgcolor = new BgColor();
 		public Color color = new Color();
-		
-		// ColorScheme colorscheme = new ColorScheme();
 		public Fontname fontname = new Fontname();
 		public Fontsize fontsize = new Fontsize();
 		public Label label = new Label();
@@ -18,9 +17,13 @@ namespace csdot.Attributes
 		public string AttributesToString()
 		{
 			string attribute = "";
+			if (area.Set)
+			{
+				attribute = attribute + " " + area.TranslateToString();
+			}
 			if (bgcolor.Set)
 			{
-				attribute = attribute + " " + bgcolor.TranslateToString();
+				attribute = ("" == attribute) ? attribute + " " + bgcolor.TranslateToString() : attribute + ", " + bgcolor.TranslateToString();
 			}
 			if (color.Set)
 			{

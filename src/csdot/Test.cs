@@ -27,6 +27,7 @@ namespace csdot
 			graph.AddElement(n1);
 			var str = graph.ElementToString();
 
+
 			Console.WriteLine(str);
 
 
