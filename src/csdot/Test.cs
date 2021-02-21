@@ -34,4 +34,23 @@ namespace csdot
 
 		}
 	}
+
+	public class _class
+	{
+
+	}
+
+	public class A
+	{
+		public _class @class;
+	}
+
+	public class B
+	{
+		public void test()
+		{
+			A a = new A();
+			a.@class = new _class();
+		}
+	}
 }
