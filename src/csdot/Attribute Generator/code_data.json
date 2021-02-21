@@ -524,7 +524,7 @@
       "class_name": "Levels",
       "name": "levels",
       "default": "int.MaxValue",
-      "minimum": 0.0,
+      "minimum": 0,
       "type": "int",
       "use" : "G"
     },

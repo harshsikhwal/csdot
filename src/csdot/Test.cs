@@ -12,7 +12,7 @@ namespace csdot
 			
 			Graph graph = new Graph("Test");
 			Node node = new Node("node1");
-			Console.WriteLine("node1 key: " + node.uid.ToString());
+			// Console.WriteLine("node1 key: " + node.uid.ToString());
 			//graph.AddElement(node);
 			//var h = graph.GetElement(node.uid);
 			graph.Attribute.label.Value = "this";
@@ -22,7 +22,7 @@ namespace csdot
 
 
 			Node n1 = new Node("n1");
-			Console.WriteLine("node1 key: " + n1.uid.ToString());
+			// Console.WriteLine("node1 key: " + n1.uid.ToString());
 			n1.Attribute.fontname.SetDefault();
 			graph.AddElement(n1);
 			var str = graph.ElementToString();

@@ -1,14 +1,18 @@
-﻿using System;
+
+using System;
 using System.Collections.Generic;
 using System.Text;
+using csdot.Attributes.Types;
 
 namespace csdot.Attributes
 {
 	public class SubgraphAttribute : IDotAttribute
 	{
+
 		public string AttributesToString()
 		{
-			return "";
+			string attribute = "";
+			return attribute;
 		}
 	}
 }

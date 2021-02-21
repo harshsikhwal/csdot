@@ -173,7 +173,7 @@ def generate_class(l):
         class_str = class_str + r"""
         public {classtype} TranslateToString()
         {{
-            return "{classname} = " + Value;
+            return "{classname} = \"" +  Value +  "\"";
         }}
         #endregion
     }}
