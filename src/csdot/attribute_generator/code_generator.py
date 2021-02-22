@@ -192,8 +192,8 @@ def generate_class(l):
 
 if __name__ == '__main__':
 
-
-    json_file = json.load(open("code_data.json", "r"))
+    print("Generating Attribute Code")
+    json_file = json.load(open("attribute_generator\code_data.json", "r"))
     code_list = json_file["code"]
 
     graph_class = ""
@@ -301,23 +301,25 @@ if __name__ == '__main__':
     # os.makedirs("Attributes\Types")
 
     # Dump to file
-    node_attribute_file = open("..\Attributes\\NodeAttribute.cs", "w")
+    node_attribute_file = open(".\Attributes\\NodeAttribute.cs", "w")
     node_attribute_file.write(node_attribute_code)
 
     # subgraph_attribute_file = open("..\Attributes\\SubgraphAttribute.cs", "w")
     # subgraph_attribute_file.write(subgraph_attribute_code)
 
-    graph_attribute_file = open("..\Attributes\\GraphAttribute.cs", "w")
+    graph_attribute_file = open(".\Attributes\\GraphAttribute.cs", "w")
     graph_attribute_file.write(graph_attribute_code)
 
-    cluster_attribute_file = open("..\Attributes\\ClusterAttribute.cs", "w")
+    cluster_attribute_file = open(".\Attributes\\ClusterAttribute.cs", "w")
     cluster_attribute_file.write(cluster_attribute_code)
 
-    edge_attribute_file = open("..\Attributes\\EdgeAttribute.cs", "w")
+    edge_attribute_file = open(".\Attributes\\EdgeAttribute.cs", "w")
     edge_attribute_file.write(edge_attribute_code)
 
-    root_attribute_file = open("..\Attributes\Types\Attribute.cs", "w")
+    root_attribute_file = open(".\Attributes\Types\Attribute.cs", "w")
     root_attribute_file.write(attribute_code)
+
+    print("Attribute Code Generated Successfully")
 
 def unused():
         if "S" in use:

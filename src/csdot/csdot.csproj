@@ -14,4 +14,8 @@
     <None Remove="Attributes\Constants\**" />
   </ItemGroup>
 
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+		<Exec Command="python attribute_generator\code_generator.py" />
+	</Target>
+	
 </Project>
