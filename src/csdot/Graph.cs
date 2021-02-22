@@ -44,7 +44,7 @@ namespace csdot
 		{
 			//TODO: Add code to translate the IDot dictionary list and call their corresponding attribute
 			// return (strict) ? "strict" + type + " " + ID + "\n{\n" + Attribute.AttributesToString() + "\n}";
-			string graphbuilder = (strict) ? "strict" : "" + type + " " + ID +  Attribute.AttributesToString() + "{\n";
+			string graphbuilder = (strict) ? "strict" : "" + type + " " + ID + "{\n" + Attribute.AttributesToString() + "\n";
 			foreach(var dotElement in m_elements.Values)
 			{
 				graphbuilder = graphbuilder + dotElement.ElementToString() + "\n";

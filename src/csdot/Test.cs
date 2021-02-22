@@ -16,8 +16,10 @@ namespace csdot
 			//graph.AddElement(node);
 			//var h = graph.GetElement(node.uid);
 			graph.Attribute.label.Value = "this";
+			graph.Attribute.concentrate.Value = true;
 			node.Attribute.color.Value = Color.X11.darkviolet;
 			node.Attribute.label.Value = "new node";
+
 			graph.AddElement(node);
 
 
@@ -25,13 +27,62 @@ namespace csdot
 			// Console.WriteLine("node1 key: " + n1.uid.ToString());
 			n1.Attribute.fontname.SetDefault();
 			graph.AddElement(n1);
-			var str = graph.ElementToString();
 
+
+
+			Node node1 = new Node("123");
+			node1.Attribute.shape.Value = ShapeTypes.circle;
+
+			graph.AddElement(node1);
+
+			var str = graph.ElementToString();
 
 			Console.WriteLine(str);
 
 
+			Node n = graph.GetElement(node1.uid) as Node;
 
+			n.Attribute.shape.Set = false;
+
+			str = graph.ElementToString();
+
+			Console.WriteLine("New graph:\n");
+
+			Console.WriteLine(str);
+
+
+			// Creating edge
+			// A -> B -- C
+			// A -- Y
+
+			Node a = new Node("A");
+			Node b = new Node("B");
+			Node c = new Node("C");
+
+			Node y = new Node("Y");
+
+
+			Edge edge = new Edge();
+
+
+
+			List<Transition> ts = new List<Transition>()
+			{
+				new Transition(a, EdgeOp.directed),
+				new Transition(b, EdgeOp.undirected),
+				new Transition(b, EdgeOp.unspecified)
+			};
+
+
+
+			edge.Transition = ts;
+
+			graph.AddElement(edge);
+			str = graph.ElementToString();
+
+			Console.WriteLine("Transition graph:\n");
+
+			Console.WriteLine(str);
 		}
 	}
 

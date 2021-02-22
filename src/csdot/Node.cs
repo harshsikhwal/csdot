@@ -11,6 +11,26 @@ namespace csdot
 		public Guid uid { get;  }
 		public string ID { get; set; }
 
+		// better if we have a list?
+		private bool subIDSet { get; set; } = false;
+
+		private string m_subID = "";
+
+		public string subID
+		{
+			get
+			{
+				return m_subID;
+			}
+			set
+			{
+				subIDSet = true;
+				m_subID = value;
+			}
+
+		}
+		public string compassPoint { get; set; } = "";
+
 		private NodeAttribute m_attribute = new NodeAttribute();
 
 		public NodeAttribute Attribute
@@ -29,7 +49,23 @@ namespace csdot
 
 		public string ElementToString()
 		{
-			return ID + " [" + Attribute.AttributesToString() + "]";
+			string attributestr = Attribute.AttributesToString();
+			if(attributestr != "")
+			{
+				attributestr = " [" + attributestr + " ]";
+			}
+			if (subIDSet)
+			{
+				if(compassPoint == "")
+					return ID + ":" + m_subID + attributestr;
+				else
+					return ID + ":" + m_subID + ":" + compassPoint + attributestr;
+			}
+			if(compassPoint != "")
+				return ID + ":" + compassPoint + attributestr;
+			
+			else
+				return ID + attributestr;
 		}
 	}
 }

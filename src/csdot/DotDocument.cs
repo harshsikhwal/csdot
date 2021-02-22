@@ -236,9 +236,9 @@ namespace csdot
 
         #region SaveToFile
 
-        public void SaveToFile(string i_fileLocation)
+        public void SaveToFile(Graph i_graph, string i_fileLocation)
         {
-            /*
+            
             if (File.Exists(i_fileLocation))
             {
                 File.Delete(i_fileLocation);
@@ -247,35 +247,7 @@ namespace csdot
             {
 
             }
-            using (StreamWriter sw = File.AppendText(i_fileLocation))
-            {
-                string line;
-                line = "digraph " + this.m_name + "{\n";
-                sw.WriteLine(line);
-                // Check for direction
-                if (Direction.Equals("LR"))
-                {
-                    sw.WriteLine($"rankdir = LR");
-                    sw.WriteLine();
-                }
-
-                foreach (var n in m_node)
-                {
-                    line = "";
-                    line = n.Name + " " + n.ConvertAttributeToString() + "\n";
-                    sw.WriteLine(line);
-                }
-
-                foreach (var t in m_transitions)
-                {
-                    line = "";
-                    line = t.GetStartNode() + " -> " + t.GetEndNode() + " " + t.ConvertAttributeToString() + "\n";
-                    sw.WriteLine(line);
-                }
-
-                line = "}\n";
-                sw.WriteLine(line);
-                */
+            File.WriteAllText(i_fileLocation, i_graph.ElementToString());
         }
 
 

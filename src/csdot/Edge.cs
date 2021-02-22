@@ -10,7 +10,14 @@ namespace csdot
 		public Guid uid { get; }
 		public string ID { get; set; }
 
+		private List<Transition> m_transition = new List<Transition>();
+
 		private EdgeAttribute m_attribute = new EdgeAttribute();
+
+		public List<Transition> Transition
+		{
+			get; set;
+		}
 
 		public EdgeAttribute Attribute
 		{
@@ -20,16 +27,68 @@ namespace csdot
 			}
 		}
 
-		public Edge(string i_id)
+		public Edge()
 		{
-			ID = i_id;
 			uid = Guid.NewGuid();
 		}
 
+		public Edge(List<Transition> i_transition)
+		{
+			Transition = i_transition;
+			uid = Guid.NewGuid();
+		}
+
+		/*
+		public void AddElement(params [] ps)
+		{
+
+		}
+		*/
+		public void AddTransition(Transition i_transition)
+		{
+			Transition.Add(i_transition);
+		}
+
+		/*
+		 * Probably our limitation. 
+		 * There can be an edge: A -> B -> C -> B. 
+		 * So removing one can be dangerous because we dont know the index
+		 * 
+		public void RemoveTransition(IDot i_dot)
+		{
+			Transition.Remove(i_dot.uid);
+		}
+		*/
 		public string ElementToString()
 		{
 			// TODO: ID TO ID code here
-			return Attribute.AttributesToString();
+			string transitionBuilder = "";
+			foreach(var t in Transition)
+			{
+				transitionBuilder = transitionBuilder + t.ID + " " + t.edgeop + " ";
+			}
+			string attributestr = Attribute.AttributesToString();
+			if(attributestr != "")
+			{
+				transitionBuilder = transitionBuilder + " [ " +  Attribute.AttributesToString() + " ]";
+			}
+			return transitionBuilder;
 		}
 	}
+
+	public class Transition
+	{
+		public Guid uid;
+		public string ID;
+		public string edgeop;
+
+		public Transition(IDot i_dot, string m_op)
+		{
+			uid = i_dot.uid;
+			ID = i_dot.ID;
+			edgeop = m_op;
+		}
+
+	}
+
 }

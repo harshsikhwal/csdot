@@ -1,996 +1,1012 @@
 {
-  "code": [
-    {
-      "class_name": "_Background",
-      "name": "_background",
-      "default": "nil",
-      "minimum": "nil",
-      "type": "string",
-      "use": "G"
-    },
-    {
-      "class_name": "Area",
-      "name": "area",
-      "default": 1.0,
-      "minimum": "nil",
-      "type": "double",
-      "use": "NC"
-    },
-    {
-      "class_name": "ArrowHead",
-      "name": "arrowhead",
-      "default": "ArrowType.normal",
-      "minimum": "nil",
-      "type": "string",
-      "use": "E"
-    },
-    {
-      "class_name": "ArrowSize",
-      "name": "arrowsize",
-      "default": 1.0,
-      "minimum": 0.0,
-      "type": "double",
-      "use": "E"
-    },
+    "code": [
         {
-      "class_name": "ArrowTail",
-      "name": "arrowtail",
-      "default": "ArrowType.normal",
-      "minimum": "nil",
-      "type": "string",
-      "use": "E"
-    },
-    {
-      "class_name": "Center",
-      "name": "center",
-      "default": "false",
-      "minimum": "nil",
-      "type": "bool",
-      "use": "G"
-    },
-    {
-      "class_name": "Color",
-      "name": "color",
-      "default": "DataTypes.Color.X11.black",
-      "minimum": "nil",
-      "type": "string",
-      "use": "ENC"
-    },
-    {
-      "class_name": "ColorScheme",
-      "name": "colorscheme",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use": "ENCG"
-    },
-    {
-      "class_name": "Compound",
-      "name": "compound",
-      "default": "false",
-      "minimum": "nil",
-      "type": "bool",
-      "use": "G"
-    },
-    {
-      "class_name": "Concentrate",
-      "name": "concentrate",
-      "default": "false",
-      "minimum": "nil",
-      "type": "bool",
-      "use": "G"
-    },
-    {
-      "class_name": "Constraint",
-      "name": "constraint",
-      "default": "true",
-      "minimum": "nil",
-      "type": "bool",
-      "use": "E"
-    },
-    {
-      "class_name": "damping",
-      "name": "Damping",
-      "default": 0.99,
-      "minimum": 0.0,
-      "type": "double",
-      "use": "G"
-    },
-    {
-      "class_name": "Decorate",
-      "name": "decorate",
-      "default": "false",
-      "minimum": "nil",
-      "type": "bool",
-      "use": "E"
-    },
-    {
-      "class_name": "DefaultDist",
-      "name": "defaultdist",
-      "default": "nil",
-      "minimum": "Double.Epsilon",
-      "type": "double",
-      "use": "G"
-    },
-    {
-      "class_name": "Dim",
-      "name": "dim",
-      "default": 2,
-      "minimum": 2,
-      "type": "int",
-      "use": "G"
-    },
-    {
-      "class_name": "Dimen",
-      "name": "dimen",
-      "default": 2,
-      "minimum": 2,
-      "type": "int",
-      "use": "G"
-    },
-    {
-      "class_name": "Distortion",
-      "name": "distortion",
-      "default": 0.0,
-      "minimum": -100.0,
-      "type": "double",
-      "use": "N"
-    },
-    {
-      "class_name": "Dpi",
-      "name": "dpi",
-      "default": 0.0,
-      "minimum": "nil",
-      "type": "double",
-      "use": "G"
-    },
-    {
-      "class_name": "Edgehref",
-      "name": "edgehref",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use": "E"
-    },
-    {
-      "class_name": "EdgeTarget",
-      "name": "edgetarget",
-      "default": "nil",
-      "minimum": "nil",
-      "type": "string",
-      "use": "E"
-    },
-    {
-      "class_name": "EdgeToolTip",
-      "name": "edgetooltip",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use": "E"
-    },
-    {
-      "class_name": "EdgeURL",
-      "name": "edgeURL",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use": "E"
-    },
-    {
-      "class_name": "Epsilon",
-      "name": "epsilon",
-      "default": "0.001",
-      "minimum": "nil",
-      "type": "double",
-      "use": "G"
-    },
-    {
-      "class_name": "FontColor",
-      "name": "fontcolor",
-      "default": "DataTypes.Color.X11.black",
-      "minimum": "nil",
-      "type": "string",
-      "use": "ENGC"
-    },
-    {
-      "class_name": "Fontname",
-      "name": "fontname",
-      "default": "Times-Roman",
-      "minimum": "nil",
-      "type": "string",
-      "use": "ENGC"
-    },
-    {
-      "class_name": "Fontnames",
-      "name": "fontnames",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use": "G"
-    },
-    {
-      "class_name": "FontPath",
-      "name": "fontpath",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use": "G"
-    },
-    {
-      "class_name": "Fontsize",
-      "name": "fontsize",
-      "default": 14.0,
-      "minimum": 1.0,
-      "type": "double",
-      "use": "ENGC"
-    },
-    {
-      "class_name": "ForceLabels",
-      "name": "forcelabels",
-      "default": "true",
-      "minimum": "nil",
-      "type": "bool",
-      "use": "G"
-    },
-    {
-      "class_name": "GradientAngle",
-      "name": "gradientangle",
-      "default": "nil",
-      "minimum": "nil",
-      "type": "int",
-      "use": "NCG"
-    },
-    {
-      "class_name": "Group",
-      "name": "group",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use": "N"
-    },
-    {
-      "class_name": "HeadClip",
-      "name": "headclip",
-      "default": "true",
-      "minimum": "nil",
-      "type": "bool",
-      "use": "E"
-    },
-    {
-      "class_name": "HeadHref",
-      "name": "headhref",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
+            "class_name": "_Background",
+            "name": "_background",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "string",
+            "use": "G"
+        },
+        {
+            "class_name": "Area",
+            "name": "area",
+            "default": 1.0,
+            "minimum": "nil",
+            "type": "double",
+            "use": "NC"
+        },
+        {
+            "class_name": "ArrowHead",
+            "name": "arrowhead",
+            "default": "ArrowType.normal",
+            "minimum": "nil",
+            "type": "string",
             "use": "E"
-    },
-    {
-      "class_name": "HeadLabel",
-      "name": "headlabel",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
+        },
+        {
+            "class_name": "ArrowSize",
+            "name": "arrowsize",
+            "default": 1.0,
+            "minimum": 0.0,
+            "type": "double",
             "use": "E"
-    },
-    {
-      "class_name": "HeadTarget",
-      "name": "headtarget",
-      "default": "nil",
-      "minimum": "nil",
-      "type": "string",
+        },
+        {
+            "class_name": "ArrowTail",
+            "name": "arrowtail",
+            "default": "ArrowType.normal",
+            "minimum": "nil",
+            "type": "string",
             "use": "E"
-    },
-    {
-      "class_name": "HeadToolTip",
-      "name": "headtooltip",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
+        },
+        {
+            "class_name": "Center",
+            "name": "center",
+            "default": "false",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "G"
+        },
+        {
+            "class_name": "Color",
+            "name": "color",
+            "default": "DataTypes.Color.X11.black",
+            "minimum": "nil",
+            "type": "string",
+            "use": "ENC"
+        },
+        {
+            "class_name": "ColorScheme",
+            "name": "colorscheme",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "ENCG"
+        },
+        {
+            "class_name": "Compound",
+            "name": "compound",
+            "default": "false",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "G"
+        },
+        {
+            "class_name": "Concentrate",
+            "name": "concentrate",
+            "default": "false",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "G"
+        },
+        {
+            "class_name": "Constraint",
+            "name": "constraint",
+            "default": "true",
+            "minimum": "nil",
+            "type": "bool",
             "use": "E"
-    },
-    {
-      "class_name": "HeadURL",
-      "name": "headURL",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
+        },
+        {
+            "class_name": "damping",
+            "name": "Damping",
+            "default": 0.99,
+            "minimum": 0.0,
+            "type": "double",
+            "use": "G"
+        },
+        {
+            "class_name": "Decorate",
+            "name": "decorate",
+            "default": "false",
+            "minimum": "nil",
+            "type": "bool",
             "use": "E"
-    },
-    {
-      "class_name": "Height",
-      "name": "height",
-      "default": "0.5",
-      "minimum": "0.02",
-      "type": "double",
+        },
+        {
+            "class_name": "DefaultDist",
+            "name": "defaultdist",
+            "default": "nil",
+            "minimum": "Double.Epsilon",
+            "type": "double",
+            "use": "G"
+        },
+        {
+            "class_name": "Dim",
+            "name": "dim",
+            "default": 2,
+            "minimum": 2,
+            "type": "int",
+            "use": "G"
+        },
+        {
+            "class_name": "Dimen",
+            "name": "dimen",
+            "default": 2,
+            "minimum": 2,
+            "type": "int",
+            "use": "G"
+        },
+        {
+            "class_name": "Distortion",
+            "name": "distortion",
+            "default": 0.0,
+            "minimum": -100.0,
+            "type": "double",
             "use": "N"
-    },
-    {
-      "class_name": "Href",
-      "name": "href",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
+        },
+        {
+            "class_name": "Dpi",
+            "name": "dpi",
+            "default": 0.0,
+            "minimum": "nil",
+            "type": "double",
+            "use": "G"
+        },
+        {
+            "class_name": "Edgehref",
+            "name": "edgehref",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "EdgeTarget",
+            "name": "edgetarget",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "EdgeToolTip",
+            "name": "edgetooltip",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "EdgeURL",
+            "name": "edgeURL",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "Epsilon",
+            "name": "epsilon",
+            "default": "0.001",
+            "minimum": "nil",
+            "type": "double",
+            "use": "G"
+        },
+        {
+            "class_name": "FontColor",
+            "name": "fontcolor",
+            "default": "DataTypes.Color.X11.black",
+            "minimum": "nil",
+            "type": "string",
+            "use": "ENGC"
+        },
+        {
+            "class_name": "Fontname",
+            "name": "fontname",
+            "default": "Times-Roman",
+            "minimum": "nil",
+            "type": "string",
+            "use": "ENGC"
+        },
+        {
+            "class_name": "Fontnames",
+            "name": "fontnames",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "G"
+        },
+        {
+            "class_name": "FontPath",
+            "name": "fontpath",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "G"
+        },
+        {
+            "class_name": "Fontsize",
+            "name": "fontsize",
+            "default": 14.0,
+            "minimum": 1.0,
+            "type": "double",
+            "use": "ENGC"
+        },
+        {
+            "class_name": "ForceLabels",
+            "name": "forcelabels",
+            "default": "true",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "G"
+        },
+        {
+            "class_name": "GradientAngle",
+            "name": "gradientangle",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "int",
+            "use": "NCG"
+        },
+        {
+            "class_name": "Group",
+            "name": "group",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "N"
+        },
+        {
+            "class_name": "HeadClip",
+            "name": "headclip",
+            "default": "true",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "E"
+        },
+        {
+            "class_name": "HeadHref",
+            "name": "headhref",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "HeadLabel",
+            "name": "headlabel",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "HeadTarget",
+            "name": "headtarget",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "HeadToolTip",
+            "name": "headtooltip",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "HeadURL",
+            "name": "headURL",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "Height",
+            "name": "height",
+            "default": "0.5",
+            "minimum": "0.02",
+            "type": "double",
+            "use": "N"
+        },
+        {
+            "class_name": "Href",
+            "name": "href",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
             "use": "GCNE"
-    },
-    {
-      "class_name": "ID",
-      "name": "id",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-                  "use": "GCNE"
-    },
-    {
-      "class_name": "Image",
-      "name": "image",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-                  "use": "N"
-    },
-    {
-      "class_name": "ImagePath",
-      "name": "imagepath",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-                  "use": "G"
-    },
-    {
-      "class_name": "ImagePos",
-      "name": "imagepos",
-      "default": "mc",
-      "minimum": "nil",
-      "type": "string",
-                  "use": "N"
-    },
-    {
-      "class_name": "ImageScale",
-      "name": "imagescale",
-      "default": "false",
-      "minimum": "nil",
-      "type": "bool",
-                  "use": "N"
-    },
-    {
-      "class_name": "InputScale",
-      "name": "inputscale",
-      "default": "nil",
-      "minimum": "nil",
-      "type": "double",
-                  "use": "G"
-    },
-    {
-      "class_name": "k",
-      "name": "K",
-      "default": 0.3,
-      "minimum": 0,
-      "type": "double",
-                  "use": "GC"
-    },
-    {
-      "class_name": "Label",
-      "name": "label",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use": "ENGC"
-    },
+        },
         {
-      "class_name": "LabelScheme",
-      "name": "label_scheme",
-      "default": 0,
-      "minimum": 0,
-      "type": "int",
-      "use": "G"
-    },
+            "class_name": "ID",
+            "name": "id",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "GCNE"
+        },
         {
-      "class_name": "LabelAngle",
-      "name": "labelangle",
-      "default": -25.0,
-      "minimum": -180.0,
-      "type": "double",
-      "use" : "E"
-    },
+            "class_name": "Image",
+            "name": "image",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "N"
+        },
         {
-      "class_name": "LabelDistance",
-      "name": "labeldistance",
-      "default": 1.0,
-      "minimum": 0.0,
-      "type": "double",
-      "use" : "E"
-    },
+            "class_name": "ImagePath",
+            "name": "imagepath",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "G"
+        },
         {
-      "class_name": "LabelFloat",
-      "name": "labelfloat",
-      "default": "false",
-      "minimum": "nil",
-      "type": "bool",
-      "use" : "E"
-    },
+            "class_name": "ImagePos",
+            "name": "imagepos",
+            "default": "mc",
+            "minimum": "nil",
+            "type": "string",
+            "use": "N"
+        },
         {
-      "class_name": "LabelFontColor",
-      "name": "labelfontcolor",
-      "default": "DataTypes.Color.X11.black",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "E"
-    },
+            "class_name": "ImageScale",
+            "name": "imagescale",
+            "default": "false",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "N"
+        },
         {
-      "class_name": "LabelFontname",
-      "name": "labelfontname",
-      "default": "Times-Roman",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "E"
-    },
+            "class_name": "InputScale",
+            "name": "inputscale",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "double",
+            "use": "G"
+        },
         {
-      "class_name": "LabelFontsize",
-      "name": "labelfontsize",
-      "default": 14.0,
-      "minimum": 1.0,
-      "type": "double",
-      "use" : "E"
-    },
-    {
-      "class_name": "LabelHref",
-      "name": "labelhref",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "E"
-    },
-    {
-      "class_name": "LabelJust",
-      "name": "labeljust",
-      "default": "c",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "GC"
-    },
-    {
-      "class_name": "LabelLoc",
-      "name": "labelloc",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "NGC"
-    },
-    {
-      "class_name": "LabelTarget",
-      "name": "labeltarget",
-      "default": "nil",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "E"
-    },
-    {
-      "class_name": "LabelToolTip",
-      "name": "labeltooltip",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "E"
-    },
-    {
-      "class_name": "LabelURL",
-      "name": "labelURL",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "E"
-    },
-    {
-      "class_name": "Landscape",
-      "name": "landscape",
-      "default": "false",
-      "minimum": "nil",
-      "type": "bool",
-      "use" : "G"
-    },
-    {
-      "class_name": "LayerListSep",
-      "name": "layerlistsep",
-      "default": ",",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "G"
-    },
-    {
-      "class_name": "LayerSep",
-      "name": "layersep",
-      "default": ":\\t",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "G"
-    },
-    {
-      "class_name": "Layout",
-      "name": "layout",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "G"
-    },
-    {
-      "class_name": "Len",
-      "name": "len",
-      "default": "nil",
-      "minimum": "nil",
-      "type": "double",
-      "use" : "E"
-    },
-    {
-      "class_name": "Levels",
-      "name": "levels",
-      "default": "int.MaxValue",
-      "minimum": 0,
-      "type": "int",
-      "use" : "G"
-    },
-    {
-      "class_name": "LevelsGap",
-      "name": "levelsgap",
-      "default": "0.0",
-      "minimum": "nil",
-      "type": "double",
-      "use" : "G"
-    },
-    {
-      "class_name": "LHead",
-      "name": "lhead",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "E"
-    },
-    {
-      "class_name": "LHeight",
-      "name": "lheight",
-      "default": "nil",
-      "minimum": "nil",
-      "type": "double",
-      "use" : "GC"
-    },
-    {
-      "class_name": "LTail",
-      "name": "ltail",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "E"
-    },
-    {
-      "class_name": "LWidth",
-      "name": "lwidth",
-      "default": "nil",
-      "minimum": "nil",
-      "type": "double",
-      "use" : "GC"
-    },
-    {
-      "class_name": "MClimit",
-      "name": "mclimit",
-      "default": 1.0,
-      "minimum": "nil",
-      "type": "double",
-      "use" : "G"
-    },
-    {
-      "class_name": "Mindist",
-      "name": "mindist",
-      "default": 1.0,
-      "minimum": 0.0,
-      "type": "double",
-      "use" : "G"
-    },
-    {
-      "class_name": "MinLen",
-      "name": "minlen",
-      "default": 1,
-      "minimum": 0,
-      "type": "int",
-      "use" : "E"
-    },
-    {
-      "class_name": "Mode",
-      "name": "mode",
-      "default": "major",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "G"
-    },
-    {
-      "class_name": "Model",
-      "name": "model",
-      "default": "shortpath",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "G"
-    },
-    {
-      "class_name": "Mosek",
-      "name": "mosek",
-      "default": "false",
-      "minimum": "nil",
-      "type": "bool",
-      "use" : "G"
-    },
-    {
-      "class_name": "NewRank",
-      "name": "newrank",
-      "default": "false",
-      "minimum": "nil",
-      "type": "bool",
-      "use" : "G"
-    },
-    {
-      "class_name": "NodeSep",
-      "name": "nodesep",
-      "default": 0.25,
-      "minimum": 0.02,
-      "type": "double",
-      "use" : "G"
-    },
-    {
-      "class_name": "NoJustify",
-      "name": "nojustify",
-      "default": "false",
-      "minimum": "nil",
-      "type": "bool",
-      "use" : "GCNE"
-    },
-    {
-      "class_name": "NoTranslate",
-      "name": "notranslate",
-      "default": "false",
-      "minimum": "nil",
-      "type": "bool",
-      "use" : "G"
-    },
-    {
-      "class_name": "NSLimit",
-      "name": "nslimit",
-      "default": "nil",
-      "minimum": "nil",
-      "type": "double",
-      "use" : "G"
-    },
-    {
-      "class_name": "NSLimit1",
-      "name": "nslimit1",
-      "default": "nil",
-      "minimum": "nil",
-      "type": "double",
-      "use" : "G"
-    },
-    {
-      "class_name": "Ordering",
-      "name": "ordering",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "GN"
-    },
-    {
-      "class_name": "OverlapScaling",
-      "name": "overlap_scaling",
-      "default": -4,
-      "minimum": "nil",
-      "type": "double",
-      "use" : "G"
-    },
-    {
-      "class_name": "OverlapShrink",
-      "name": "overlap_shrink",
-      "default": "true",
-      "minimum": "nil",
-      "type": "bool",
-      "use" : "G"
-    },
-    {
-      "class_name": "PenColor",
-      "name": "pencolor",
-      "default": "DataTypes.Color.X11.black",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "C"
-    },
-    {
-      "class_name": "PenWidth",
-      "name": "penwidth",
-      "default": 1,
-      "minimum": 0,
-      "type": "double",
-      "use" : "CNE"
-    },
-    {
-      "class_name": "Peripheries",
-      "name": "peripheries",
-      "default": 1,
-      "minimum": 0,
-      "type": "int",
-      "use" : "NC"
-    },
-    {
-      "class_name": "Pin",
-      "name": "pin",
-      "default": "false",
-      "minimum": "nil",
-      "type": "bool",
-      "use" : "N"
-    },
-    {
-      "class_name": "Quantum",
-      "name": "quantum",
-      "default": 0.0,
-      "minimum": 0.0,
-      "type": "double",
-      "use" : "G"
-    },
-    {
-      "class_name": "Regular",
-      "name": "regular",
-      "default": "false",
-      "minimum": "nil",
-      "type": "bool",
-      "use" : "N"
-    },
-    {
-      "class_name": "Remincross",
-      "name": "remincross",
-      "default": "true",
-      "minimum": "nil",
-      "type": "bool",
-      "use" : "G"
-    },
-    {
-      "class_name": "RepulsiveForce",
-      "name": "repulsiveforce",
-      "default": 1.0,
-      "minimum": 0.0,
-      "type": "double",
-      "use" : "G"
-    },
-    {
-      "class_name": "Resolution",
-      "name": "resolution",
-      "default": "nil",
-      "minimum": "nil",
-      "type": "double",
-      "use" : "G"
-    },
-    {
-      "class_name": "Rotate",
-      "name": "rotate",
-      "default": 0,
-      "minimum": "nil",
-      "type": "int",
-      "use" : "G"
-    },
-    {
-      "class_name": "Rotation",
-      "name": "rotation",
-      "default": 0,
-      "minimum": "nil",
-      "type": "double",
-      "use" : "G"
-    },
+            "class_name": "k",
+            "name": "K",
+            "default": 0.3,
+            "minimum": 0,
+            "type": "double",
+            "use": "GC"
+        },
         {
-      "class_name": "SameHead",
-      "name": "samehead",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "E"
-    },
+            "class_name": "Label",
+            "name": "label",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "ENGC"
+        },
         {
-      "class_name": "SameTail",
-      "name": "sametail",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "E"
-    },
+            "class_name": "LabelScheme",
+            "name": "label_scheme",
+            "default": 0,
+            "minimum": 0,
+            "type": "int",
+            "use": "G"
+        },
         {
-      "class_name": "SamplePoints",
-      "name": "samplepoints",
-      "default": 8,
-      "minimum": "nil",
-      "type": "int",
-      "use" : "N"
-    },
+            "class_name": "LabelAngle",
+            "name": "labelangle",
+            "default": -25.0,
+            "minimum": -180.0,
+            "type": "double",
+            "use": "E"
+        },
         {
-      "class_name": "SearchSize",
-      "name": "searchsize",
-      "default": 30,
-      "minimum": "nil",
-      "type": "int",
-      "use" : "G"
-    },
+            "class_name": "LabelDistance",
+            "name": "labeldistance",
+            "default": 1.0,
+            "minimum": 0.0,
+            "type": "double",
+            "use": "E"
+        },
         {
-      "class_name": "Shape",
-      "name": "shape",
-      "default": "ellipse",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "N"
-    },
+            "class_name": "LabelFloat",
+            "name": "labelfloat",
+            "default": "false",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "E"
+        },
         {
-      "class_name": "ShapeFile",
-      "name": "shapefile",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "N"
-    },
+            "class_name": "LabelFontColor",
+            "name": "labelfontcolor",
+            "default": "DataTypes.Color.X11.black",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
         {
-      "class_name": "ShowBoxes",
-      "name": "showboxes",
-      "default": 0,
-      "minimum": 0,
-      "type": "int",
-      "use" : "ENG"
-    },
+            "class_name": "LabelFontname",
+            "name": "labelfontname",
+            "default": "Times-Roman",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
         {
-      "class_name": "Sides",
-      "name": "sides",
-      "default": 4,
-      "minimum": 0,
-      "type": "int",
-      "use" : "N"
-    },
+            "class_name": "LabelFontsize",
+            "name": "labelfontsize",
+            "default": 14.0,
+            "minimum": 1.0,
+            "type": "double",
+            "use": "E"
+        },
         {
-      "class_name": "Skew",
-      "name": "skew",
-      "default": 0.0,
-      "minimum": -100.0,
-      "type": "double",
-      "use" : "N"
-    },
+            "class_name": "LabelHref",
+            "name": "labelhref",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
         {
-      "class_name": "Sortv",
-      "name": "sortv",
-      "default": 0,
-      "minimum": 0,
-      "type": "int",
-      "use" : "GCN"
-    },
-    {
-      "class_name": "StyleSheet",
-      "name": "stylesheet",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "G"
-    },
+            "class_name": "LabelJust",
+            "name": "labeljust",
+            "default": "c",
+            "minimum": "nil",
+            "type": "string",
+            "use": "GC"
+        },
         {
-      "class_name": "TailClip",
-      "name": "tailclip",
-      "default": "true",
-      "minimum": "nil",
-      "type": "bool",
-          "use" : "E"
-    },
-    {
-      "class_name": "Tailhref",
-      "name": "tailhref",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "E"
-    },
-    {
-      "class_name": "TailLabel",
-      "name": "taillabel",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "E"
-    },
-    {
-      "class_name": "TailTarget",
-      "name": "tailtarget",
-      "default": "nil",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "E"
-    },
-    {
-      "class_name": "TailToolTip",
-      "name": "tailtooltip",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "E"
-    },
-    {
-      "class_name": "TailURL",
-      "name": "tailURL",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "E"
-    },
-    {
-      "class_name": "Target",
-      "name": "Target",
-      "default": "nil",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "ENGC"
-    },
-    {
-      "class_name": "ToolTip",
-      "name": "tooltip",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "NEC"
-    },
-    {
-      "class_name": "TrueColor",
-      "name": "truecolor",
-      "default": "nil",
-      "minimum": "nil",
-      "type": "bool",
-      "use" : "G"
-    },
-    {
-      "class_name": "url",
-      "name": "URL",
-      "default": "nil",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "ENGC"
-    },
-    {
-      "class_name": "VoroMargin",
-      "name": "voro_margin",
-      "default": 0.05,
-      "minimum": 0.0,
-      "type": "double",
-      "use" : "G"
-    },
-    {
-      "class_name": "Weight",
-      "name": "weight",
-      "default": 1,
-      "minimum": 0,
-      "type": "double",
-      "use" : "E"
-    },
-    {
-      "class_name": "Width",
-      "name": "width",
-      "default": 0.75,
-      "minimum": 0.01,
-      "type": "double",
-      "use" : "N"
-    },
-    {
-      "class_name": "XDotVersion",
-      "name": "xdotversion",
-      "default": "nil",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "G"
-    },
-    {
-      "class_name": "XLabel",
-      "name": "xlabel",
-      "default": "",
-      "minimum": "nil",
-      "type": "string",
-      "use" : "EN"
-    },
-    {
-      "class_name": "Z",
-      "name": "z",
-      "default": 0,
-      "minimum": -1000,
-      "type": "double",
-      "use" : "N"
-    }
-  ]
+            "class_name": "LabelLoc",
+            "name": "labelloc",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "NGC"
+        },
+        {
+            "class_name": "LabelTarget",
+            "name": "labeltarget",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "LabelToolTip",
+            "name": "labeltooltip",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "LabelURL",
+            "name": "labelURL",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "Landscape",
+            "name": "landscape",
+            "default": "false",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "G"
+        },
+        {
+            "class_name": "LayerListSep",
+            "name": "layerlistsep",
+            "default": ",",
+            "minimum": "nil",
+            "type": "string",
+            "use": "G"
+        },
+        {
+            "class_name": "LayerSep",
+            "name": "layersep",
+            "default": ":\\t",
+            "minimum": "nil",
+            "type": "string",
+            "use": "G"
+        },
+        {
+            "class_name": "Layout",
+            "name": "layout",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "G"
+        },
+        {
+            "class_name": "Len",
+            "name": "len",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "double",
+            "use": "E"
+        },
+        {
+            "class_name": "Levels",
+            "name": "levels",
+            "default": "int.MaxValue",
+            "minimum": 0,
+            "type": "int",
+            "use": "G"
+        },
+        {
+            "class_name": "LevelsGap",
+            "name": "levelsgap",
+            "default": "0.0",
+            "minimum": "nil",
+            "type": "double",
+            "use": "G"
+        },
+        {
+            "class_name": "LHead",
+            "name": "lhead",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "LHeight",
+            "name": "lheight",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "double",
+            "use": "GC"
+        },
+        {
+            "class_name": "LTail",
+            "name": "ltail",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "LWidth",
+            "name": "lwidth",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "double",
+            "use": "GC"
+        },
+        {
+            "class_name": "MClimit",
+            "name": "mclimit",
+            "default": 1.0,
+            "minimum": "nil",
+            "type": "double",
+            "use": "G"
+        },
+        {
+            "class_name": "Mindist",
+            "name": "mindist",
+            "default": 1.0,
+            "minimum": 0.0,
+            "type": "double",
+            "use": "G"
+        },
+        {
+            "class_name": "MinLen",
+            "name": "minlen",
+            "default": 1,
+            "minimum": 0,
+            "type": "int",
+            "use": "E"
+        },
+        {
+            "class_name": "Mode",
+            "name": "mode",
+            "default": "major",
+            "minimum": "nil",
+            "type": "string",
+            "use": "G"
+        },
+        {
+            "class_name": "Model",
+            "name": "model",
+            "default": "shortpath",
+            "minimum": "nil",
+            "type": "string",
+            "use": "G"
+        },
+        {
+            "class_name": "Mosek",
+            "name": "mosek",
+            "default": "false",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "G"
+        },
+        {
+            "class_name": "NewRank",
+            "name": "newrank",
+            "default": "false",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "G"
+        },
+        {
+            "class_name": "NodeSep",
+            "name": "nodesep",
+            "default": 0.25,
+            "minimum": 0.02,
+            "type": "double",
+            "use": "G"
+        },
+        {
+            "class_name": "NoJustify",
+            "name": "nojustify",
+            "default": "false",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "GCNE"
+        },
+        {
+            "class_name": "NoTranslate",
+            "name": "notranslate",
+            "default": "false",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "G"
+        },
+        {
+            "class_name": "NSLimit",
+            "name": "nslimit",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "double",
+            "use": "G"
+        },
+        {
+            "class_name": "NSLimit1",
+            "name": "nslimit1",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "double",
+            "use": "G"
+        },
+        {
+            "class_name": "Ordering",
+            "name": "ordering",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "GN"
+        },
+        {
+            "class_name": "OutputOrder",
+            "name": "outputorder",
+            "default": "OutputMode.breadthfirst",
+            "minimum": "nil",
+            "type": "string",
+            "use": "G"
+        },
+        {
+            "class_name": "OverlapScaling",
+            "name": "overlap_scaling",
+            "default": -4,
+            "minimum": "nil",
+            "type": "double",
+            "use": "G"
+        },
+        {
+            "class_name": "OverlapShrink",
+            "name": "overlap_shrink",
+            "default": "true",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "G"
+        },
+        {
+            "class_name": "PackMode",
+            "name": "packmode",
+            "default": "PackModes.node",
+            "minimum": "nil",
+            "type": "string",
+            "use": "G"
+        },
+        {
+            "class_name": "PenColor",
+            "name": "pencolor",
+            "default": "DataTypes.Color.X11.black",
+            "minimum": "nil",
+            "type": "string",
+            "use": "C"
+        },
+        {
+            "class_name": "PenWidth",
+            "name": "penwidth",
+            "default": 1,
+            "minimum": 0,
+            "type": "double",
+            "use": "CNE"
+        },
+        {
+            "class_name": "Peripheries",
+            "name": "peripheries",
+            "default": 1,
+            "minimum": 0,
+            "type": "int",
+            "use": "NC"
+        },
+        {
+            "class_name": "Pin",
+            "name": "pin",
+            "default": "false",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "N"
+        },
+        {
+            "class_name": "Quantum",
+            "name": "quantum",
+            "default": 0.0,
+            "minimum": 0.0,
+            "type": "double",
+            "use": "G"
+        },
+        {
+            "class_name": "Regular",
+            "name": "regular",
+            "default": "false",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "N"
+        },
+        {
+            "class_name": "Remincross",
+            "name": "remincross",
+            "default": "true",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "G"
+        },
+        {
+            "class_name": "RepulsiveForce",
+            "name": "repulsiveforce",
+            "default": 1.0,
+            "minimum": 0.0,
+            "type": "double",
+            "use": "G"
+        },
+        {
+            "class_name": "Resolution",
+            "name": "resolution",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "double",
+            "use": "G"
+        },
+        {
+            "class_name": "Rotate",
+            "name": "rotate",
+            "default": 0,
+            "minimum": "nil",
+            "type": "int",
+            "use": "G"
+        },
+        {
+            "class_name": "Rotation",
+            "name": "rotation",
+            "default": 0,
+            "minimum": "nil",
+            "type": "double",
+            "use": "G"
+        },
+        {
+            "class_name": "SameHead",
+            "name": "samehead",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "SameTail",
+            "name": "sametail",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "SamplePoints",
+            "name": "samplepoints",
+            "default": 8,
+            "minimum": "nil",
+            "type": "int",
+            "use": "N"
+        },
+        {
+            "class_name": "SearchSize",
+            "name": "searchsize",
+            "default": 30,
+            "minimum": "nil",
+            "type": "int",
+            "use": "G"
+        },
+        {
+            "class_name": "Shape",
+            "name": "shape",
+            "default": "ellipse",
+            "minimum": "nil",
+            "type": "string",
+            "use": "N"
+        },
+        {
+            "class_name": "ShapeFile",
+            "name": "shapefile",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "N"
+        },
+        {
+            "class_name": "ShowBoxes",
+            "name": "showboxes",
+            "default": 0,
+            "minimum": 0,
+            "type": "int",
+            "use": "ENG"
+        },
+        {
+            "class_name": "Sides",
+            "name": "sides",
+            "default": 4,
+            "minimum": 0,
+            "type": "int",
+            "use": "N"
+        },
+        {
+            "class_name": "Skew",
+            "name": "skew",
+            "default": 0.0,
+            "minimum": -100.0,
+            "type": "double",
+            "use": "N"
+        },
+        {
+            "class_name": "Sortv",
+            "name": "sortv",
+            "default": 0,
+            "minimum": 0,
+            "type": "int",
+            "use": "GCN"
+        },
+        {
+            "class_name": "StyleSheet",
+            "name": "stylesheet",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "G"
+        },
+        {
+            "class_name": "TailClip",
+            "name": "tailclip",
+            "default": "true",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "E"
+        },
+        {
+            "class_name": "Tailhref",
+            "name": "tailhref",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "TailLabel",
+            "name": "taillabel",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "TailTarget",
+            "name": "tailtarget",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "TailToolTip",
+            "name": "tailtooltip",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "TailURL",
+            "name": "tailURL",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "Target",
+            "name": "Target",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "string",
+            "use": "ENGC"
+        },
+        {
+            "class_name": "ToolTip",
+            "name": "tooltip",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "NEC"
+        },
+        {
+            "class_name": "TrueColor",
+            "name": "truecolor",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "G"
+        },
+        {
+            "class_name": "url",
+            "name": "URL",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "string",
+            "use": "ENGC"
+        },
+        {
+            "class_name": "VoroMargin",
+            "name": "voro_margin",
+            "default": 0.05,
+            "minimum": 0.0,
+            "type": "double",
+            "use": "G"
+        },
+        {
+            "class_name": "Weight",
+            "name": "weight",
+            "default": 1,
+            "minimum": 0,
+            "type": "double",
+            "use": "E"
+        },
+        {
+            "class_name": "Width",
+            "name": "width",
+            "default": 0.75,
+            "minimum": 0.01,
+            "type": "double",
+            "use": "N"
+        },
+        {
+            "class_name": "XDotVersion",
+            "name": "xdotversion",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "string",
+            "use": "G"
+        },
+        {
+            "class_name": "XLabel",
+            "name": "xlabel",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "EN"
+        },
+        {
+            "class_name": "Z",
+            "name": "z",
+            "default": 0,
+            "minimum": -1000,
+            "type": "double",
+            "use": "N"
+        }
+    ]
 }

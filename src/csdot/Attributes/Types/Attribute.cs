@@ -3337,6 +3337,45 @@ namespace csdot.Attributes.Types
         #endregion
     }
         
+    public class OutputOrder : IAttribute
+    {
+        #region Properties
+
+        public bool Set { get; set; } = false;
+        private string m_value = "OutputMode.breadthfirst";
+        public string Value
+        {
+            get
+            {
+                return m_value;
+            }
+            set
+            {
+                Set = true;
+                m_value = value;
+            }
+        }
+        #endregion  
+
+        #region Member Functions
+        public string GetDefault()
+        {
+            return "OutputMode.breadthfirst";
+        }
+
+        public void SetDefault()
+        {
+            Set = true;
+            Value = "OutputMode.breadthfirst";
+        }
+        
+        public string TranslateToString()
+        {
+            return "outputorder = \"" +  Value +  "\"";
+        }
+        #endregion
+    }
+        
     public class OverlapScaling : IAttribute
     {
         #region Properties
@@ -3415,6 +3454,45 @@ namespace csdot.Attributes.Types
         #endregion
     }
             
+    public class PackMode : IAttribute
+    {
+        #region Properties
+
+        public bool Set { get; set; } = false;
+        private string m_value = "PackModes.node";
+        public string Value
+        {
+            get
+            {
+                return m_value;
+            }
+            set
+            {
+                Set = true;
+                m_value = value;
+            }
+        }
+        #endregion  
+
+        #region Member Functions
+        public string GetDefault()
+        {
+            return "PackModes.node";
+        }
+
+        public void SetDefault()
+        {
+            Set = true;
+            Value = "PackModes.node";
+        }
+        
+        public string TranslateToString()
+        {
+            return "packmode = \"" +  Value +  "\"";
+        }
+        #endregion
+    }
+        
     public class PenColor : IAttribute
     {
         #region Properties
