@@ -72,7 +72,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class ArrowHead : IAttribute
     {
         #region Properties
@@ -161,7 +160,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class ArrowTail : IAttribute
     {
         #region Properties
@@ -239,7 +237,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Color : IAttribute
     {
         #region Properties
@@ -356,7 +353,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Concentrate : IAttribute
     {
         #region Properties
@@ -395,7 +391,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Constraint : IAttribute
     {
         #region Properties
@@ -434,7 +429,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class damping : IAttribute
     {
         #region Properties
@@ -484,7 +478,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Decorate : IAttribute
     {
         #region Properties
@@ -523,7 +516,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class DefaultDist : IAttribute
     {
         #region Properties
@@ -562,7 +554,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Dim : IAttribute
     {
         #region Properties
@@ -612,7 +603,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Dimen : IAttribute
     {
         #region Properties
@@ -662,7 +652,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Distortion : IAttribute
     {
         #region Properties
@@ -712,7 +701,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Dpi : IAttribute
     {
         #region Properties
@@ -751,7 +739,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Edgehref : IAttribute
     {
         #region Properties
@@ -935,7 +922,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class FontColor : IAttribute
     {
         #region Properties
@@ -1141,7 +1127,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class ForceLabels : IAttribute
     {
         #region Properties
@@ -1180,7 +1165,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class GradientAngle : IAttribute
     {
         #region Properties
@@ -1208,7 +1192,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Group : IAttribute
     {
         #region Properties
@@ -1286,7 +1269,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class HeadHref : IAttribute
     {
         #region Properties
@@ -1520,7 +1502,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Href : IAttribute
     {
         #region Properties
@@ -1754,7 +1735,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class InputScale : IAttribute
     {
         #region Properties
@@ -1782,7 +1762,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class k : IAttribute
     {
         #region Properties
@@ -1832,7 +1811,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Label : IAttribute
     {
         #region Properties
@@ -1921,7 +1899,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class LabelAngle : IAttribute
     {
         #region Properties
@@ -1971,7 +1948,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class LabelDistance : IAttribute
     {
         #region Properties
@@ -2021,7 +1997,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class LabelFloat : IAttribute
     {
         #region Properties
@@ -2060,7 +2035,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class LabelFontColor : IAttribute
     {
         #region Properties
@@ -2188,7 +2162,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class LabelHref : IAttribute
     {
         #region Properties
@@ -2450,7 +2423,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class LayerListSep : IAttribute
     {
         #region Properties
@@ -2595,7 +2567,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Levels : IAttribute
     {
         #region Properties
@@ -2645,7 +2616,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class LevelsGap : IAttribute
     {
         #region Properties
@@ -2684,7 +2654,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class LHead : IAttribute
     {
         #region Properties
@@ -2751,7 +2720,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class LTail : IAttribute
     {
         #region Properties
@@ -2818,7 +2786,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class MClimit : IAttribute
     {
         #region Properties
@@ -2857,7 +2824,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Mindist : IAttribute
     {
         #region Properties
@@ -2907,7 +2873,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class MinLen : IAttribute
     {
         #region Properties
@@ -2957,7 +2922,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Mode : IAttribute
     {
         #region Properties
@@ -3074,7 +3038,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class NewRank : IAttribute
     {
         #region Properties
@@ -3113,7 +3076,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class NodeSep : IAttribute
     {
         #region Properties
@@ -3163,7 +3125,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class NoJustify : IAttribute
     {
         #region Properties
@@ -3202,7 +3163,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class NoTranslate : IAttribute
     {
         #region Properties
@@ -3241,7 +3201,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class NSLimit : IAttribute
     {
         #region Properties
@@ -3269,7 +3228,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class NSLimit1 : IAttribute
     {
         #region Properties
@@ -3297,7 +3255,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Ordering : IAttribute
     {
         #region Properties
@@ -3414,7 +3371,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class OverlapShrink : IAttribute
     {
         #region Properties
@@ -3453,7 +3409,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class PackMode : IAttribute
     {
         #region Properties
@@ -3581,7 +3536,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Peripheries : IAttribute
     {
         #region Properties
@@ -3631,7 +3585,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Pin : IAttribute
     {
         #region Properties
@@ -3670,7 +3623,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Quantum : IAttribute
     {
         #region Properties
@@ -3720,7 +3672,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Regular : IAttribute
     {
         #region Properties
@@ -3759,7 +3710,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Remincross : IAttribute
     {
         #region Properties
@@ -3798,7 +3748,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class RepulsiveForce : IAttribute
     {
         #region Properties
@@ -3848,7 +3797,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Resolution : IAttribute
     {
         #region Properties
@@ -3876,7 +3824,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Rotate : IAttribute
     {
         #region Properties
@@ -3915,7 +3862,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Rotation : IAttribute
     {
         #region Properties
@@ -3954,7 +3900,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class SameHead : IAttribute
     {
         #region Properties
@@ -4071,7 +4016,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class SearchSize : IAttribute
     {
         #region Properties
@@ -4110,7 +4054,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Shape : IAttribute
     {
         #region Properties
@@ -4238,7 +4181,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Sides : IAttribute
     {
         #region Properties
@@ -4288,7 +4230,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Skew : IAttribute
     {
         #region Properties
@@ -4338,7 +4279,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Sortv : IAttribute
     {
         #region Properties
@@ -4388,7 +4328,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class StyleSheet : IAttribute
     {
         #region Properties
@@ -4466,7 +4405,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Tailhref : IAttribute
     {
         #region Properties
@@ -4745,7 +4683,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class url : IAttribute
     {
         #region Properties
@@ -4823,7 +4760,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Weight : IAttribute
     {
         #region Properties
@@ -4873,7 +4809,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class Width : IAttribute
     {
         #region Properties
@@ -4923,7 +4858,6 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            
     public class XDotVersion : IAttribute
     {
         #region Properties
@@ -5040,4 +4974,4 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
-            }
+}

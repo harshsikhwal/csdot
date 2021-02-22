@@ -185,8 +185,7 @@ def generate_class(l):
             return "{classname} = " + Value.ToString();
         }}
         #endregion
-    }}
-            """.format(classname=name)
+    }}""".format(classname=name)
     return class_str
 
 
@@ -289,7 +288,7 @@ if __name__ == '__main__':
 
     # form the specific attribute class
 
-    attribute_code = attribute_code + "}"
+    attribute_code = attribute_code + "\n}"
     node_attribute_code = node_attribute_code + node_class + "\n" + if_begin_attr + node_if + if_end_attr
     # subgraph_attribute_code = subgraph_attribute_code + subgraph_class + "\n" + if_begin_attr + subgraph_if + if_end_attr
     graph_attribute_code = graph_attribute_code + graph_class + "\n" + if_begin_attr + graph_if + if_end_attr
