@@ -30,7 +30,7 @@ namespace csdot
 		public string ElementToString()
 		{
 			// Add code for cluster
-			return Attribute.AttributesToString();
+			return "";
 		}
 	}
 }

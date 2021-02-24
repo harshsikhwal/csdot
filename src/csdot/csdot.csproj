@@ -1,18 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
 	<LangVersion>latest</LangVersion>
     <ApplicationIcon />
-    <OutputType>Exe</OutputType>
-    <StartupObject>csdot.Test</StartupObject>
+    <OutputType>Library</OutputType>
+    <StartupObject></StartupObject>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Attributes\Constants\**" />
-    <EmbeddedResource Remove="Attributes\Constants\**" />
-    <None Remove="Attributes\Constants\**" />
-  </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath></OutputPath>
+  </PropertyGroup>
 
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
 		<Exec Command="python attribute_generator\code_generator.py" />

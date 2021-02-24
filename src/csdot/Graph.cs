@@ -10,6 +10,7 @@ namespace csdot
 		public string type { get; set; } = "graph";
 
 		public Guid uid { get; }
+
 		public string ID { get; set; }
 
 		public bool strict { get; set; } = false;
