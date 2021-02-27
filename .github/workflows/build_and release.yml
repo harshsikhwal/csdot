@@ -19,4 +19,4 @@ jobs:
     - name: Build
       run: dotnet build --no-restore src/csdot/csdot.csproj
     - name: Test
-      run: dotnet test --no-build --verbosity normal src/csdot/csproj
+      run: dotnet test --no-build --verbosity normal src/csdot/csdot.csproj
