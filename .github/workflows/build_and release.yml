@@ -1,6 +1,8 @@
 name: Csdot_Build
 
 on:
+  push:
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -63,12 +65,5 @@ jobs:
 #         release_name: Release ${{ needs.build_and_test.outputs.version  }}
 #         draft: false
 #         prerelease: false
-    
-    
-    
-    
-    
-    
-      
       
     
