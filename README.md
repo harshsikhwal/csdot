@@ -18,7 +18,7 @@ Graph graph = new Graph("id");          // where id is the graph-ID string.
 ### To create a node:
 
 ```csharp
-Node node = new Node("id");				// where id is the node-id
+Node node = new Node("id");		// where id is the node-id
 ```
 
 Each graph element has Attribute property which has all the attribute objects set. For instance Graph only has center attribute.
