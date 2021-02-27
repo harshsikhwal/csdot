@@ -134,5 +134,6 @@ License
 Distributed under MIT license.
 
 Contacts:
-Harsh     (harshsikhwal7@gmnail.com)
+Harsh     (harshsikhwal7@gmail.com)
+
 Vibaswan  (vroychowdhury@gmail.com)
