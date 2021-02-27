@@ -45,9 +45,9 @@ A few inbuilt classes are defined where the developer can check the available li
 graph.AddElement(node)
 ```
 
-To create an edge, we need to add a transition. A Transition is an element of edge:
+To create an edge, we need to add a transition. A Transition is an element of edge.
 
-To create an edge:
+### To create an edge:
 
 ```csharp
 
@@ -132,11 +132,11 @@ These will be added in the upcoming versions and well as LoadDiagraph feature.
 
 
 
-#### License:
+### License:
 Distributed under MIT license.
 
-#### Contacts:
+### Contacts:
 
-Harsh     (harshsikhwal7@gmail.com)
+**Harsh**     (harshsikhwal7@gmail.com)
 
-Vibaswan  (vroychowdhury@gmail.com)
+**Vibaswan**  (vroychowdhury@gmail.com)
