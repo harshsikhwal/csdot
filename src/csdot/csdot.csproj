@@ -16,7 +16,7 @@
   </PropertyGroup>
 
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-		<Exec Command="python attribute_generator\code_generator.py" />
+		<Exec Command="python attribute_generator/code_generator.py" />
 	</Target>
 	
 </Project>
