@@ -1,5 +1,6 @@
-#csdot
-csdot: A c# library to process Dot language used by Graphviz.
+# csdot
+
+A c# library to process Dot language used by Graphviz.
 
 Currently it can generate DOT and dump as a file
 
