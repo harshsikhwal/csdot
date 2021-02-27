@@ -56,14 +56,13 @@ jobs:
     - name: Create Release
       if: true == contains(steps.file_changes.outputs.modified, 'Version')
       id: create_release
-      run: echo "Add other actions to build"
-#       uses: actions/create-release@v1
-#       env:
-#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-#       with:
-#         tag_name: v${{ needs.build_and_test.outputs.version }}
-#         release_name: Release ${{ needs.build_and_test.outputs.version  }}
-#         draft: false
-#         prerelease: false
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }} 
+      with:
+        tag_name: v${{ needs.build_and_test.outputs.version }}
+        release_name: Release ${{ needs.build_and_test.outputs.version  }}
+        draft: false
+        prerelease: false
       
     
