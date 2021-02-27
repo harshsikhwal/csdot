@@ -39,7 +39,7 @@ Similarly to set node property:
 node.Attribute.color.Value = Color.X11.darkviolet;
 ```
 
-A few inbuilt classes are defined where the developer can check the available list of properties and set accordingly. Like ```csharpColor``` in name space namespace ```csharpcsdot.Attributes.DataTypes``` can be used. 
+A few inbuilt classes are defined where the developer can check the available list of properties and set accordingly. Like ```Color``` in name space namespace ```csharpcsdot.Attributes.DataTypes``` can be used. 
 
 To add an element to a graph:
 
