@@ -37,7 +37,7 @@ This will set the property and will generate the graph with this attribute.
 node.Attribute.color.Value = Color.X11.darkviolet;
 ```
 
-A few inbuilt classes are defined where the developer can check the available list of properties and set accordingly. Like ```Color``` in name space namespace ```csharpcsdot.Attributes.DataTypes``` can be used. 
+A few inbuilt classes are defined where the developer can check the available list of properties and set accordingly. Like ```Color``` in namespace ```namespace csdot.Attributes.DataTypes``` can be used. 
 
 ### To add an element to a graph:
 
@@ -138,5 +138,4 @@ Distributed under MIT license.
 ### Contacts:
 
 **Harsh**     (harshsikhwal7@gmail.com)
-
 **Vibaswan**  (vroychowdhury@gmail.com)
