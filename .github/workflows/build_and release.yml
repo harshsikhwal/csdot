@@ -1,22 +1,74 @@
-name: .NET
+name: Csdot_Build
 
 on:
   workflow_dispatch:
 
 jobs:
-  build:
+  
+  build_and_test:
 
     runs-on: windows-latest
+    outputs:
+      version: ${{ steps.get_version.outputs.version }}
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET
+    
+    - name: Clonning Repository to Container
+      uses: actions/checkout@v2
+    
+    - name: Setup Latest .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-    - name: Restore dependencies
+    
+    - name: Restore Dependencies For Csdot Project
       run: dotnet restore src/csdot/csdot.csproj
-    - name: Build
-      run: dotnet build --no-restore src/csdot/csdot.csproj
-    - name: Test
+    
+    - name: Build Csdot Project
+      run: dotnet build --no-restore src/csdot/csdot.csproj 
+    
+    - name: Running Tests In Csdot Project
       run: dotnet test --no-build --verbosity normal src/csdot/csdot.csproj
+    
+    - name: Get Version number
+      id: get_version
+      run: echo "::set-output name=version::$(cat Version)"
+  
+  create_release:
+    
+    needs: build_and_test
+    runs-on: windows-latest
+    
+    if: github.event_name == 'push'
+    steps:
+    - name: Get all changes
+      id: file_changes
+      uses: jitterbit/get-changed-files@v1
+      with:
+          format: 'json'
+
+    - name: Output changed files
+      id: changed_files
+      run: echo ${{steps.file_changes.outputs.modified}}
+
+    - name: Create Release
+      if: true == contains(steps.file_changes.outputs.modified, 'Version')
+      id: create_release
+      run: echo "Add other actions to build"
+#       uses: actions/create-release@v1
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+#       with:
+#         tag_name: v${{ needs.build_and_test.outputs.version }}
+#         release_name: Release ${{ needs.build_and_test.outputs.version  }}
+#         draft: false
+#         prerelease: false
+    
+    
+    
+    
+    
+    
+      
+      
+    
