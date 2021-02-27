@@ -6,9 +6,6 @@ Currently it can generate DOT and dump as a file
 
 Development occurs at GitHub, where you can report issues.
 
-Examples:
-The examples here will show you the most common input, editing and output methods.
-
 Usage:
 
 Just import the library for your respective framework and start working!
