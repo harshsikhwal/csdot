@@ -25,7 +25,7 @@ jobs:
       run: dotnet restore src/csdot/csdot.csproj
     
     - name: Build Csdot Project
-      run: dotnet build --no-restore src/csdot/csdot.csproj 
+      run: dotnet build -c Release src/csdot/csdot.csproj 
     
     - name: Running Tests In Csdot Project
       run: dotnet test --no-build --verbosity normal src/csdot/csdot.csproj
