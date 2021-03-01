@@ -61,7 +61,7 @@ jobs:
     
     - name: Pushing NuGet package
       if: true == contains(steps.file_changes.outputs.modified, 'Version') && github.event_name == 'push'
-      run: donet nuget push csdot\bin\Release\csdot.${{ steps.get_version.outputs.version }}.nupkg --api-key ${{ NUGET_TOKEN }} --source https://api.nuget.org/v3/index.json
+      run: donet nuget push csdot\bin\Release\csdot.${{ steps.get_version.outputs.version }}.nupkg --api-key ${{ secrets.NUGET_TOKEN }} --source https://api.nuget.org/v3/index.json
   
     
       
