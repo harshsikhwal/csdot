@@ -12,9 +12,15 @@
     <Description>A c# library to process Dot language used by Graphviz.</Description>
     <PackageProjectUrl>https://github.com/harshsikhwal/csdot</PackageProjectUrl>
     <PackageTags>graphviz, library, csharp, nuget, netcore, dot, netframework, graphviz-dot, netstandard20</PackageTags>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	<ItemGroup>
+		<None Include="LICENSE" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
