@@ -34,7 +34,7 @@ jobs:
       id: get_version
       run: echo "::set-output name=version::$(cat Version)"
     
-    - name: Running Tests In Csdot Project
+    - name: Generating nuget packaes
       run: dotnet pack src/csdot/csdot.csproj -c Release -p:PackageVersion=${{ steps.get_version.outputs.version }}
     
     - name: Get all changes
