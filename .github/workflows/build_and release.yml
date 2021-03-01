@@ -38,17 +38,19 @@ jobs:
       run: dotnet pack src/csdot/csdot.csproj -c Release -p:PackageVersion=${{ steps.get_version.outputs.version }}
     
     - name: Get all changes
+      if: github.event_name == 'push'
       id: file_changes
       uses: jitterbit/get-changed-files@v1
       with:
           format: 'json'
 
     - name: Output changed files
+      if: steps.file_changes.conclusion != 'skipped'
       id: changed_files
       run: echo ${{steps.file_changes.outputs.modified}}
     
     - name: Create Release
-      if: true == contains(steps.file_changes.outputs.modified, 'Version') && github.event_name == 'push'
+      if: github.event_name == 'push' && true == contains(steps.file_changes.outputs.modified, 'Version') 
       id: create_release
       uses: actions/create-release@v1
       env:
@@ -60,7 +62,7 @@ jobs:
         prerelease: false
     
     - name: Pushing NuGet package
-      if: true == contains(steps.file_changes.outputs.modified, 'Version') && github.event_name == 'push'
+      if: github.event_name == 'push' && true == contains(steps.file_changes.outputs.modified, 'Version')
       run: dotnet nuget push csdot/bin/Release/csdot.${{ steps.get_version.outputs.version }}.nupkg --api-key ${{ secrets.NUGET_TOKEN }} --source https://api.nuget.org/v3/index.json
   
     
