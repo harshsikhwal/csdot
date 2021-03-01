@@ -6,6 +6,12 @@
     <ApplicationIcon />
     <OutputType>Library</OutputType>
     <StartupObject></StartupObject>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Harsh Sikhwal, Vibaswan Roychowdhury</Authors>
+    <Company />
+    <Description>A c# library to process Dot language used by Graphviz.</Description>
+    <PackageProjectUrl>https://github.com/harshsikhwal/csdot</PackageProjectUrl>
+    <PackageTags>graphviz, library, csharp, nuget, netcore, dot, netframework, graphviz-dot, netstandard20</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
