@@ -34,7 +34,7 @@ jobs:
       id: get_version
       run: echo "::set-output name=version::$(cat Version)"
     
-    - name: Generating nuget packaes
+    - name: Generating NuGet packaes
       run: dotnet pack src/csdot/csdot.csproj -c Release -p:PackageVersion=${{ steps.get_version.outputs.version }}
     
     - name: Get all changes
@@ -58,6 +58,10 @@ jobs:
         release_name: Release ${{ steps.get_version.outputs.version  }}
         draft: false
         prerelease: false
+    
+    - name: Pushing NuGet package
+      if: true == contains(steps.file_changes.outputs.modified, 'Version') && github.event_name == 'push'
+      run: donet nuget push csdot\bin\Release\csdot.${{ steps.get_version.outputs.version }}.nupkg --api-key ${{ NUGET_TOKEN }} --source https://api.nuget.org/v3/index.json
   
     
       
