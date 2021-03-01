@@ -1,4 +1,13 @@
 # csdot
+![Nuget](https://img.shields.io/nuget/v/csdot?style=for-the-badge)
+
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/harshsikhwal/csdot?style=for-the-badge)
+
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/harshsikhwal/csdot/Csdot_Build?style=plastic)
+[![GitHub issues](https://img.shields.io/github/issues/harshsikhwal/csdot?style=plastic)](https://github.com/harshsikhwal/csdot/issues)
+[![GitHub stars](https://img.shields.io/github/stars/harshsikhwal/csdot?style=plastic)](https://github.com/harshsikhwal/csdot/stargazers)
+[![GitHub license](https://img.shields.io/github/license/harshsikhwal/csdot?style=plastic)](https://github.com/harshsikhwal/csdot/blob/main/LICENSE)
+![GitHub contributors](https://img.shields.io/github/contributors/harshsikhwal/csdot?style=plastic)
 
 A c# library to process Dot language used by Graphviz.
 
