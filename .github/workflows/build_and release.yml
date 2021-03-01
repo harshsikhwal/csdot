@@ -54,7 +54,7 @@ jobs:
       run: echo ${{steps.file_changes.outputs.modified}}
 
     - name: Create nuget packeges
-      run: dotnet pack src/csdot/csdot.csproj -c Release -p:PackageVersion=${{ needs.build_and_test.outputs.version }}
+      run: dotnet pack src/csdot.sln -c Release -p:PackageVersion=${{ needs.build_and_test.outputs.version }}
     
     - name: Create Release
       if: true == contains(steps.file_changes.outputs.modified, 'Version')
