@@ -10,9 +10,7 @@ jobs:
   build_and_test:
 
     runs-on: windows-latest
-    outputs:
-      version: ${{ steps.get_version.outputs.version }}
-
+    
     steps:
     
     - name: Clonning Repository to Container
@@ -35,14 +33,10 @@ jobs:
     - name: Get Version number
       id: get_version
       run: echo "::set-output name=version::$(cat Version)"
-  
-  create_release:
     
-    needs: build_and_test
-    runs-on: windows-latest
+    - name: Running Tests In Csdot Project
+      run: dotnet pack src/csdot/csdot.csproj -c Release -p:PackageVersion=${{ steps.get_version.outputs.version }}
     
-    if: github.event_name == 'push'
-    steps:
     - name: Get all changes
       id: file_changes
       uses: jitterbit/get-changed-files@v1
@@ -52,20 +46,19 @@ jobs:
     - name: Output changed files
       id: changed_files
       run: echo ${{steps.file_changes.outputs.modified}}
-
-    - name: Create nuget packeges
-      run: dotnet pack src/csdot.sln -c Release -p:PackageVersion=${{ needs.build_and_test.outputs.version }}
     
     - name: Create Release
-      if: true == contains(steps.file_changes.outputs.modified, 'Version')
+      if: true == contains(steps.file_changes.outputs.modified, 'Version') && github.event_name == 'push'
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }} 
       with:
-        tag_name: v${{ needs.build_and_test.outputs.version }}
-        release_name: Release ${{ needs.build_and_test.outputs.version  }}
+        tag_name: v${{ steps.get_version.outputs.version }}
+        release_name: Release ${{ steps.get_version.outputs.version  }}
         draft: false
         prerelease: false
+  
+    
       
     
