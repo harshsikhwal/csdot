@@ -1,0 +1,64 @@
+name: Csdot_Build
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  
+  build_and_test:
+
+    runs-on: windows-latest
+    
+    steps:
+    
+    - name: Clonning Repository to Container
+      uses: actions/checkout@v2
+    
+    - name: Setup Latest .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    
+    - name: Restore Dependencies For Csdot Project
+      run: dotnet restore src/csdot/csdot.csproj
+    
+    - name: Build Csdot Project
+      run: dotnet build --no-restore src/csdot/csdot.csproj 
+    
+    - name: Running Tests In Csdot Project
+      run: dotnet test --no-build --verbosity normal src/csdot/csdot.csproj
+    
+    - name: Get Version number
+      id: get_version
+      run: echo "::set-output name=version::$(cat Version)"
+    
+    - name: Generating nuget packaes
+      run: dotnet pack src/csdot/csdot.csproj -c Release -p:PackageVersion=${{ steps.get_version.outputs.version }}
+    
+    - name: Get all changes
+      id: file_changes
+      uses: jitterbit/get-changed-files@v1
+      with:
+          format: 'json'
+
+    - name: Output changed files
+      id: changed_files
+      run: echo ${{steps.file_changes.outputs.modified}}
+    
+    - name: Create Release
+      if: true == contains(steps.file_changes.outputs.modified, 'Version') && github.event_name == 'push'
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }} 
+      with:
+        tag_name: v${{ steps.get_version.outputs.version }}
+        release_name: Release ${{ steps.get_version.outputs.version  }}
+        draft: false
+        prerelease: false
+  
+    
+      
+    
