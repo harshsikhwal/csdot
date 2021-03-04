@@ -14,6 +14,7 @@ namespace csdot
 
         #region LoadDigraph
 
+        /*
         public int LoadDigraph(string i_fileLocation)
         {
             /*
@@ -228,10 +229,10 @@ namespace csdot
                     }
                 }
             }
-            */
+            
             return 0;
         }
-
+        */
         #endregion //LoadDigraph
 
         #region SaveToFile
@@ -254,7 +255,7 @@ namespace csdot
         #endregion //SaveToFile
 
         #region CloneToFile
-
+        /*
         public int CloneToFile(string i_srcFile, string i_dstFile)
         {
             /*
@@ -265,9 +266,10 @@ namespace csdot
             Digraph di = new Digraph();
             di.LoadDigraph(i_srcFile);
             di.SaveToFile(i_dstFile);
-            */
+            
             return 0;
         }
+        */
 
         #endregion  //CloneToFile
 
