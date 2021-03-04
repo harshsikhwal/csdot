@@ -49,21 +49,21 @@ jobs:
       id: changed_files
       run: echo ${{steps.file_changes.outputs.modified}}
     
-#     - name: Create Release
-#       if: github.event_name == 'push' && true == contains(steps.file_changes.outputs.modified, 'Version') 
-#       id: create_release
-#       uses: actions/create-release@v1
-#       env:
-#         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }} 
-#       with:
-#         tag_name: v${{ steps.get_version.outputs.version }}
-#         release_name: Release ${{ steps.get_version.outputs.version  }}
-#         draft: false
-#         prerelease: false
+    - name: Create Release
+      if: github.event_name == 'push' && true == contains(steps.file_changes.outputs.modified, 'Version') 
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }} 
+      with:
+        tag_name: v${{ steps.get_version.outputs.version }}
+        release_name: Release ${{ steps.get_version.outputs.version  }}
+        draft: false
+        prerelease: false
     
-#     - name: Pushing NuGet package
-#       if: github.event_name == 'push' && true == contains(steps.file_changes.outputs.modified, 'Version')
-#       run: dotnet nuget push src/csdot/bin/Release/csdot.${{ steps.get_version.outputs.version }}.nupkg --api-key ${{ secrets.NUGET_TOKEN }} --source https://api.nuget.org/v3/index.json
+    - name: Pushing NuGet package
+      if: github.event_name == 'push' && true == contains(steps.file_changes.outputs.modified, 'Version')
+      run: dotnet nuget push src/csdot/bin/Release/csdot.${{ steps.get_version.outputs.version }}.nupkg --api-key ${{ secrets.NUGET_TOKEN }} --source https://api.nuget.org/v3/index.json
   
     
       
