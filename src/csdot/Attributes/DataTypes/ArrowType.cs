@@ -4,26 +4,26 @@ using System.Text;
 
 namespace csdot.Attributes.DataTypes
 {
-	public static class ArrowType
+	public static class arrowType
 	{
-		public static string normal = "normal";
-		public static string dot = "dot";
-		public static string odot = "odot";
-		public static string none = "none";
-		public static string empty = "empty";
-		public static string diamond = "diamond";
-		public static string ediamond = "ediamond";
-		public static string box = "box";
-		public static string open = "open";
-		public static string vee = "vee";
-		public static string inv = "inv";
-		public static string invdot = "invdot";
-		public static string invodot = "invodot";
-		public static string tee = "tee";
-		public static string invempty = "invempty";
-		public static string odiamond = "odiamond";
-		public static string crow = "crow";
-		public static string obox = "obox";
-		public static string halfopen = "halfopen";
+		public const string normal = "normal";
+		public const string dot = "dot";
+		public const string odot = "odot";
+		public const string none = "none";
+		public const string empty = "empty";
+		public const string diamond = "diamond";
+		public const string ediamond = "ediamond";
+		public const string box = "box";
+		public const string open = "open";
+		public const string vee = "vee";
+		public const string inv = "inv";
+		public const string invdot = "invdot";
+		public const string invodot = "invodot";
+		public const string tee = "tee";
+		public const string invempty = "invempty";
+		public const string odiamond = "odiamond";
+		public const string crow = "crow";
+		public const string obox = "obox";
+		public const string halfopen = "halfopen";
 	}
 }

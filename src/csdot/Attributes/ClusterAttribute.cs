@@ -9,8 +9,10 @@ namespace csdot.Attributes
 	public class ClusterAttribute : IDotAttribute
 	{
         public Area area = new Area();
+        public _Class _class = new _Class();
         public Color color = new Color();
         public ColorScheme colorscheme = new ColorScheme();
+        public FillColor fillcolor = new FillColor();
         public FontColor fontcolor = new FontColor();
         public Fontname fontname = new Fontname();
         public Fontsize fontsize = new Fontsize();
@@ -22,7 +24,9 @@ namespace csdot.Attributes
         public LabelJust labeljust = new LabelJust();
         public LabelLoc labelloc = new LabelLoc();
         public LHeight lheight = new LHeight();
+        public LP lp = new LP();
         public LWidth lwidth = new LWidth();
+        public Margin margin = new Margin();
         public NoJustify nojustify = new NoJustify();
         public PenColor pencolor = new PenColor();
         public PenWidth penwidth = new PenWidth();
@@ -39,6 +43,10 @@ namespace csdot.Attributes
             {
                 attribute = attribute + " " + area.TranslateToString();
             }
+            if (_class.Set)
+            {
+                attribute = ("" == attribute) ? attribute + " " + _class.TranslateToString() : attribute + ", " + _class.TranslateToString();
+            }
             if (color.Set)
             {
                 attribute = ("" == attribute) ? attribute + " " + color.TranslateToString() : attribute + ", " + color.TranslateToString();
@@ -46,6 +54,10 @@ namespace csdot.Attributes
             if (colorscheme.Set)
             {
                 attribute = ("" == attribute) ? attribute + " " + colorscheme.TranslateToString() : attribute + ", " + colorscheme.TranslateToString();
+            }
+            if (fillcolor.Set)
+            {
+                attribute = ("" == attribute) ? attribute + " " + fillcolor.TranslateToString() : attribute + ", " + fillcolor.TranslateToString();
             }
             if (fontcolor.Set)
             {
@@ -91,9 +103,17 @@ namespace csdot.Attributes
             {
                 attribute = ("" == attribute) ? attribute + " " + lheight.TranslateToString() : attribute + ", " + lheight.TranslateToString();
             }
+            if (lp.Set)
+            {
+                attribute = ("" == attribute) ? attribute + " " + lp.TranslateToString() : attribute + ", " + lp.TranslateToString();
+            }
             if (lwidth.Set)
             {
                 attribute = ("" == attribute) ? attribute + " " + lwidth.TranslateToString() : attribute + ", " + lwidth.TranslateToString();
+            }
+            if (margin.Set)
+            {
+                attribute = ("" == attribute) ? attribute + " " + margin.TranslateToString() : attribute + ", " + margin.TranslateToString();
             }
             if (nojustify.Set)
             {

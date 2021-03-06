@@ -6,10 +6,10 @@ namespace csdot.Attributes.DataTypes
 {
 	public static class PackModes
 	{
-		public static string node = "node";
-		public static string clust = "clust";
-		public static string graph = "graph";
-		// public static string array(_flags)?(%d)? = "array(_flags)?(%d)?";
+		public const string node = "node";
+		public const string clust = "clust";
+		public const string graph = "graph";
+		// public const string array(_flags)?(%d)? = "array(_flags)?(%d)?";
 
 	}
 }

@@ -6,15 +6,15 @@ namespace csdot.Attributes.DataTypes
 {
 	public static class CompassPoint
 	{
-		public static string North = "n";
-		public static string NorthEast = "ne";
-		public static string East = "e";
-		public static string SouthEast = "se";
-		public static string South = "s";
-		public static string SouthWest = "sw";
-		public static string West = "w";
-		public static string NorthWest = "nw";
-		public static string Center = "c";
-		public static string Blank = "_";
+		public const string North = "n";
+		public const string NorthEast = "ne";
+		public const string East = "e";
+		public const string SouthEast = "se";
+		public const string South = "s";
+		public const string SouthWest = "sw";
+		public const string West = "w";
+		public const string NorthWest = "nw";
+		public const string Center = "c";
+		public const string Blank = "_";
 	}
 }

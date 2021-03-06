@@ -6,8 +6,8 @@ namespace csdot.Attributes.DataTypes
 {
 	public static class OutputMode
 	{
-		public static string breadthfirst = "breadthfirst";
-		public static string nodesfirst = "nodesfirst";
-		public static string edgesfirst = "edgesfirst";
+		public const string breadthfirst = "breadthfirst";
+		public const string nodesfirst = "nodesfirst";
+		public const string edgesfirst = "edgesfirst";
 	}
 }

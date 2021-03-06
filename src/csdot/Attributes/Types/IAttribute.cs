@@ -4,7 +4,7 @@ using System.Text;
 
 namespace csdot.Attributes
 {
-	interface IAttribute
+	public interface IAttribute
 	{
 		public bool Set { get; set; }
 		public string TranslateToString();

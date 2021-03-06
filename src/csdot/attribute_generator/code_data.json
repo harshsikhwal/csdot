@@ -19,7 +19,7 @@
         {
             "class_name": "ArrowHead",
             "name": "arrowhead",
-            "default": "ArrowType.normal",
+            "default": "arrowType.normal",
             "minimum": "nil",
             "type": "string",
             "use": "E"
@@ -35,10 +35,18 @@
         {
             "class_name": "ArrowTail",
             "name": "arrowtail",
-            "default": "ArrowType.normal",
+            "default": "arrowType.normal",
             "minimum": "nil",
             "type": "string",
             "use": "E"
+        },
+        {
+            "class_name": "BB",
+            "name": "bb",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "DataTypes.Rect",
+            "use": "G"
         },
         {
             "class_name": "Center",
@@ -46,6 +54,30 @@
             "default": "false",
             "minimum": "nil",
             "type": "bool",
+            "use": "G"
+        },
+        {
+            "class_name": "Charset",
+            "name": "charset",
+            "default": "UTF-8",
+            "minimum": "nil",
+            "type": "string",
+            "use": "G"
+        },
+        {
+            "class_name": "_Class",
+            "name": "_class",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "ENCG"
+        },
+        {
+            "class_name": "ClusterRank",
+            "name": "clusterrank",
+            "default": "DataTypes.clusterMode.local",
+            "minimum": "nil",
+            "type": "string",
             "use": "G"
         },
         {
@@ -63,6 +95,14 @@
             "minimum": "nil",
             "type": "string",
             "use": "ENCG"
+        },
+        {
+            "class_name": "_Comment",
+            "name": "comment",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "ENG"
         },
         {
             "class_name": "Compound",
@@ -129,6 +169,22 @@
             "use": "G"
         },
         {
+            "class_name": "Dir",
+            "name": "dir",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "string",
+            "use": "E"
+        },
+        {
+            "class_name": "DirEdgeConstraints",
+            "name": "diredgeconstraints",
+            "default": "false",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "G"
+        },
+        {
             "class_name": "Distortion",
             "name": "distortion",
             "default": 0.0,
@@ -179,10 +235,26 @@
         {
             "class_name": "Epsilon",
             "name": "epsilon",
-            "default": "0.001",
+            "default": "nil",
             "minimum": "nil",
             "type": "double",
             "use": "G"
+        },
+        {
+            "class_name": "FillColor",
+            "name": "fillcolor",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "string",
+            "use": "NEC"
+        },
+        {
+            "class_name": "FixedSize",
+            "name": "fixedsize",
+            "default": "false",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "N"
         },
         {
             "class_name": "FontColor",
@@ -211,7 +283,7 @@
         {
             "class_name": "FontPath",
             "name": "fontpath",
-            "default": "",
+            "default": "nil",
             "minimum": "nil",
             "type": "string",
             "use": "G"
@@ -247,6 +319,14 @@
             "minimum": "nil",
             "type": "string",
             "use": "N"
+        },
+        {
+            "class_name": "HeadLP",
+            "name": "head_lp",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "DataTypes.point",
+            "use": "E"
         },
         {
             "class_name": "HeadClip",
@@ -371,7 +451,7 @@
         {
             "class_name": "Label",
             "name": "label",
-            "default": "",
+            "default": "nil",
             "minimum": "nil",
             "type": "string",
             "use": "ENGC"
@@ -451,7 +531,7 @@
         {
             "class_name": "LabelLoc",
             "name": "labelloc",
-            "default": "",
+            "default": "nil",
             "minimum": "nil",
             "type": "string",
             "use": "NGC"
@@ -553,6 +633,14 @@
             "use": "GC"
         },
         {
+            "class_name": "LP",
+            "name": "lp",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "DataTypes.point",
+            "use": "ECG"
+        },
+        {
             "class_name": "LTail",
             "name": "ltail",
             "default": "",
@@ -567,6 +655,22 @@
             "minimum": "nil",
             "type": "double",
             "use": "GC"
+        },
+        {
+            "class_name": "Margin",
+            "name": "margin",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "DataTypes.point",
+            "use": "NCG"
+        },
+        {
+            "class_name": "Maxiter",
+            "name": "maxiter",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "int",
+            "use": "G"
         },
         {
             "class_name": "MClimit",
@@ -681,6 +785,14 @@
             "use": "G"
         },
         {
+            "class_name": "Overlap",
+            "name": "overlap",
+            "default": "true",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "G"
+        },
+        {
             "class_name": "OverlapScaling",
             "name": "overlap_scaling",
             "default": -4,
@@ -692,6 +804,14 @@
             "class_name": "OverlapShrink",
             "name": "overlap_shrink",
             "default": "true",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "G"
+        },
+        {
+            "class_name": "Pack",
+            "name": "pack",
+            "default": "false",
             "minimum": "nil",
             "type": "bool",
             "use": "G"
@@ -737,12 +857,44 @@
             "use": "N"
         },
         {
+            "class_name": "Pos",
+            "name": "pos",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "DataTypes.point",
+            "use": "EN"
+        },
+        {
             "class_name": "Quantum",
             "name": "quantum",
             "default": 0.0,
             "minimum": 0.0,
             "type": "double",
             "use": "G"
+        },
+        {
+            "class_name": "Rank",
+            "name": "rank",
+            "default": "",
+            "minimum": "nil",
+            "type": "string",
+            "use": "S"
+        },
+        {
+            "class_name": "RankDir",
+            "name": "rankdir",
+            "default": "Rankdir.TB",
+            "minimum": "nil",
+            "type": "string",
+            "use": "G"
+        },
+        {
+            "class_name": "Rects",
+            "name": "rects",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "DataTypes.Rect",
+            "use": "N"
         },
         {
             "class_name": "Regular",
@@ -775,6 +927,14 @@
             "minimum": "nil",
             "type": "double",
             "use": "G"
+        },
+        {
+            "class_name": "Root",
+            "name": "root",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "GN"
         },
         {
             "class_name": "Rotate",
@@ -817,6 +977,14 @@
             "use": "N"
         },
         {
+            "class_name": "Scale",
+            "name": "scale",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "DataTypes.point",
+            "use": "G"
+        },
+        {
             "class_name": "SearchSize",
             "name": "searchsize",
             "default": 30,
@@ -827,7 +995,7 @@
         {
             "class_name": "Shape",
             "name": "shape",
-            "default": "ellipse",
+            "default": "DataTypes.ShapeTypes.ellipse",
             "minimum": "nil",
             "type": "string",
             "use": "N"
@@ -865,6 +1033,14 @@
             "use": "N"
         },
         {
+            "class_name": "Smoothing",
+            "name": "smoothing",
+            "default": "DataTypes.smoothTypes.none",
+            "minimum": "nil",
+            "type": "string",
+            "use": "G"
+        },
+        {
             "class_name": "Sortv",
             "name": "sortv",
             "default": 0,
@@ -873,12 +1049,28 @@
             "use": "GCN"
         },
         {
+            "class_name": "SPLines",
+            "name": "splines",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "bool",
+            "use": "G"
+        },
+        {
             "class_name": "StyleSheet",
             "name": "stylesheet",
             "default": "",
             "minimum": "nil",
             "type": "string",
             "use": "G"
+        },
+        {
+            "class_name": "TailLP",
+            "name": "tail_lp",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "DataTypes.point",
+            "use": "E"
         },
         {
             "class_name": "TailClip",
@@ -972,7 +1164,7 @@
             "class_name": "Weight",
             "name": "weight",
             "default": 1,
-            "minimum": 0,
+            "minimum": "nil",
             "type": "double",
             "use": "E"
         },
@@ -1001,10 +1193,18 @@
             "use": "EN"
         },
         {
+            "class_name": "XLP",
+            "name": "xlp",
+            "default": "nil",
+            "minimum": "nil",
+            "type": "DataTypes.point",
+            "use": "NE"
+        },
+        {
             "class_name": "Z",
             "name": "z",
             "default": 0,
-            "minimum": -1000,
+            "minimum": "nil",
             "type": "double",
             "use": "N"
         }

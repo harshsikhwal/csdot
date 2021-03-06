@@ -9,9 +9,13 @@ namespace csdot.Attributes
 	public class NodeAttribute : IDotAttribute
 	{
         public Area area = new Area();
+        public _Class _class = new _Class();
         public Color color = new Color();
         public ColorScheme colorscheme = new ColorScheme();
+        public _Comment comment = new _Comment();
         public Distortion distortion = new Distortion();
+        public FillColor fillcolor = new FillColor();
+        public FixedSize fixedsize = new FixedSize();
         public FontColor fontcolor = new FontColor();
         public Fontname fontname = new Fontname();
         public Fontsize fontsize = new Fontsize();
@@ -25,12 +29,16 @@ namespace csdot.Attributes
         public ImageScale imagescale = new ImageScale();
         public Label label = new Label();
         public LabelLoc labelloc = new LabelLoc();
+        public Margin margin = new Margin();
         public NoJustify nojustify = new NoJustify();
         public Ordering ordering = new Ordering();
         public PenWidth penwidth = new PenWidth();
         public Peripheries peripheries = new Peripheries();
         public Pin pin = new Pin();
+        public Pos pos = new Pos();
+        public Rects rects = new Rects();
         public Regular regular = new Regular();
+        public Root root = new Root();
         public SamplePoints samplepoints = new SamplePoints();
         public Shape shape = new Shape();
         public ShapeFile shapefile = new ShapeFile();
@@ -43,6 +51,7 @@ namespace csdot.Attributes
         public url URL = new url();
         public Width width = new Width();
         public XLabel xlabel = new XLabel();
+        public XLP xlp = new XLP();
         public Z z = new Z();
 
 		public string AttributesToString()
@@ -52,6 +61,10 @@ namespace csdot.Attributes
             {
                 attribute = attribute + " " + area.TranslateToString();
             }
+            if (_class.Set)
+            {
+                attribute = ("" == attribute) ? attribute + " " + _class.TranslateToString() : attribute + ", " + _class.TranslateToString();
+            }
             if (color.Set)
             {
                 attribute = ("" == attribute) ? attribute + " " + color.TranslateToString() : attribute + ", " + color.TranslateToString();
@@ -60,9 +73,21 @@ namespace csdot.Attributes
             {
                 attribute = ("" == attribute) ? attribute + " " + colorscheme.TranslateToString() : attribute + ", " + colorscheme.TranslateToString();
             }
+            if (comment.Set)
+            {
+                attribute = ("" == attribute) ? attribute + " " + comment.TranslateToString() : attribute + ", " + comment.TranslateToString();
+            }
             if (distortion.Set)
             {
                 attribute = ("" == attribute) ? attribute + " " + distortion.TranslateToString() : attribute + ", " + distortion.TranslateToString();
+            }
+            if (fillcolor.Set)
+            {
+                attribute = ("" == attribute) ? attribute + " " + fillcolor.TranslateToString() : attribute + ", " + fillcolor.TranslateToString();
+            }
+            if (fixedsize.Set)
+            {
+                attribute = ("" == attribute) ? attribute + " " + fixedsize.TranslateToString() : attribute + ", " + fixedsize.TranslateToString();
             }
             if (fontcolor.Set)
             {
@@ -116,6 +141,10 @@ namespace csdot.Attributes
             {
                 attribute = ("" == attribute) ? attribute + " " + labelloc.TranslateToString() : attribute + ", " + labelloc.TranslateToString();
             }
+            if (margin.Set)
+            {
+                attribute = ("" == attribute) ? attribute + " " + margin.TranslateToString() : attribute + ", " + margin.TranslateToString();
+            }
             if (nojustify.Set)
             {
                 attribute = ("" == attribute) ? attribute + " " + nojustify.TranslateToString() : attribute + ", " + nojustify.TranslateToString();
@@ -136,9 +165,21 @@ namespace csdot.Attributes
             {
                 attribute = ("" == attribute) ? attribute + " " + pin.TranslateToString() : attribute + ", " + pin.TranslateToString();
             }
+            if (pos.Set)
+            {
+                attribute = ("" == attribute) ? attribute + " " + pos.TranslateToString() : attribute + ", " + pos.TranslateToString();
+            }
+            if (rects.Set)
+            {
+                attribute = ("" == attribute) ? attribute + " " + rects.TranslateToString() : attribute + ", " + rects.TranslateToString();
+            }
             if (regular.Set)
             {
                 attribute = ("" == attribute) ? attribute + " " + regular.TranslateToString() : attribute + ", " + regular.TranslateToString();
+            }
+            if (root.Set)
+            {
+                attribute = ("" == attribute) ? attribute + " " + root.TranslateToString() : attribute + ", " + root.TranslateToString();
             }
             if (samplepoints.Set)
             {
@@ -187,6 +228,10 @@ namespace csdot.Attributes
             if (xlabel.Set)
             {
                 attribute = ("" == attribute) ? attribute + " " + xlabel.TranslateToString() : attribute + ", " + xlabel.TranslateToString();
+            }
+            if (xlp.Set)
+            {
+                attribute = ("" == attribute) ? attribute + " " + xlp.TranslateToString() : attribute + ", " + xlp.TranslateToString();
             }
             if (z.Set)
             {

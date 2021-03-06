@@ -77,6 +77,14 @@ namespace csdot
 
 			edge.Transition = ts;
 
+			point _point = new point(3, 4);
+
+
+
+			edge.Attribute.head_lp.Value = _point;
+
+			edge.Attribute.head_lp.Value.X = 4;
+
 			graph.AddElement(edge);
 			str = graph.ElementToString();
 

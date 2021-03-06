@@ -6,8 +6,8 @@ namespace csdot.Attributes.DataTypes
 {
 	public static class EdgeOp
 	{
-		public static string directed = "->";
-		public static string undirected = "--";
-		public static string unspecified = "";
+		public const string directed = "->";
+		public const string undirected = "--";
+		public const string unspecified = "";
 	}
 }

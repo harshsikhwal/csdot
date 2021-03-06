@@ -9,14 +9,20 @@ namespace csdot.Attributes
 	public class GraphAttribute : IDotAttribute
 	{
         public _Background _background = new _Background();
+        public BB bb = new BB();
         public Center center = new Center();
+        public Charset charset = new Charset();
+        public _Class _class = new _Class();
+        public ClusterRank clusterrank = new ClusterRank();
         public ColorScheme colorscheme = new ColorScheme();
+        public _Comment comment = new _Comment();
         public Compound compound = new Compound();
         public Concentrate concentrate = new Concentrate();
         public damping Damping = new damping();
         public DefaultDist defaultdist = new DefaultDist();
         public Dim dim = new Dim();
         public Dimen dimen = new Dimen();
+        public DirEdgeConstraints diredgeconstraints = new DirEdgeConstraints();
         public Dpi dpi = new Dpi();
         public Epsilon epsilon = new Epsilon();
         public FontColor fontcolor = new FontColor();
@@ -42,7 +48,10 @@ namespace csdot.Attributes
         public Levels levels = new Levels();
         public LevelsGap levelsgap = new LevelsGap();
         public LHeight lheight = new LHeight();
+        public LP lp = new LP();
         public LWidth lwidth = new LWidth();
+        public Margin margin = new Margin();
+        public Maxiter maxiter = new Maxiter();
         public MClimit mclimit = new MClimit();
         public Mindist mindist = new Mindist();
         public Mode mode = new Mode();
@@ -56,18 +65,25 @@ namespace csdot.Attributes
         public NSLimit1 nslimit1 = new NSLimit1();
         public Ordering ordering = new Ordering();
         public OutputOrder outputorder = new OutputOrder();
+        public Overlap overlap = new Overlap();
         public OverlapScaling overlap_scaling = new OverlapScaling();
         public OverlapShrink overlap_shrink = new OverlapShrink();
+        public Pack pack = new Pack();
         public PackMode packmode = new PackMode();
         public Quantum quantum = new Quantum();
+        public RankDir rankdir = new RankDir();
         public Remincross remincross = new Remincross();
         public RepulsiveForce repulsiveforce = new RepulsiveForce();
         public Resolution resolution = new Resolution();
+        public Root root = new Root();
         public Rotate rotate = new Rotate();
         public Rotation rotation = new Rotation();
+        public Scale scale = new Scale();
         public SearchSize searchsize = new SearchSize();
         public ShowBoxes showboxes = new ShowBoxes();
+        public Smoothing smoothing = new Smoothing();
         public Sortv sortv = new Sortv();
+        public SPLines splines = new SPLines();
         public StyleSheet stylesheet = new StyleSheet();
         public Target Target = new Target();
         public TrueColor truecolor = new TrueColor();
@@ -82,13 +98,33 @@ namespace csdot.Attributes
             {
                 attribute = attribute + _background.TranslateToString();
             }
+            if (bb.Set)
+            {
+                attribute = ("" == attribute) ? attribute + bb.TranslateToString() : attribute + "\n" + bb.TranslateToString();
+            }
             if (center.Set)
             {
                 attribute = ("" == attribute) ? attribute + center.TranslateToString() : attribute + "\n" + center.TranslateToString();
             }
+            if (charset.Set)
+            {
+                attribute = ("" == attribute) ? attribute + charset.TranslateToString() : attribute + "\n" + charset.TranslateToString();
+            }
+            if (_class.Set)
+            {
+                attribute = ("" == attribute) ? attribute + _class.TranslateToString() : attribute + "\n" + _class.TranslateToString();
+            }
+            if (clusterrank.Set)
+            {
+                attribute = ("" == attribute) ? attribute + clusterrank.TranslateToString() : attribute + "\n" + clusterrank.TranslateToString();
+            }
             if (colorscheme.Set)
             {
                 attribute = ("" == attribute) ? attribute + colorscheme.TranslateToString() : attribute + "\n" + colorscheme.TranslateToString();
+            }
+            if (comment.Set)
+            {
+                attribute = ("" == attribute) ? attribute + comment.TranslateToString() : attribute + "\n" + comment.TranslateToString();
             }
             if (compound.Set)
             {
@@ -113,6 +149,10 @@ namespace csdot.Attributes
             if (dimen.Set)
             {
                 attribute = ("" == attribute) ? attribute + dimen.TranslateToString() : attribute + "\n" + dimen.TranslateToString();
+            }
+            if (diredgeconstraints.Set)
+            {
+                attribute = ("" == attribute) ? attribute + diredgeconstraints.TranslateToString() : attribute + "\n" + diredgeconstraints.TranslateToString();
             }
             if (dpi.Set)
             {
@@ -214,9 +254,21 @@ namespace csdot.Attributes
             {
                 attribute = ("" == attribute) ? attribute + lheight.TranslateToString() : attribute + "\n" + lheight.TranslateToString();
             }
+            if (lp.Set)
+            {
+                attribute = ("" == attribute) ? attribute + lp.TranslateToString() : attribute + "\n" + lp.TranslateToString();
+            }
             if (lwidth.Set)
             {
                 attribute = ("" == attribute) ? attribute + lwidth.TranslateToString() : attribute + "\n" + lwidth.TranslateToString();
+            }
+            if (margin.Set)
+            {
+                attribute = ("" == attribute) ? attribute + margin.TranslateToString() : attribute + "\n" + margin.TranslateToString();
+            }
+            if (maxiter.Set)
+            {
+                attribute = ("" == attribute) ? attribute + maxiter.TranslateToString() : attribute + "\n" + maxiter.TranslateToString();
             }
             if (mclimit.Set)
             {
@@ -270,6 +322,10 @@ namespace csdot.Attributes
             {
                 attribute = ("" == attribute) ? attribute + outputorder.TranslateToString() : attribute + "\n" + outputorder.TranslateToString();
             }
+            if (overlap.Set)
+            {
+                attribute = ("" == attribute) ? attribute + overlap.TranslateToString() : attribute + "\n" + overlap.TranslateToString();
+            }
             if (overlap_scaling.Set)
             {
                 attribute = ("" == attribute) ? attribute + overlap_scaling.TranslateToString() : attribute + "\n" + overlap_scaling.TranslateToString();
@@ -278,6 +334,10 @@ namespace csdot.Attributes
             {
                 attribute = ("" == attribute) ? attribute + overlap_shrink.TranslateToString() : attribute + "\n" + overlap_shrink.TranslateToString();
             }
+            if (pack.Set)
+            {
+                attribute = ("" == attribute) ? attribute + pack.TranslateToString() : attribute + "\n" + pack.TranslateToString();
+            }
             if (packmode.Set)
             {
                 attribute = ("" == attribute) ? attribute + packmode.TranslateToString() : attribute + "\n" + packmode.TranslateToString();
@@ -285,6 +345,10 @@ namespace csdot.Attributes
             if (quantum.Set)
             {
                 attribute = ("" == attribute) ? attribute + quantum.TranslateToString() : attribute + "\n" + quantum.TranslateToString();
+            }
+            if (rankdir.Set)
+            {
+                attribute = ("" == attribute) ? attribute + rankdir.TranslateToString() : attribute + "\n" + rankdir.TranslateToString();
             }
             if (remincross.Set)
             {
@@ -298,6 +362,10 @@ namespace csdot.Attributes
             {
                 attribute = ("" == attribute) ? attribute + resolution.TranslateToString() : attribute + "\n" + resolution.TranslateToString();
             }
+            if (root.Set)
+            {
+                attribute = ("" == attribute) ? attribute + root.TranslateToString() : attribute + "\n" + root.TranslateToString();
+            }
             if (rotate.Set)
             {
                 attribute = ("" == attribute) ? attribute + rotate.TranslateToString() : attribute + "\n" + rotate.TranslateToString();
@@ -305,6 +373,10 @@ namespace csdot.Attributes
             if (rotation.Set)
             {
                 attribute = ("" == attribute) ? attribute + rotation.TranslateToString() : attribute + "\n" + rotation.TranslateToString();
+            }
+            if (scale.Set)
+            {
+                attribute = ("" == attribute) ? attribute + scale.TranslateToString() : attribute + "\n" + scale.TranslateToString();
             }
             if (searchsize.Set)
             {
@@ -314,9 +386,17 @@ namespace csdot.Attributes
             {
                 attribute = ("" == attribute) ? attribute + showboxes.TranslateToString() : attribute + "\n" + showboxes.TranslateToString();
             }
+            if (smoothing.Set)
+            {
+                attribute = ("" == attribute) ? attribute + smoothing.TranslateToString() : attribute + "\n" + smoothing.TranslateToString();
+            }
             if (sortv.Set)
             {
                 attribute = ("" == attribute) ? attribute + sortv.TranslateToString() : attribute + "\n" + sortv.TranslateToString();
+            }
+            if (splines.Set)
+            {
+                attribute = ("" == attribute) ? attribute + splines.TranslateToString() : attribute + "\n" + splines.TranslateToString();
             }
             if (stylesheet.Set)
             {
