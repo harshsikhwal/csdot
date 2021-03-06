@@ -1,5 +1,5 @@
 # csdot
-![Nuget](https://img.shields.io/nuget/v/csdot?style=for-the-badge)
+![Nuget](https://img.shields.io/nuget/v/csdot?style=for-the-badge)  ![Nuget](https://img.shields.io/nuget/dt/csdot)
 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/harshsikhwal/csdot?style=for-the-badge)
 
