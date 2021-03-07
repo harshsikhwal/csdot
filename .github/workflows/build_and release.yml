@@ -3,6 +3,10 @@ name: Csdot_Build
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - 'Docs/**'
+      - 'Resources/**'
+      - '**/README.md'
   workflow_dispatch:
 
 jobs:
