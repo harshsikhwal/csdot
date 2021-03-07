@@ -226,13 +226,13 @@ if __name__ == '__main__':
     graph_class = ""
     node_class = ""
     cluster_class = ""
-    # subgraph_class = ""
+    subgraph_class = ""
     edge_class = ""
 
     graph_if = ""
     node_if = ""
     cluster_if = ""
-    # subgraph_if = ""
+    subgraph_if = ""
     edge_if = ""
 
     graph_traversed = False
@@ -313,42 +313,6 @@ if __name__ == '__main__':
                 attribute = attribute + " " + {name}.TranslateToString();
             }}""".format(name=name)
             edge_traversed = True
-
-    # form the specific attribute class
-
-    attribute_code = attribute_code + "\n}"
-    node_attribute_code = node_attribute_code + node_class + "\n" + if_begin_attr + node_if + if_end_attr
-    # subgraph_attribute_code = subgraph_attribute_code + subgraph_class + "\n" + if_begin_attr + subgraph_if + if_end_attr
-    graph_attribute_code = graph_attribute_code + graph_class + "\n" + if_begin_attr + graph_if + if_end_attr
-    cluster_attribute_code = cluster_attribute_code + cluster_class + "\n" + if_begin_attr + cluster_if + if_end_attr
-    edge_attribute_code = edge_attribute_code + edge_class + "\n" + if_begin_attr + edge_if + if_end_attr
-
-    # Create dirs
-    # shutil.rmtree("Attributes")
-    # os.makedirs("Attributes\Types")
-
-    # Dump to file
-    node_attribute_file = open(".\Attributes\\NodeAttribute.cs", "w")
-    node_attribute_file.write(node_attribute_code)
-
-    # subgraph_attribute_file = open("..\Attributes\\SubgraphAttribute.cs", "w")
-    # subgraph_attribute_file.write(subgraph_attribute_code)
-
-    graph_attribute_file = open(".\Attributes\\GraphAttribute.cs", "w")
-    graph_attribute_file.write(graph_attribute_code)
-
-    cluster_attribute_file = open(".\Attributes\\ClusterAttribute.cs", "w")
-    cluster_attribute_file.write(cluster_attribute_code)
-
-    edge_attribute_file = open(".\Attributes\\EdgeAttribute.cs", "w")
-    edge_attribute_file.write(edge_attribute_code)
-
-    root_attribute_file = open(".\Attributes\Types\Attribute.cs", "w")
-    root_attribute_file.write(attribute_code)
-
-    print("Attribute Code Generated Successfully")
-
-def unused():
         if "S" in use:
             subgraph_class = subgraph_class + """
         public {classname} {name} = new {classname}();""".format(classname=l["class_name"], name=name)
@@ -365,4 +329,39 @@ def unused():
                 attribute = attribute + " " + {name}.TranslateToString();
             }}""".format(name=name)
             subgraph_traversed = True
+
+    # form the specific attribute class
+
+    attribute_code = attribute_code + "\n}"
+    node_attribute_code = node_attribute_code + node_class + "\n" + if_begin_attr + node_if + if_end_attr
+    subgraph_attribute_code = subgraph_attribute_code + subgraph_class + "\n" + if_begin_attr + subgraph_if + if_end_attr
+    graph_attribute_code = graph_attribute_code + graph_class + "\n" + if_begin_attr + graph_if + if_end_attr
+    cluster_attribute_code = cluster_attribute_code + cluster_class + "\n" + if_begin_attr + cluster_if + if_end_attr
+    edge_attribute_code = edge_attribute_code + edge_class + "\n" + if_begin_attr + edge_if + if_end_attr
+
+    # Create dirs
+    # shutil.rmtree("Attributes")
+    # os.makedirs("Attributes\Types")
+
+    # Dump to file
+    node_attribute_file = open(".\Attributes\\NodeAttribute.cs", "w")
+    node_attribute_file.write(node_attribute_code)
+
+    subgraph_attribute_file = open(".\Attributes\\SubgraphAttribute.cs", "w")
+    subgraph_attribute_file.write(subgraph_attribute_code)
+
+    graph_attribute_file = open(".\Attributes\\GraphAttribute.cs", "w")
+    graph_attribute_file.write(graph_attribute_code)
+
+    cluster_attribute_file = open(".\Attributes\\ClusterAttribute.cs", "w")
+    cluster_attribute_file.write(cluster_attribute_code)
+
+    edge_attribute_file = open(".\Attributes\\EdgeAttribute.cs", "w")
+    edge_attribute_file.write(edge_attribute_code)
+
+    root_attribute_file = open(".\Attributes\Types\Attribute.cs", "w")
+    root_attribute_file.write(attribute_code)
+
+    print("Attribute Code Generated Successfully")
+
             
