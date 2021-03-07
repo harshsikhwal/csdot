@@ -175,10 +175,38 @@ def generate_class(l):
         {{
             return "{classname} = \"" +  Value +  "\"";
         }}
+
+        public void TranslateToValue(string i_value)
+        {{
+            Value = i_value;
+        }}
         #endregion
     }}
         """.format(classtype=type, classname=name)
     else:
+        
+        if type != "bool":
+            class_str = class_str + r"""
+        public void TranslateToValue(string i_value)
+        {{
+            bool converted = {typename}.TryParse(i_value, out {typename} o_intVal);
+            if(converted)
+                Value = o_intVal;
+        }} 
+            """.format(typename=type)
+        else:
+           class_str = class_str + r"""
+        public void TranslateToValue(string i_value)
+        {{
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        }} 
+            """.format(typename=type) 
+    
         class_str = class_str + r"""
         public string TranslateToString()
         {{

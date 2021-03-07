@@ -31,6 +31,11 @@ namespace csdot.Attributes.Types
         {
             return "_background = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -66,6 +71,13 @@ namespace csdot.Attributes.Types
             Value = 1.0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "area = " + Value.ToString();
@@ -107,6 +119,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "arrowhead = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -154,6 +171,13 @@ namespace csdot.Attributes.Types
             Value = 0.0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "arrowsize = " + Value.ToString();
@@ -196,6 +220,11 @@ namespace csdot.Attributes.Types
         {
             return "arrowtail = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -220,6 +249,13 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = DataTypes.Rect.TryParse(i_value, out DataTypes.Rect o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "bb = " + Value.ToString();
@@ -258,6 +294,16 @@ namespace csdot.Attributes.Types
             Value = false;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "center = " + Value.ToString();
@@ -300,6 +346,11 @@ namespace csdot.Attributes.Types
         {
             return "charset = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -338,6 +389,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "_class = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -378,6 +434,11 @@ namespace csdot.Attributes.Types
         {
             return "clusterrank = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -416,6 +477,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "color = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -456,6 +522,11 @@ namespace csdot.Attributes.Types
         {
             return "colorscheme = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -495,6 +566,11 @@ namespace csdot.Attributes.Types
         {
             return "comment = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -530,6 +606,16 @@ namespace csdot.Attributes.Types
             Value = false;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "compound = " + Value.ToString();
@@ -568,6 +654,16 @@ namespace csdot.Attributes.Types
             Value = false;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "concentrate = " + Value.ToString();
@@ -606,6 +702,16 @@ namespace csdot.Attributes.Types
             Value = true;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "constraint = " + Value.ToString();
@@ -655,6 +761,13 @@ namespace csdot.Attributes.Types
             Value = 0.0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "Damping = " + Value.ToString();
@@ -693,6 +806,16 @@ namespace csdot.Attributes.Types
             Value = false;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "decorate = " + Value.ToString();
@@ -731,6 +854,13 @@ namespace csdot.Attributes.Types
             Value = Double.Epsilon;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "defaultdist = " + Value.ToString();
@@ -780,6 +910,13 @@ namespace csdot.Attributes.Types
             Value = 2;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = int.TryParse(i_value, out int o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "dim = " + Value.ToString();
@@ -829,6 +966,13 @@ namespace csdot.Attributes.Types
             Value = 2;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = int.TryParse(i_value, out int o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "dimen = " + Value.ToString();
@@ -859,6 +1003,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "dir = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -895,6 +1044,16 @@ namespace csdot.Attributes.Types
             Value = false;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "diredgeconstraints = " + Value.ToString();
@@ -944,6 +1103,13 @@ namespace csdot.Attributes.Types
             Value = -100.0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "distortion = " + Value.ToString();
@@ -982,6 +1148,13 @@ namespace csdot.Attributes.Types
             Value = 0.0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "dpi = " + Value.ToString();
@@ -1024,6 +1197,11 @@ namespace csdot.Attributes.Types
         {
             return "edgehref = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -1051,6 +1229,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "edgetarget = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -1091,6 +1274,11 @@ namespace csdot.Attributes.Types
         {
             return "edgetooltip = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -1130,6 +1318,11 @@ namespace csdot.Attributes.Types
         {
             return "edgeURL = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -1154,6 +1347,13 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "epsilon = " + Value.ToString();
@@ -1184,6 +1384,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "fillcolor = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -1220,6 +1425,16 @@ namespace csdot.Attributes.Types
             Value = false;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "fixedsize = " + Value.ToString();
@@ -1262,6 +1477,11 @@ namespace csdot.Attributes.Types
         {
             return "fontcolor = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -1300,6 +1520,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "fontname = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -1340,6 +1565,11 @@ namespace csdot.Attributes.Types
         {
             return "fontnames = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -1367,6 +1597,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "fontpath = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -1414,6 +1649,13 @@ namespace csdot.Attributes.Types
             Value = 1.0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "fontsize = " + Value.ToString();
@@ -1452,6 +1694,16 @@ namespace csdot.Attributes.Types
             Value = true;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "forcelabels = " + Value.ToString();
@@ -1479,6 +1731,13 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = int.TryParse(i_value, out int o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "gradientangle = " + Value.ToString();
@@ -1521,6 +1780,11 @@ namespace csdot.Attributes.Types
         {
             return "group = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -1545,6 +1809,13 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = DataTypes.point.TryParse(i_value, out DataTypes.point o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "head_lp = " + Value.ToString();
@@ -1583,6 +1854,16 @@ namespace csdot.Attributes.Types
             Value = true;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "headclip = " + Value.ToString();
@@ -1625,6 +1906,11 @@ namespace csdot.Attributes.Types
         {
             return "headhref = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -1664,6 +1950,11 @@ namespace csdot.Attributes.Types
         {
             return "headlabel = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -1691,6 +1982,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "headtarget = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -1731,6 +2027,11 @@ namespace csdot.Attributes.Types
         {
             return "headtooltip = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -1769,6 +2070,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "headURL = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -1816,6 +2122,13 @@ namespace csdot.Attributes.Types
             Value = 0.02;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "height = " + Value.ToString();
@@ -1858,6 +2171,11 @@ namespace csdot.Attributes.Types
         {
             return "href = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -1896,6 +2214,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "id = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -1936,6 +2259,11 @@ namespace csdot.Attributes.Types
         {
             return "image = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -1974,6 +2302,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "imagepath = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -2014,6 +2347,11 @@ namespace csdot.Attributes.Types
         {
             return "imagepos = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -2049,6 +2387,16 @@ namespace csdot.Attributes.Types
             Value = false;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "imagescale = " + Value.ToString();
@@ -2076,6 +2424,13 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "inputscale = " + Value.ToString();
@@ -2125,6 +2480,13 @@ namespace csdot.Attributes.Types
             Value = 0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "K = " + Value.ToString();
@@ -2155,6 +2517,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "label = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -2202,6 +2569,13 @@ namespace csdot.Attributes.Types
             Value = 0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = int.TryParse(i_value, out int o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "label_scheme = " + Value.ToString();
@@ -2251,6 +2625,13 @@ namespace csdot.Attributes.Types
             Value = -180.0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "labelangle = " + Value.ToString();
@@ -2300,6 +2681,13 @@ namespace csdot.Attributes.Types
             Value = 0.0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "labeldistance = " + Value.ToString();
@@ -2338,6 +2726,16 @@ namespace csdot.Attributes.Types
             Value = false;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "labelfloat = " + Value.ToString();
@@ -2380,6 +2778,11 @@ namespace csdot.Attributes.Types
         {
             return "labelfontcolor = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -2418,6 +2821,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "labelfontname = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -2465,6 +2873,13 @@ namespace csdot.Attributes.Types
             Value = 1.0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "labelfontsize = " + Value.ToString();
@@ -2507,6 +2922,11 @@ namespace csdot.Attributes.Types
         {
             return "labelhref = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -2546,6 +2966,11 @@ namespace csdot.Attributes.Types
         {
             return "labeljust = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -2574,6 +2999,11 @@ namespace csdot.Attributes.Types
         {
             return "labelloc = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -2601,6 +3031,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "labeltarget = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -2641,6 +3076,11 @@ namespace csdot.Attributes.Types
         {
             return "labeltooltip = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -2680,6 +3120,11 @@ namespace csdot.Attributes.Types
         {
             return "labelURL = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -2715,6 +3160,16 @@ namespace csdot.Attributes.Types
             Value = false;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "landscape = " + Value.ToString();
@@ -2757,6 +3212,11 @@ namespace csdot.Attributes.Types
         {
             return "layerlistsep = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -2795,6 +3255,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "layersep = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -2835,6 +3300,11 @@ namespace csdot.Attributes.Types
         {
             return "layout = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -2859,6 +3329,13 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "len = " + Value.ToString();
@@ -2908,6 +3385,13 @@ namespace csdot.Attributes.Types
             Value = 0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = int.TryParse(i_value, out int o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "levels = " + Value.ToString();
@@ -2946,6 +3430,13 @@ namespace csdot.Attributes.Types
             Value = 0.0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "levelsgap = " + Value.ToString();
@@ -2988,6 +3479,11 @@ namespace csdot.Attributes.Types
         {
             return "lhead = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -3012,6 +3508,13 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "lheight = " + Value.ToString();
@@ -3039,6 +3542,13 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = DataTypes.point.TryParse(i_value, out DataTypes.point o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "lp = " + Value.ToString();
@@ -3081,6 +3591,11 @@ namespace csdot.Attributes.Types
         {
             return "ltail = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -3105,6 +3620,13 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "lwidth = " + Value.ToString();
@@ -3132,6 +3654,13 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = DataTypes.point.TryParse(i_value, out DataTypes.point o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "margin = " + Value.ToString();
@@ -3159,6 +3688,13 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = int.TryParse(i_value, out int o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "maxiter = " + Value.ToString();
@@ -3197,6 +3733,13 @@ namespace csdot.Attributes.Types
             Value = 1.0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "mclimit = " + Value.ToString();
@@ -3246,6 +3789,13 @@ namespace csdot.Attributes.Types
             Value = 0.0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "mindist = " + Value.ToString();
@@ -3295,6 +3845,13 @@ namespace csdot.Attributes.Types
             Value = 0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = int.TryParse(i_value, out int o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "minlen = " + Value.ToString();
@@ -3337,6 +3894,11 @@ namespace csdot.Attributes.Types
         {
             return "mode = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -3376,6 +3938,11 @@ namespace csdot.Attributes.Types
         {
             return "model = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -3411,6 +3978,16 @@ namespace csdot.Attributes.Types
             Value = false;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "mosek = " + Value.ToString();
@@ -3449,6 +4026,16 @@ namespace csdot.Attributes.Types
             Value = false;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "newrank = " + Value.ToString();
@@ -3498,6 +4085,13 @@ namespace csdot.Attributes.Types
             Value = 0.02;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "nodesep = " + Value.ToString();
@@ -3536,6 +4130,16 @@ namespace csdot.Attributes.Types
             Value = false;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "nojustify = " + Value.ToString();
@@ -3574,6 +4178,16 @@ namespace csdot.Attributes.Types
             Value = false;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "notranslate = " + Value.ToString();
@@ -3601,6 +4215,13 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "nslimit = " + Value.ToString();
@@ -3628,6 +4249,13 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "nslimit1 = " + Value.ToString();
@@ -3670,6 +4298,11 @@ namespace csdot.Attributes.Types
         {
             return "ordering = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -3709,6 +4342,11 @@ namespace csdot.Attributes.Types
         {
             return "outputorder = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -3744,6 +4382,16 @@ namespace csdot.Attributes.Types
             Value = true;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "overlap = " + Value.ToString();
@@ -3782,6 +4430,13 @@ namespace csdot.Attributes.Types
             Value = -4;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "overlap_scaling = " + Value.ToString();
@@ -3820,6 +4475,16 @@ namespace csdot.Attributes.Types
             Value = true;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "overlap_shrink = " + Value.ToString();
@@ -3858,6 +4523,16 @@ namespace csdot.Attributes.Types
             Value = false;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "pack = " + Value.ToString();
@@ -3900,6 +4575,11 @@ namespace csdot.Attributes.Types
         {
             return "packmode = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -3938,6 +4618,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "pencolor = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -3985,6 +4670,13 @@ namespace csdot.Attributes.Types
             Value = 0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "penwidth = " + Value.ToString();
@@ -4034,6 +4726,13 @@ namespace csdot.Attributes.Types
             Value = 0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = int.TryParse(i_value, out int o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "peripheries = " + Value.ToString();
@@ -4072,6 +4771,16 @@ namespace csdot.Attributes.Types
             Value = false;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "pin = " + Value.ToString();
@@ -4099,6 +4808,13 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = DataTypes.point.TryParse(i_value, out DataTypes.point o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "pos = " + Value.ToString();
@@ -4148,6 +4864,13 @@ namespace csdot.Attributes.Types
             Value = 0.0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "quantum = " + Value.ToString();
@@ -4190,6 +4913,11 @@ namespace csdot.Attributes.Types
         {
             return "rank = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -4229,6 +4957,11 @@ namespace csdot.Attributes.Types
         {
             return "rankdir = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -4253,6 +4986,13 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = DataTypes.Rect.TryParse(i_value, out DataTypes.Rect o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "rects = " + Value.ToString();
@@ -4291,6 +5031,16 @@ namespace csdot.Attributes.Types
             Value = false;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "regular = " + Value.ToString();
@@ -4329,6 +5079,16 @@ namespace csdot.Attributes.Types
             Value = true;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "remincross = " + Value.ToString();
@@ -4378,6 +5138,13 @@ namespace csdot.Attributes.Types
             Value = 0.0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "repulsiveforce = " + Value.ToString();
@@ -4405,6 +5172,13 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "resolution = " + Value.ToString();
@@ -4432,6 +5206,16 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "root = " + Value.ToString();
@@ -4470,6 +5254,13 @@ namespace csdot.Attributes.Types
             Value = 0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = int.TryParse(i_value, out int o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "rotate = " + Value.ToString();
@@ -4508,6 +5299,13 @@ namespace csdot.Attributes.Types
             Value = 0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "rotation = " + Value.ToString();
@@ -4550,6 +5348,11 @@ namespace csdot.Attributes.Types
         {
             return "samehead = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -4589,6 +5392,11 @@ namespace csdot.Attributes.Types
         {
             return "sametail = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -4624,6 +5432,13 @@ namespace csdot.Attributes.Types
             Value = 8;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = int.TryParse(i_value, out int o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "samplepoints = " + Value.ToString();
@@ -4651,6 +5466,13 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = DataTypes.point.TryParse(i_value, out DataTypes.point o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "scale = " + Value.ToString();
@@ -4689,6 +5511,13 @@ namespace csdot.Attributes.Types
             Value = 30;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = int.TryParse(i_value, out int o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "searchsize = " + Value.ToString();
@@ -4731,6 +5560,11 @@ namespace csdot.Attributes.Types
         {
             return "shape = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -4769,6 +5603,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "shapefile = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -4816,6 +5655,13 @@ namespace csdot.Attributes.Types
             Value = 0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = int.TryParse(i_value, out int o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "showboxes = " + Value.ToString();
@@ -4865,6 +5711,13 @@ namespace csdot.Attributes.Types
             Value = 0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = int.TryParse(i_value, out int o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "sides = " + Value.ToString();
@@ -4914,6 +5767,13 @@ namespace csdot.Attributes.Types
             Value = -100.0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "skew = " + Value.ToString();
@@ -4955,6 +5815,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "smoothing = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -5002,6 +5867,13 @@ namespace csdot.Attributes.Types
             Value = 0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = int.TryParse(i_value, out int o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "sortv = " + Value.ToString();
@@ -5029,6 +5901,16 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "splines = " + Value.ToString();
@@ -5071,6 +5953,11 @@ namespace csdot.Attributes.Types
         {
             return "stylesheet = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -5095,6 +5982,13 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = DataTypes.point.TryParse(i_value, out DataTypes.point o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "tail_lp = " + Value.ToString();
@@ -5133,6 +6027,16 @@ namespace csdot.Attributes.Types
             Value = true;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "tailclip = " + Value.ToString();
@@ -5175,6 +6079,11 @@ namespace csdot.Attributes.Types
         {
             return "tailhref = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -5214,6 +6123,11 @@ namespace csdot.Attributes.Types
         {
             return "taillabel = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -5241,6 +6155,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "tailtarget = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -5281,6 +6200,11 @@ namespace csdot.Attributes.Types
         {
             return "tailtooltip = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -5320,6 +6244,11 @@ namespace csdot.Attributes.Types
         {
             return "tailURL = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -5347,6 +6276,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "Target = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -5387,6 +6321,11 @@ namespace csdot.Attributes.Types
         {
             return "tooltip = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -5411,6 +6350,16 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
+                Value = true;
+            else if(i_value.ToLower() == "no" || i_value.ToLower() == "false" || i_value == "1")
+                Value = false;
+            else
+                throw new Exception("not a valid bool value");
+        } 
+            
         public string TranslateToString()
         {
             return "truecolor = " + Value.ToString();
@@ -5441,6 +6390,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "URL = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -5488,6 +6442,13 @@ namespace csdot.Attributes.Types
             Value = 0.0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "voro_margin = " + Value.ToString();
@@ -5526,6 +6487,13 @@ namespace csdot.Attributes.Types
             Value = 1;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "weight = " + Value.ToString();
@@ -5575,6 +6543,13 @@ namespace csdot.Attributes.Types
             Value = 0.01;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "width = " + Value.ToString();
@@ -5605,6 +6580,11 @@ namespace csdot.Attributes.Types
         public string TranslateToString()
         {
             return "xdotversion = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
         }
         #endregion
     }
@@ -5645,6 +6625,11 @@ namespace csdot.Attributes.Types
         {
             return "xlabel = \"" +  Value +  "\"";
         }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
         #endregion
     }
         
@@ -5669,6 +6654,13 @@ namespace csdot.Attributes.Types
         #endregion  
 
         #region Member Functions
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = DataTypes.point.TryParse(i_value, out DataTypes.point o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "xlp = " + Value.ToString();
@@ -5707,6 +6699,13 @@ namespace csdot.Attributes.Types
             Value = 0;
         }
         
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
         public string TranslateToString()
         {
             return "z = " + Value.ToString();

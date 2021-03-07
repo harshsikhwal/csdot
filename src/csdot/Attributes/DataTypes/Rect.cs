@@ -40,5 +40,25 @@ namespace csdot.Attributes.DataTypes
 		{
 			return "\"" + LLX.ToString() + ", " + LLY.ToString() + ", " + URX.ToString() + ", " + URY.ToString() + "\"";
 		}
+
+		public static bool TryParse(string i_value, out Rect result)
+		{
+			string[] points = i_value.Split();
+			result = null;
+			if (points.Length != 4)
+				return false;
+			else
+			{
+				bool llx = float.TryParse(points[0], out float o_llx);
+				bool lly = float.TryParse(points[1], out float o_lly);
+				bool urx = float.TryParse(points[2], out float o_urx);
+				bool ury = float.TryParse(points[3], out float o_ury);
+				if (llx && lly && urx && ury)
+					result = new Rect(o_llx, o_lly, o_urx, o_ury);
+				else
+					return false;
+			}
+			return true;
+		}
 	}
 }
