@@ -11,10 +11,10 @@ namespace csdot
 		public Guid uid { get; }
 		public string ID { get; set; }
 
-		private GraphAttribute m_attribute = new GraphAttribute();
+		private SubgraphAttribute m_attribute = new SubgraphAttribute();
 		private Dictionary<Guid, IDot> m_elements = new Dictionary<Guid, IDot>();
 
-		public GraphAttribute Attribute
+		public SubgraphAttribute Attribute
 		{
 			get
 			{
@@ -32,6 +32,13 @@ namespace csdot
 		{
 			m_elements.Add(i_dot.uid, i_dot);
 		}
+		public void AddElements(params IDot[] i_dot)
+		{
+			foreach (var e in i_dot)
+			{
+				m_elements.Add(e.uid, e);
+			}
+		}
 
 		public void DeleteElement(IDot i_dot)
 		{
@@ -48,12 +55,12 @@ namespace csdot
 		{
 			//TODO: Add code to translate the IDot dictionary list and call their corresponding attribute
 			// return (strict) ? "strict" + type + " " + ID + "\n{\n" + Attribute.AttributesToString() + "\n}";
-			string subgraphbuilder = type + " " + ID + "{\n" + Attribute.AttributesToString() + "\n";
+			string subgraphbuilder = type + " " + ID + "\n\t{\n\t" + Attribute.AttributesToString() + "\n";
 			foreach (var dotElement in m_elements.Values)
 			{
-				subgraphbuilder = subgraphbuilder + dotElement.ElementToString() + "\n";
+				subgraphbuilder = subgraphbuilder + "\t" + dotElement.ElementToString() + "\n";
 			}
-			subgraphbuilder = "}";
+			subgraphbuilder = subgraphbuilder + "\t}";
 
 			return subgraphbuilder;
 		}

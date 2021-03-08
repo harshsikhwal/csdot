@@ -30,6 +30,14 @@ namespace csdot
 			m_elements.Add(i_dot.uid, i_dot);	
 		}
 
+		public void AddElements(params IDot [] i_dot)
+		{
+			foreach(var e in i_dot)
+			{
+				m_elements.Add(e.uid, e);
+			}
+		}
+
 		public void DeleteElement(IDot i_dot)
 		{
 			m_elements.Remove(i_dot.uid);
@@ -45,10 +53,10 @@ namespace csdot
 		{
 			//TODO: Add code to translate the IDot dictionary list and call their corresponding attribute
 			// return (strict) ? "strict" + type + " " + ID + "\n{\n" + Attribute.AttributesToString() + "\n}";
-			string graphbuilder = (strict) ? "strict" : "" + type + " " + ID + "{\n" + Attribute.AttributesToString() + "\n";
+			string graphbuilder = (strict) ? "strict" : "" + type + " " + ID + "{" + Attribute.AttributesToString() + "\n";
 			foreach(var dotElement in m_elements.Values)
 			{
-				graphbuilder = graphbuilder + dotElement.ElementToString() + "\n";
+				graphbuilder = graphbuilder + "\t" + dotElement.ElementToString() + "\n";
 			}
 			graphbuilder = graphbuilder + "}";
 			

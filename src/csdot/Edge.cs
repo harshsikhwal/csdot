@@ -65,12 +65,15 @@ namespace csdot
 			string transitionBuilder = "";
 			foreach(var t in Transition)
 			{
-				transitionBuilder = transitionBuilder + t.ID + " " + t.edgeop + " ";
+				if(t.edgeop == "")
+					transitionBuilder = transitionBuilder + t.ID + " ";
+				else
+					transitionBuilder = transitionBuilder + t.ID + " " + t.edgeop + " ";
 			}
 			string attributestr = Attribute.AttributesToString();
 			if(attributestr != "")
 			{
-				transitionBuilder = transitionBuilder + " [ " +  Attribute.AttributesToString() + " ]";
+				transitionBuilder = transitionBuilder + "[" +  Attribute.AttributesToString() + " ]";
 			}
 			return transitionBuilder;
 		}
@@ -81,6 +84,13 @@ namespace csdot
 		public Guid uid;
 		public string ID;
 		public string edgeop;
+
+		public Transition(string i_id, string m_op)
+		{
+			ID = i_id;
+			uid = Guid.NewGuid();
+			edgeop = m_op;
+		}
 
 		public Transition(IDot i_dot, string m_op)
 		{

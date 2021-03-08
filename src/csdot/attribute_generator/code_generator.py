@@ -313,14 +313,14 @@ if __name__ == '__main__':
                 attribute = attribute + " " + {name}.TranslateToString();
             }}""".format(name=name)
             edge_traversed = True
-        if "S" in use:
+        if "S" in use or "G" in use:
             subgraph_class = subgraph_class + """
         public {classname} {name} = new {classname}();""".format(classname=l["class_name"], name=name)
             if subgraph_traversed:
                 subgraph_if = subgraph_if + """
             if ({name}.Set)
             {{
-                attribute = ("" == attribute) ? attribute + " " + {name}.TranslateToString() : attribute + ", " + {name}.TranslateToString();
+                attribute = ("" == attribute) ? attribute + " " + {name}.TranslateToString() : attribute + "\\n " + {name}.TranslateToString();
             }}""".format(name=name)
             else:
                 subgraph_if = subgraph_if + """
