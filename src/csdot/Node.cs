@@ -67,5 +67,26 @@ namespace csdot
 			else
 				return ID + attributestr;
 		}
+
+		public string ElementToString(int i_spacing)
+		{
+			string attributestr = Attribute.AttributesToString();
+			if (attributestr != "")
+				attributestr = " [" + attributestr + " ]";
+			else
+				attributestr = ";";
+			if (subIDSet)
+			{
+				if (compassPoint == "")
+					return ID + ":" + m_subID + attributestr;
+				else
+					return ID + ":" + m_subID + ":" + compassPoint + attributestr;
+			}
+			if (compassPoint != "")
+				return ID + ":" + compassPoint + attributestr;
+
+			else
+				return ID + attributestr;
+		}
 	}
 }

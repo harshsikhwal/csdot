@@ -14,5 +14,10 @@ namespace csdot
 		{
 			return "";
 		}
+
+		public string ElementToString(int i_spacing)
+		{
+			return "";
+		}
 	}
 }

@@ -1,0 +1,11 @@
+   
+graph {
+    rankdir=LR; // Left to Right, instead of Top to Bottom
+    a -- { b c d };
+    b -- { c e };
+    c -- { e f };
+    d -- { f g };
+    e -- h;
+    f -- { h i j g };
+}
+ 

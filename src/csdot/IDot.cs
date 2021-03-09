@@ -16,5 +16,7 @@ namespace csdot
 		}
 
 		public string ElementToString();
+
+		public string ElementToString(int i_spacing);
 	}
 }

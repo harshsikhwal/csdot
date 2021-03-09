@@ -320,13 +320,13 @@ if __name__ == '__main__':
                 subgraph_if = subgraph_if + """
             if ({name}.Set)
             {{
-                attribute = ("" == attribute) ? attribute + " " + {name}.TranslateToString() : attribute + "\\n " + {name}.TranslateToString();
+                attribute = ("" == attribute) ? attribute + {name}.TranslateToString() : attribute + "\\n" + {name}.TranslateToString();
             }}""".format(name=name)
             else:
                 subgraph_if = subgraph_if + """
             if ({name}.Set)
             {{
-                attribute = attribute + " " + {name}.TranslateToString();
+                attribute = attribute + {name}.TranslateToString();
             }}""".format(name=name)
             subgraph_traversed = True
 

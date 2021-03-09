@@ -32,5 +32,11 @@ namespace csdot
 			// Add code for cluster
 			return "";
 		}
+
+		public string ElementToString(int i_spacing)
+		{
+			// Add code for cluster
+			return "";
+		}
 	}
 }

@@ -65,15 +65,53 @@ namespace csdot
 			string transitionBuilder = "";
 			foreach(var t in Transition)
 			{
+				if(t.type == "subgraph")
+				{
+					transitionBuilder = transitionBuilder + t.dot.ElementToString();
+				}
+				else 
+				{
+					transitionBuilder = transitionBuilder + t.ID;
+				}
 				if(t.edgeop == "")
-					transitionBuilder = transitionBuilder + t.ID + " ";
+					transitionBuilder = transitionBuilder + " ";
 				else
-					transitionBuilder = transitionBuilder + t.ID + " " + t.edgeop + " ";
+					transitionBuilder = transitionBuilder + " " + t.edgeop + " ";
 			}
 			string attributestr = Attribute.AttributesToString();
 			if(attributestr != "")
 			{
 				transitionBuilder = transitionBuilder + "[" +  Attribute.AttributesToString() + " ]";
+			}
+			return transitionBuilder;
+		}
+
+		public string ElementToString(int i_spacing)
+		{
+			string spacing = "";
+			if (i_spacing > 0)
+				spacing = new String('\t', i_spacing);
+			// TODO: ID TO ID code here
+			string transitionBuilder = "";
+			foreach (var t in Transition)
+			{
+				if (t.type == "subgraph")
+				{
+					transitionBuilder = transitionBuilder + t.dot.ElementToString(i_spacing);
+				}
+				else
+				{
+					transitionBuilder = transitionBuilder + t.ID;
+				}
+				if (t.edgeop == "")
+					transitionBuilder = transitionBuilder + " ";
+				else
+					transitionBuilder = transitionBuilder + " " + t.edgeop + " ";
+			}
+			string attributestr = Attribute.AttributesToString();
+			if (attributestr != "")
+			{
+				transitionBuilder = transitionBuilder + "[" + Attribute.AttributesToString() + " ]";
 			}
 			return transitionBuilder;
 		}
@@ -84,12 +122,15 @@ namespace csdot
 		public Guid uid;
 		public string ID;
 		public string edgeop;
+		public string type;
+		public IDot dot;
 
 		public Transition(string i_id, string m_op)
 		{
 			ID = i_id;
 			uid = Guid.NewGuid();
 			edgeop = m_op;
+			type = "node";
 		}
 
 		public Transition(IDot i_dot, string m_op)
@@ -97,6 +138,8 @@ namespace csdot
 			uid = i_dot.uid;
 			ID = i_dot.ID;
 			edgeop = m_op;
+			type = i_dot.type;
+			dot = i_dot;
 		}
 
 	}

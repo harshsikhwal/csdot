@@ -248,7 +248,7 @@ namespace csdot
             {
 
             }
-            File.WriteAllText(i_fileLocation, i_graph.ElementToString());
+            File.WriteAllText(i_fileLocation, i_graph.ElementToString(1));
         }
 
 
