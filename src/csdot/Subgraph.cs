@@ -11,16 +11,8 @@ namespace csdot
 		public Guid uid { get; }
 		public string ID { get; set; }
 
-		private SubgraphAttribute m_attribute = new SubgraphAttribute();
+		public SubgraphAttribute Attribute = new SubgraphAttribute();
 		private Dictionary<Guid, IDot> m_elements = new Dictionary<Guid, IDot>();
-
-		public SubgraphAttribute Attribute
-		{
-			get
-			{
-				return m_attribute;
-			}
-		}
 
 		public Subgraph(string i_id)
 		{
@@ -59,8 +51,6 @@ namespace csdot
 
 		public string ElementToString()
 		{
-			//TODO: Add code to translate the IDot dictionary list and call their corresponding attribute
-			// return (strict) ? "strict" + type + " " + ID + "\n{\n" + Attribute.AttributesToString() + "\n}";
 			string attrStr = Attribute.AttributesToString();
 			string subgraphbuilder = type + " " + ID + "\n{\n";
 
@@ -78,8 +68,6 @@ namespace csdot
 
 		public string ElementToString(int i_spacing)
 		{
-			// TODO: Add code to translate the IDot dictionary list and call their corresponding attribute
-			// return (strict) ? "strict" + type + " " + ID + "\n{\n" + Attribute.AttributesToString() + "\n}";
 			string spacing = "";
 			string bspacing = "";
 			if (i_spacing > 0)

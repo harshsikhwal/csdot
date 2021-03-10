@@ -57,8 +57,6 @@ namespace csdot
 
 		public string ElementToString()
 		{
-			//TODO: Add code to translate the IDot dictionary list and call their corresponding attribute
-			// return (strict) ? "strict" + type + " " + ID + "\n{\n" + Attribute.AttributesToString() + "\n}";
 			string graphbuilder = (strict) ? "strict" : "" + type + " " + ID + "{" + Attribute.AttributesToString() + "\n";
 			foreach(var dotElement in m_elements.Values)
 			{
@@ -71,8 +69,6 @@ namespace csdot
 
 		public string ElementToString(int i_spacing)
 		{
-			//TODO: Add code to translate the IDot dictionary list and call their corresponding attribute
-			// return (strict) ? "strict" + type + " " + ID + "\n{\n" + Attribute.AttributesToString() + "\n}";
 			string spacing = "";
 			if(i_spacing > 0)
 				spacing = new String('\t', i_spacing);
@@ -93,6 +89,5 @@ namespace csdot
 
 			return graphbuilder;
 		}
-
 	}
 }

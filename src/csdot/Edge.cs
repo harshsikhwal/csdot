@@ -10,21 +10,11 @@ namespace csdot
 		public Guid uid { get; }
 		public string ID { get; set; }
 
-		private List<Transition> m_transition = new List<Transition>();
-
-		private EdgeAttribute m_attribute = new EdgeAttribute();
+		public EdgeAttribute Attribute = new EdgeAttribute();
 
 		public List<Transition> Transition
 		{
 			get; set;
-		}
-
-		public EdgeAttribute Attribute
-		{
-			get
-			{
-				return m_attribute;
-			}
 		}
 
 		public Edge()
@@ -38,30 +28,13 @@ namespace csdot
 			uid = Guid.NewGuid();
 		}
 
-		/*
-		public void AddElement(params [] ps)
-		{
-
-		}
-		*/
 		public void AddTransition(Transition i_transition)
 		{
 			Transition.Add(i_transition);
 		}
 
-		/*
-		 * Probably our limitation. 
-		 * There can be an edge: A -> B -> C -> B. 
-		 * So removing one can be dangerous because we dont know the index
-		 * 
-		public void RemoveTransition(IDot i_dot)
-		{
-			Transition.Remove(i_dot.uid);
-		}
-		*/
 		public string ElementToString()
 		{
-			// TODO: ID TO ID code here
 			string transitionBuilder = "";
 			foreach(var t in Transition)
 			{
@@ -91,7 +64,6 @@ namespace csdot
 			string spacing = "";
 			if (i_spacing > 0)
 				spacing = new String('\t', i_spacing);
-			// TODO: ID TO ID code here
 			string transitionBuilder = "";
 			foreach (var t in Transition)
 			{

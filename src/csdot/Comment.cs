@@ -10,14 +10,21 @@ namespace csdot
 		public Guid uid { get; }
 		public string ID { get; set; }
 
+		public Comment(string i_id)
+		{
+			ID = i_id;
+		}
+
 		public string ElementToString()
 		{
-			return "";
+			// TODO: check for multiline and add the same?
+			return ID;
 		}
 
 		public string ElementToString(int i_spacing)
 		{
-			return "";
+			// TODO: how to know where is this present? Like on the same line or next line?
+			return ID;
 		}
 	}
 }

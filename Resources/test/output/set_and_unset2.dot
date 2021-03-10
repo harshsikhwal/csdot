@@ -1,0 +1,5 @@
+graph test
+{
+	ethernet [ color = "red", label = "ethernet", shape = "circle" ]
+	ipv4 [ label = "ipv4", shape = "square" ]
+}
