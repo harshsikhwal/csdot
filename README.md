@@ -167,7 +167,6 @@ is one such example.
 * page
 * pagedir
 * quadtree
-* ranksep
 * ratio
 * sep
 * size
