@@ -178,7 +178,9 @@ is one such example.
 
 These will be added in the upcoming versions and well as LoadDiagraph feature. 
 
-There are multiple known issues in the Attribute segment like handling of multi-types (color and colorList) as well as multi-default and multi-minimum. 
+The attributes having List as their secondary datatype and string as their first datatype, like color, fillcolor takes string Value. There is no list defined for such attributes. However for ranksep, a secondary holder, ValueList is added to support double datatype. 
+
+There are multiple known issues in the Attribute segment like handling of multi-types (string/double) as well as multi-default and multi-minimum. 
 Please refer doc: *csdot\Docs\Attribute Status.docs* for more info
 
 ### DotDocument
