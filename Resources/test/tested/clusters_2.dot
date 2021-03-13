@@ -1,16 +1,16 @@
 graph 
 {
 	splines = True
-	subgraph cluster_0
+	cluster cluster_0
 	{
-		label = "Subgraph A"
+		 label = "Subgraph A"
 		a;
 		b;
 		c;
 	}
-	subgraph cluster_1
+	cluster cluster_1
 	{
-		label = "Subgraph B"
+		 label = "Subgraph B"
 		d;
 		e;
 	}

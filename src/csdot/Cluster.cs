@@ -7,7 +7,7 @@ namespace csdot
 {
 	public class Cluster : IDot
 	{
-		public string type { get; set; } = "cluster";
+		public string type { get; set; } = "subgraph";
 		public Guid uid { get; }
 		public string ID { get; set; }
 

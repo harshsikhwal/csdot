@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System.Collections.Generic;
 using csdot;
 using csdot.Attributes.DataTypes;
 
@@ -40,5 +41,35 @@ namespace UnitTest
 
 			Assert.Pass();
 		}
+
+		/* [Test]*/
+		public void color_multi_type()
+		{
+
+			Graph graph = new Graph("");
+
+			Node ethernet = new Node("ethernet");
+			ethernet.Attribute.shape.Value = ShapeTypes.circle;
+			ethernet.Attribute.color.Value = Color.X11.red;
+			ethernet.Attribute.label.Value = "ethernet";
+			graph.AddElement(ethernet);
+
+			DotDocument ddoc = new DotDocument();
+			ddoc.SaveToFile(graph, "C:\\git\\csdot\\Resources\\test\\output\\color_single.dot");
+
+			ethernet = graph.GetElement(ethernet.uid) as Node;
+			// ethernet.Attribute.color.ValueList = new List<string>() { "green", "brown", "red", "black" };
+			ddoc = new DotDocument();
+			ddoc.SaveToFile(graph, "C:\\git\\csdot\\Resources\\test\\output\\color_multiple.dot");
+
+
+			ethernet = graph.GetElement(ethernet.uid) as Node;
+			ethernet.Attribute.color.Value = "brown";
+			ddoc = new DotDocument();
+			ddoc.SaveToFile(graph, "C:\\git\\csdot\\Resources\\test\\output\\color_multiple_replace_single");
+
+
+		}
+
 	}
 }

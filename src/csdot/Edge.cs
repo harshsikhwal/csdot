@@ -113,7 +113,6 @@ namespace csdot
 			type = i_dot.type;
 			dot = i_dot;
 		}
-
 	}
 
 }

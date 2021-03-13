@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +9,7 @@ namespace csdot.Attributes
 	{
         public _Background _background = new _Background();
         public BB bb = new BB();
+        public BGColor bgcolor = new BGColor();
         public Center center = new Center();
         public Charset charset = new Charset();
         public _Class _class = new _Class();
@@ -73,6 +73,7 @@ namespace csdot.Attributes
         public Quantum quantum = new Quantum();
         public Rank rank = new Rank();
         public RankDir rankdir = new RankDir();
+        public RankSep ranksep = new RankSep();
         public Remincross remincross = new Remincross();
         public RepulsiveForce repulsiveforce = new RepulsiveForce();
         public Resolution resolution = new Resolution();
@@ -102,6 +103,10 @@ namespace csdot.Attributes
             if (bb.Set)
             {
                 attribute = ("" == attribute) ? attribute + bb.TranslateToString() : attribute + "\n" + bb.TranslateToString();
+            }
+            if (bgcolor.Set)
+            {
+                attribute = ("" == attribute) ? attribute + bgcolor.TranslateToString() : attribute + "\n" + bgcolor.TranslateToString();
             }
             if (center.Set)
             {
@@ -354,6 +359,10 @@ namespace csdot.Attributes
             if (rankdir.Set)
             {
                 attribute = ("" == attribute) ? attribute + rankdir.TranslateToString() : attribute + "\n" + rankdir.TranslateToString();
+            }
+            if (ranksep.Set)
+            {
+                attribute = ("" == attribute) ? attribute + ranksep.TranslateToString() : attribute + "\n" + ranksep.TranslateToString();
             }
             if (remincross.Set)
             {

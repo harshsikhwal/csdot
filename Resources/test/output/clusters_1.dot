@@ -1,15 +1,15 @@
 digraph 
 {
-	cluster cluster_0
+	subgraph cluster_0
 	{
-		 label = "Subgraph A"
+		label = "Subgraph A"
 		a -> b 
 		b -> c 
 		c -> d 
 	}
-	cluster cluster_1
+	subgraph cluster_1
 	{
-		 label = "Subgraph B"
+		label = "Subgraph B"
 		a -> f 
 		f -> c 
 	}

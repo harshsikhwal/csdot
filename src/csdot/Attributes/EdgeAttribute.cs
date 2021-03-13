@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,7 +5,7 @@ using csdot.Attributes.Types;
 
 namespace csdot.Attributes
 {
-	public class EdgeAttribute : IDotAttribute
+    public class EdgeAttribute : IDotAttribute
 	{
         public ArrowHead arrowhead = new ArrowHead();
         public ArrowSize arrowsize = new ArrowSize();

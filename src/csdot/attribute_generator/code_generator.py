@@ -2,69 +2,51 @@ import json
 import os
 import shutil
 
-attribute_code = """
-using System;
-using System.Collections.Generic;
-using System.Text;
-using csdot.Attributes.DataTypes;
+# start initial cs file code
 
-namespace csdot.Attributes.Types
-{"""
-
-node_attribute_code = """
-using System;
+initial_code = """using System;
 using System.Collections.Generic;
 using System.Text;
 using csdot.Attributes.Types;
+"""
 
+attribute_code = initial_code +"""
+namespace csdot.Attributes.Types
+{"""
+
+node_attribute_code = initial_code +"""
 namespace csdot.Attributes
 {
 	public class NodeAttribute : IDotAttribute
 	{"""
 
-cluster_attribute_code = """
-using System;
-using System.Collections.Generic;
-using System.Text;
-using csdot.Attributes.Types;
-
+cluster_attribute_code = initial_code + """
 namespace csdot.Attributes
 {
 	public class ClusterAttribute : IDotAttribute
 	{"""
 
-graph_attribute_code = """
-using System;
-using System.Collections.Generic;
-using System.Text;
-using csdot.Attributes.Types;
-
+graph_attribute_code = initial_code + """
 namespace csdot.Attributes
 {
 	public class GraphAttribute : IDotAttribute
 	{"""
 
-subgraph_attribute_code = """
-using System;
-using System.Collections.Generic;
-using System.Text;
-using csdot.Attributes.Types;
-
+subgraph_attribute_code = initial_code + """
 namespace csdot.Attributes
 {
 	public class SubgraphAttribute : IDotAttribute
 	{"""
 
-edge_attribute_code = """
-using System;
-using System.Collections.Generic;
-using System.Text;
-using csdot.Attributes.Types;
-
+edge_attribute_code = initial_code + """
 namespace csdot.Attributes
 {
-	public class EdgeAttribute : IDotAttribute
+    public class EdgeAttribute : IDotAttribute
 	{"""
+
+# end initial cs file code
+
+# start AttributesToString() initial code
 
 if_begin_attr = """
 		public string AttributesToString()
@@ -77,50 +59,59 @@ if_end_attr = """
 	}
 }"""
 
+# end AttributesToString() initial code
 
+# start generate class, properties and the methods associated
+
+# executed per attribute
 def generate_class(l):
+    # read from json for every attribute
+    class_name = l['class_name']
     name = l["name"]
     default = l["default"]
     minimum = l["minimum"]
     type = l["type"]
+    alternate_type = l['alternate_type']
+
+    # class str is the string formed. Will be returned
     class_str = """
     public class {classname} : IAttribute
     {{
+    """.format(classname = class_name)
+
+    # str for region properties
+
+    properties_str = """
         #region Properties
 
-        public bool Set {{ get; set; }} = false;
-        """.format(classname=l["class_name"])
+        public bool Set { get; set; } = false;
+        """
+
+    # str for member function
+    function_str = """
+        #region Member Functions
+    """
+
+    # check for default. Considering the type here.
+    # the reason is when adding the alternate type, we might have some issues. So there will be a default_alternate attribute later
     if default == "nil":
-        class_str = class_str + r"private {classtype} m_value;".format(classtype=type)
+        # initialize property and not the function
+        if alternate_type == "List" or "List" in type:
+            properties_str = properties_str + r"private List<{classtype}> m_value = new List<{classtype}>();".format(classtype=type)
+        else:
+            properties_str = properties_str + r"private {classtype} m_value;".format(classtype=type)
     else:
         if type == "string":
-            class_str = class_str + "private {classtype} m_value = \"{classdefault}\";".format(classtype=type,
-                                                                                               classdefault=default)
-        else:
-            class_str = class_str + r"private {classtype} m_value = {classdefault};".format(classtype=type,
-                                                                                            classdefault=default)
-    class_str = class_str + r"""
-        public {classtype} Value
-        {{
-            get
-            {{
-                return m_value;
-            }}
-            set
-            {{
-                Set = true;
-                m_value = value;
-            }}
-        }}
-        #endregion  
-
-        #region Member Functions""".format(classtype=type)
-    if default != "nil":
-        if type == "string":
-            class_str = class_str + """
+            # if string then enclose the same in ""
+            if alternate_type == "List" or "List" in type:
+                properties_str = properties_str + "private List<{classtype}> m_value = new List<{classtype}>() {{ \"{classdefault}\" }} ;".format(classtype=type, classdefault=default)
+            else:
+                properties_str = properties_str + "private {classtype} m_value = \"{classdefault}\";".format(classtype=type, classdefault=default)
+            # generate the specific function str
+            function_str = function_str + """
         public {classtype} GetDefault()
         {{
-            return \"{classdefault}\";
+            return "{classdefault}";
         }}
 
         public void SetDefault()
@@ -130,7 +121,14 @@ def generate_class(l):
         }}
         """.format(classtype=type, classdefault=default)
         else:
-            class_str = class_str + r"""
+            # if not string then put the same value
+            if alternate_type == "List" or "List" in type:
+                properties_str = properties_str + r"private List<{classtype}> m_value = new List<{classtype}>( {classdefault} );".format(classtype=type, classdefault=default)
+            else:
+                properties_str = properties_str + r"private {classtype} m_value = {classdefault};".format(classtype=type,
+                                                                                            classdefault=default)
+            # generate the specific function str
+            function_str = function_str + r"""
         public {classtype} GetDefault()
         {{
             return {classdefault};
@@ -141,10 +139,13 @@ def generate_class(l):
             Set = true;
             Value = {classdefault};
         }}
-        """.format(classtype=type, classdefault=default)
+        """.format(classtype=type, classdefault=default)   
+
+    # for minimum there is not property, just the function.
+    # this minimum is just for the type. alternative_minimum will follow up.
     if minimum != "nil":
         if type == "string":
-            class_str = class_str + r"""
+            function_str = function_str + r"""
         public {classtype} GetMinimum()
         {{
             return \"{classminimum}\";
@@ -157,7 +158,7 @@ def generate_class(l):
         }}
         """.format(classtype=type, classminimum=minimum)
         else:
-            class_str = class_str + r"""
+            function_str = function_str + r"""
         public {classtype} GetMinimum()
         {{
             return {classminimum};
@@ -169,9 +170,88 @@ def generate_class(l):
             Value = {classminimum};
         }}
         """.format(classtype=type, classminimum=minimum)
+
+    # Alternate adder
+    # this is only list. For instance color attribute will have color and colorList. So alternate will be just List
+    if alternate_type == "List":
+        properties_str = properties_str + r"""
+        public {classtype} Value
+        {{
+            get
+            {{
+                return m_value[0];
+            }}
+            set
+            {{
+                Set = true;
+                m_value.Clear();
+                m_value.Add(value);
+            }}
+        }}
+
+        public List<{classtype}> ValueList
+        {{
+            get
+            {{
+                return m_value;
+            }}
+            set
+            {{
+                Set = true;
+                m_value = value;
+            }}
+        }}
+
+        #endregion  
+        """.format(classtype = type)
+    elif alternate_type != "":
+        # add code here for the secondary type as well as first type
+        pass
+    else:
+        # here alternate_type is null so we can just add type
+        properties_str = properties_str + r"""
+        public {classtype} Value
+        {{
+            get
+            {{
+                return m_value;
+            }}
+            set
+            {{
+                Set = true;
+                m_value = value;
+            }}
+        }}
+        #endregion
+        """.format(classtype=type)
+        
+    # string translation to and from method:
+
     if type == "string":
-        class_str = class_str + r"""
-        public {classtype} TranslateToString()
+        if alternate_type == "List":
+            function_str = function_str + r"""
+        public string TranslateToString()
+        {{
+    	    var valueBuilder = "";
+            if(ValueList.Count == 0)
+        	    return valueBuilder;
+            int i;
+            for(i = 0; i <= ValueList.Count-2; i++)
+        	    valueBuilder = valueBuilder + ValueList[i] + ", ";
+            valueBuilder = valueBuilder + ValueList[i];
+            return "{classname} = \"" +  valueBuilder +  "\"";
+        }}
+
+        public void TranslateToValue(string i_value)
+        {{
+            Value = i_value;
+        }}
+        #endregion
+    }}
+        """.format(classname=name)
+        else:
+            function_str = function_str + r"""
+        public string TranslateToString()
         {{
             return "{classname} = \"" +  Value +  "\"";
         }}
@@ -182,11 +262,11 @@ def generate_class(l):
         }}
         #endregion
     }}
-        """.format(classtype=type, classname=name)
+        """.format(classname=name)
     else:
         
         if type != "bool":
-            class_str = class_str + r"""
+            function_str = function_str + r"""
         public void TranslateToValue(string i_value)
         {{
             bool converted = {typename}.TryParse(i_value, out {typename} o_intVal);
@@ -195,7 +275,7 @@ def generate_class(l):
         }} 
             """.format(typename=type)
         else:
-           class_str = class_str + r"""
+           function_str = function_str + r"""
         public void TranslateToValue(string i_value)
         {{
             if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
@@ -205,16 +285,34 @@ def generate_class(l):
             else
                 throw new Exception("not a valid bool value");
         }} 
-            """.format(typename=type) 
-    
-        class_str = class_str + r"""
+            """.format(typename=type)
+            
+        if alternate_type == "List":
+            function_str = function_str + r"""
+        public string TranslateToString()
+        {{
+    	    var valueBuilder = "";
+            if(ValueList.Count == 0)
+        	    return valueBuilder;
+            int i;
+            for(i = 0; i <= ValueList.Count-2; i++)
+        	    valueBuilder = valueBuilder + ValueList[i].ToString() + ", ";
+            valueBuilder = valueBuilder + ValueList[i];
+            return "{classname} = \"" +  valueBuilder +  "\"";
+        }}
+        #endregion
+    }}""".format(classname=name)
+        else:
+            function_str = function_str + r"""
         public string TranslateToString()
         {{
             return "{classname} = " + Value.ToString();
         }}
         #endregion
     }}""".format(classname=name)
-    return class_str
+    return class_str + properties_str + function_str
+
+# end generate class, properties and the methods associated
 
 
 if __name__ == '__main__':
@@ -287,13 +385,13 @@ if __name__ == '__main__':
                 cluster_if = cluster_if + """
             if ({name}.Set)
             {{
-                attribute = ("" == attribute) ? attribute + " " + {name}.TranslateToString() : attribute + ", " + {name}.TranslateToString();
+                attribute = ("" == attribute) ? attribute + {name}.TranslateToString() : attribute + "\\n" + {name}.TranslateToString();
             }}""".format(name=name)
             else:
                 cluster_if = cluster_if + """
             if ({name}.Set)
             {{
-                attribute = attribute + " " + {name}.TranslateToString();
+                attribute = attribute + {name}.TranslateToString();
             }}""".format(name=name)
             cluster_traversed = True
 

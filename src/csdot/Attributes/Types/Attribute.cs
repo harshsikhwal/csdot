@@ -1,13 +1,13 @@
-
 using System;
 using System.Collections.Generic;
 using System.Text;
-using csdot.Attributes.DataTypes;
+using csdot.Attributes.Types;
 
 namespace csdot.Attributes.Types
 {
     public class _Background : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -24,9 +24,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string TranslateToString()
         {
             return "_background = \"" +  Value +  "\"";
@@ -41,6 +42,7 @@ namespace csdot.Attributes.Types
         
     public class Area : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -57,9 +59,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 1.0;
@@ -86,10 +89,11 @@ namespace csdot.Attributes.Types
     }
     public class ArrowHead : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
-        private string m_value = "arrowType.normal";
+        private string m_value = "normal";
         public string Value
         {
             get
@@ -102,18 +106,19 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
-            return "arrowType.normal";
+            return "normal";
         }
 
         public void SetDefault()
         {
             Set = true;
-            Value = "arrowType.normal";
+            Value = "normal";
         }
         
         public string TranslateToString()
@@ -130,6 +135,7 @@ namespace csdot.Attributes.Types
         
     public class ArrowSize : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -146,9 +152,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 1.0;
@@ -186,10 +193,11 @@ namespace csdot.Attributes.Types
     }
     public class ArrowTail : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
-        private string m_value = "arrowType.normal";
+        private string m_value = "normal";
         public string Value
         {
             get
@@ -202,18 +210,19 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
-            return "arrowType.normal";
+            return "normal";
         }
 
         public void SetDefault()
         {
             Set = true;
-            Value = "arrowType.normal";
+            Value = "normal";
         }
         
         public string TranslateToString()
@@ -230,6 +239,7 @@ namespace csdot.Attributes.Types
         
     public class BB : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -246,9 +256,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             bool converted = DataTypes.Rect.TryParse(i_value, out DataTypes.Rect o_intVal);
@@ -262,8 +273,44 @@ namespace csdot.Attributes.Types
         }
         #endregion
     }
+    public class BGColor : IAttribute
+    {
+    
+        #region Properties
+
+        public bool Set { get; set; } = false;
+        private string m_value;
+        public string Value
+        {
+            get
+            {
+                return m_value;
+            }
+            set
+            {
+                Set = true;
+                m_value = value;
+            }
+        }
+        #endregion
+        
+        #region Member Functions
+    
+        public string TranslateToString()
+        {
+            return "bgcolor = \"" +  Value +  "\"";
+        }
+
+        public void TranslateToValue(string i_value)
+        {
+            Value = i_value;
+        }
+        #endregion
+    }
+        
     public class Center : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -280,9 +327,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return false;
@@ -312,6 +360,7 @@ namespace csdot.Attributes.Types
     }
     public class Charset : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -328,9 +377,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "UTF-8";
@@ -356,6 +406,7 @@ namespace csdot.Attributes.Types
         
     public class _Class : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -372,9 +423,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -400,10 +452,11 @@ namespace csdot.Attributes.Types
         
     public class ClusterRank : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
-        private string m_value = "DataTypes.clusterMode.local";
+        private string m_value = "local";
         public string Value
         {
             get
@@ -416,18 +469,19 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
-            return "DataTypes.clusterMode.local";
+            return "local";
         }
 
         public void SetDefault()
         {
             Set = true;
-            Value = "DataTypes.clusterMode.local";
+            Value = "local";
         }
         
         public string TranslateToString()
@@ -444,10 +498,11 @@ namespace csdot.Attributes.Types
         
     public class Color : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
-        private string m_value = "DataTypes.Color.X11.black";
+        private string m_value = "black";
         public string Value
         {
             get
@@ -460,18 +515,19 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
-            return "DataTypes.Color.X11.black";
+            return "black";
         }
 
         public void SetDefault()
         {
             Set = true;
-            Value = "DataTypes.Color.X11.black";
+            Value = "black";
         }
         
         public string TranslateToString()
@@ -488,6 +544,7 @@ namespace csdot.Attributes.Types
         
     public class ColorScheme : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -504,9 +561,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -532,6 +590,7 @@ namespace csdot.Attributes.Types
         
     public class _Comment : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -548,9 +607,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -576,6 +636,7 @@ namespace csdot.Attributes.Types
         
     public class Compound : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -592,9 +653,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return false;
@@ -624,6 +686,7 @@ namespace csdot.Attributes.Types
     }
     public class Concentrate : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -640,9 +703,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return false;
@@ -672,6 +736,7 @@ namespace csdot.Attributes.Types
     }
     public class Constraint : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -688,9 +753,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return true;
@@ -720,6 +786,7 @@ namespace csdot.Attributes.Types
     }
     public class damping : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -736,9 +803,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 0.99;
@@ -776,6 +844,7 @@ namespace csdot.Attributes.Types
     }
     public class Decorate : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -792,9 +861,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return false;
@@ -824,6 +894,7 @@ namespace csdot.Attributes.Types
     }
     public class DefaultDist : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -840,9 +911,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetMinimum()
         {
             return Double.Epsilon;
@@ -869,6 +941,7 @@ namespace csdot.Attributes.Types
     }
     public class Dim : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -885,9 +958,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public int GetDefault()
         {
             return 2;
@@ -925,6 +999,7 @@ namespace csdot.Attributes.Types
     }
     public class Dimen : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -941,9 +1016,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public int GetDefault()
         {
             return 2;
@@ -981,6 +1057,7 @@ namespace csdot.Attributes.Types
     }
     public class Dir : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -997,9 +1074,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string TranslateToString()
         {
             return "dir = \"" +  Value +  "\"";
@@ -1014,6 +1092,7 @@ namespace csdot.Attributes.Types
         
     public class DirEdgeConstraints : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1030,9 +1109,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return false;
@@ -1062,6 +1142,7 @@ namespace csdot.Attributes.Types
     }
     public class Distortion : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1078,9 +1159,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 0.0;
@@ -1118,6 +1200,7 @@ namespace csdot.Attributes.Types
     }
     public class Dpi : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1134,9 +1217,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 0.0;
@@ -1163,6 +1247,7 @@ namespace csdot.Attributes.Types
     }
     public class Edgehref : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1179,9 +1264,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -1207,6 +1293,7 @@ namespace csdot.Attributes.Types
         
     public class EdgeTarget : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1223,9 +1310,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string TranslateToString()
         {
             return "edgetarget = \"" +  Value +  "\"";
@@ -1240,6 +1328,7 @@ namespace csdot.Attributes.Types
         
     public class EdgeToolTip : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1256,9 +1345,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -1284,6 +1374,7 @@ namespace csdot.Attributes.Types
         
     public class EdgeURL : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1300,9 +1391,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -1328,6 +1420,7 @@ namespace csdot.Attributes.Types
         
     public class Epsilon : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1344,9 +1437,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             bool converted = double.TryParse(i_value, out double o_intVal);
@@ -1362,6 +1456,7 @@ namespace csdot.Attributes.Types
     }
     public class FillColor : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1378,9 +1473,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string TranslateToString()
         {
             return "fillcolor = \"" +  Value +  "\"";
@@ -1395,6 +1491,7 @@ namespace csdot.Attributes.Types
         
     public class FixedSize : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1411,9 +1508,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return false;
@@ -1443,10 +1541,11 @@ namespace csdot.Attributes.Types
     }
     public class FontColor : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
-        private string m_value = "DataTypes.Color.X11.black";
+        private string m_value = "black";
         public string Value
         {
             get
@@ -1459,18 +1558,19 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
-            return "DataTypes.Color.X11.black";
+            return "black";
         }
 
         public void SetDefault()
         {
             Set = true;
-            Value = "DataTypes.Color.X11.black";
+            Value = "black";
         }
         
         public string TranslateToString()
@@ -1487,6 +1587,7 @@ namespace csdot.Attributes.Types
         
     public class Fontname : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1503,9 +1604,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "Times-Roman";
@@ -1531,6 +1633,7 @@ namespace csdot.Attributes.Types
         
     public class Fontnames : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1547,9 +1650,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -1575,6 +1679,7 @@ namespace csdot.Attributes.Types
         
     public class FontPath : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1591,9 +1696,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string TranslateToString()
         {
             return "fontpath = \"" +  Value +  "\"";
@@ -1608,6 +1714,7 @@ namespace csdot.Attributes.Types
         
     public class Fontsize : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1624,9 +1731,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 14.0;
@@ -1664,6 +1772,7 @@ namespace csdot.Attributes.Types
     }
     public class ForceLabels : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1680,9 +1789,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return true;
@@ -1712,6 +1822,7 @@ namespace csdot.Attributes.Types
     }
     public class GradientAngle : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1728,9 +1839,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             bool converted = int.TryParse(i_value, out int o_intVal);
@@ -1746,6 +1858,7 @@ namespace csdot.Attributes.Types
     }
     public class Group : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1762,9 +1875,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -1790,6 +1904,7 @@ namespace csdot.Attributes.Types
         
     public class HeadLP : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1806,9 +1921,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             bool converted = DataTypes.point.TryParse(i_value, out DataTypes.point o_intVal);
@@ -1824,6 +1940,7 @@ namespace csdot.Attributes.Types
     }
     public class HeadClip : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1840,9 +1957,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return true;
@@ -1872,6 +1990,7 @@ namespace csdot.Attributes.Types
     }
     public class HeadHref : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1888,9 +2007,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -1916,6 +2036,7 @@ namespace csdot.Attributes.Types
         
     public class HeadLabel : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1932,9 +2053,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -1960,6 +2082,7 @@ namespace csdot.Attributes.Types
         
     public class HeadTarget : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -1976,9 +2099,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string TranslateToString()
         {
             return "headtarget = \"" +  Value +  "\"";
@@ -1993,6 +2117,7 @@ namespace csdot.Attributes.Types
         
     public class HeadToolTip : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -2009,9 +2134,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -2037,6 +2163,7 @@ namespace csdot.Attributes.Types
         
     public class HeadURL : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -2053,9 +2180,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -2081,6 +2209,7 @@ namespace csdot.Attributes.Types
         
     public class Height : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -2097,9 +2226,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 0.5;
@@ -2137,6 +2267,7 @@ namespace csdot.Attributes.Types
     }
     public class Href : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -2153,9 +2284,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -2181,6 +2313,7 @@ namespace csdot.Attributes.Types
         
     public class ID : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -2197,9 +2330,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -2225,6 +2359,7 @@ namespace csdot.Attributes.Types
         
     public class Image : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -2241,9 +2376,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -2269,6 +2405,7 @@ namespace csdot.Attributes.Types
         
     public class ImagePath : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -2285,9 +2422,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -2313,6 +2451,7 @@ namespace csdot.Attributes.Types
         
     public class ImagePos : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -2329,9 +2468,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "mc";
@@ -2357,6 +2497,7 @@ namespace csdot.Attributes.Types
         
     public class ImageScale : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -2373,9 +2514,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return false;
@@ -2405,6 +2547,7 @@ namespace csdot.Attributes.Types
     }
     public class InputScale : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -2421,9 +2564,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             bool converted = double.TryParse(i_value, out double o_intVal);
@@ -2439,6 +2583,7 @@ namespace csdot.Attributes.Types
     }
     public class k : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -2455,9 +2600,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 0.3;
@@ -2495,6 +2641,7 @@ namespace csdot.Attributes.Types
     }
     public class Label : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -2511,9 +2658,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string TranslateToString()
         {
             return "label = \"" +  Value +  "\"";
@@ -2528,6 +2676,7 @@ namespace csdot.Attributes.Types
         
     public class LabelScheme : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -2544,9 +2693,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public int GetDefault()
         {
             return 0;
@@ -2584,6 +2734,7 @@ namespace csdot.Attributes.Types
     }
     public class LabelAngle : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -2600,9 +2751,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return -25.0;
@@ -2640,6 +2792,7 @@ namespace csdot.Attributes.Types
     }
     public class LabelDistance : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -2656,9 +2809,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 1.0;
@@ -2696,6 +2850,7 @@ namespace csdot.Attributes.Types
     }
     public class LabelFloat : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -2712,9 +2867,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return false;
@@ -2744,10 +2900,11 @@ namespace csdot.Attributes.Types
     }
     public class LabelFontColor : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
-        private string m_value = "DataTypes.Color.X11.black";
+        private string m_value = "black";
         public string Value
         {
             get
@@ -2760,18 +2917,19 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
-            return "DataTypes.Color.X11.black";
+            return "black";
         }
 
         public void SetDefault()
         {
             Set = true;
-            Value = "DataTypes.Color.X11.black";
+            Value = "black";
         }
         
         public string TranslateToString()
@@ -2788,6 +2946,7 @@ namespace csdot.Attributes.Types
         
     public class LabelFontname : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -2804,9 +2963,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "Times-Roman";
@@ -2832,6 +2992,7 @@ namespace csdot.Attributes.Types
         
     public class LabelFontsize : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -2848,9 +3009,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 14.0;
@@ -2888,6 +3050,7 @@ namespace csdot.Attributes.Types
     }
     public class LabelHref : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -2904,9 +3067,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -2932,6 +3096,7 @@ namespace csdot.Attributes.Types
         
     public class LabelJust : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -2948,9 +3113,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "c";
@@ -2976,6 +3142,7 @@ namespace csdot.Attributes.Types
         
     public class LabelLoc : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -2992,9 +3159,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string TranslateToString()
         {
             return "labelloc = \"" +  Value +  "\"";
@@ -3009,6 +3177,7 @@ namespace csdot.Attributes.Types
         
     public class LabelTarget : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3025,9 +3194,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string TranslateToString()
         {
             return "labeltarget = \"" +  Value +  "\"";
@@ -3042,6 +3212,7 @@ namespace csdot.Attributes.Types
         
     public class LabelToolTip : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3058,9 +3229,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -3086,6 +3258,7 @@ namespace csdot.Attributes.Types
         
     public class LabelURL : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3102,9 +3275,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -3130,6 +3304,7 @@ namespace csdot.Attributes.Types
         
     public class Landscape : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3146,9 +3321,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return false;
@@ -3178,6 +3354,7 @@ namespace csdot.Attributes.Types
     }
     public class LayerListSep : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3194,9 +3371,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return ",";
@@ -3222,6 +3400,7 @@ namespace csdot.Attributes.Types
         
     public class LayerSep : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3238,9 +3417,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return ":\t";
@@ -3266,6 +3446,7 @@ namespace csdot.Attributes.Types
         
     public class Layout : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3282,9 +3463,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -3310,6 +3492,7 @@ namespace csdot.Attributes.Types
         
     public class Len : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3326,9 +3509,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             bool converted = double.TryParse(i_value, out double o_intVal);
@@ -3344,6 +3528,7 @@ namespace csdot.Attributes.Types
     }
     public class Levels : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3360,9 +3545,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public int GetDefault()
         {
             return int.MaxValue;
@@ -3400,6 +3586,7 @@ namespace csdot.Attributes.Types
     }
     public class LevelsGap : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3416,9 +3603,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 0.0;
@@ -3445,6 +3633,7 @@ namespace csdot.Attributes.Types
     }
     public class LHead : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3461,9 +3650,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -3489,6 +3679,7 @@ namespace csdot.Attributes.Types
         
     public class LHeight : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3505,9 +3696,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             bool converted = double.TryParse(i_value, out double o_intVal);
@@ -3523,6 +3715,7 @@ namespace csdot.Attributes.Types
     }
     public class LP : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3539,9 +3732,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             bool converted = DataTypes.point.TryParse(i_value, out DataTypes.point o_intVal);
@@ -3557,6 +3751,7 @@ namespace csdot.Attributes.Types
     }
     public class LTail : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3573,9 +3768,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -3601,6 +3797,7 @@ namespace csdot.Attributes.Types
         
     public class LWidth : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3617,9 +3814,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             bool converted = double.TryParse(i_value, out double o_intVal);
@@ -3635,6 +3833,7 @@ namespace csdot.Attributes.Types
     }
     public class Margin : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3651,9 +3850,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             bool converted = DataTypes.point.TryParse(i_value, out DataTypes.point o_intVal);
@@ -3669,6 +3869,7 @@ namespace csdot.Attributes.Types
     }
     public class Maxiter : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3685,9 +3886,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             bool converted = int.TryParse(i_value, out int o_intVal);
@@ -3703,6 +3905,7 @@ namespace csdot.Attributes.Types
     }
     public class MClimit : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3719,9 +3922,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 1.0;
@@ -3748,6 +3952,7 @@ namespace csdot.Attributes.Types
     }
     public class Mindist : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3764,9 +3969,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 1.0;
@@ -3804,6 +4010,7 @@ namespace csdot.Attributes.Types
     }
     public class MinLen : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3820,9 +4027,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public int GetDefault()
         {
             return 1;
@@ -3860,6 +4068,7 @@ namespace csdot.Attributes.Types
     }
     public class Mode : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3876,9 +4085,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "major";
@@ -3904,6 +4114,7 @@ namespace csdot.Attributes.Types
         
     public class Model : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3920,9 +4131,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "shortpath";
@@ -3948,6 +4160,7 @@ namespace csdot.Attributes.Types
         
     public class Mosek : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -3964,9 +4177,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return false;
@@ -3996,6 +4210,7 @@ namespace csdot.Attributes.Types
     }
     public class NewRank : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -4012,9 +4227,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return false;
@@ -4044,6 +4260,7 @@ namespace csdot.Attributes.Types
     }
     public class NodeSep : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -4060,9 +4277,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 0.25;
@@ -4100,6 +4318,7 @@ namespace csdot.Attributes.Types
     }
     public class NoJustify : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -4116,9 +4335,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return false;
@@ -4148,6 +4368,7 @@ namespace csdot.Attributes.Types
     }
     public class NoTranslate : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -4164,9 +4385,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return false;
@@ -4196,6 +4418,7 @@ namespace csdot.Attributes.Types
     }
     public class NSLimit : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -4212,9 +4435,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             bool converted = double.TryParse(i_value, out double o_intVal);
@@ -4230,6 +4454,7 @@ namespace csdot.Attributes.Types
     }
     public class NSLimit1 : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -4246,9 +4471,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             bool converted = double.TryParse(i_value, out double o_intVal);
@@ -4264,6 +4490,7 @@ namespace csdot.Attributes.Types
     }
     public class Ordering : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -4280,9 +4507,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -4308,10 +4536,11 @@ namespace csdot.Attributes.Types
         
     public class OutputOrder : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
-        private string m_value = "OutputMode.breadthfirst";
+        private string m_value = "breadthfirst";
         public string Value
         {
             get
@@ -4324,18 +4553,19 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
-            return "OutputMode.breadthfirst";
+            return "breadthfirst";
         }
 
         public void SetDefault()
         {
             Set = true;
-            Value = "OutputMode.breadthfirst";
+            Value = "breadthfirst";
         }
         
         public string TranslateToString()
@@ -4352,6 +4582,7 @@ namespace csdot.Attributes.Types
         
     public class Overlap : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -4368,9 +4599,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return true;
@@ -4400,6 +4632,7 @@ namespace csdot.Attributes.Types
     }
     public class OverlapScaling : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -4416,9 +4649,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return -4;
@@ -4445,6 +4679,7 @@ namespace csdot.Attributes.Types
     }
     public class OverlapShrink : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -4461,9 +4696,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return true;
@@ -4493,6 +4729,7 @@ namespace csdot.Attributes.Types
     }
     public class Pack : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -4509,9 +4746,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return false;
@@ -4541,10 +4779,11 @@ namespace csdot.Attributes.Types
     }
     public class PackMode : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
-        private string m_value = "PackModes.node";
+        private string m_value = "node";
         public string Value
         {
             get
@@ -4557,18 +4796,19 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
-            return "PackModes.node";
+            return "node";
         }
 
         public void SetDefault()
         {
             Set = true;
-            Value = "PackModes.node";
+            Value = "node";
         }
         
         public string TranslateToString()
@@ -4585,10 +4825,11 @@ namespace csdot.Attributes.Types
         
     public class PenColor : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
-        private string m_value = "DataTypes.Color.X11.black";
+        private string m_value = "black";
         public string Value
         {
             get
@@ -4601,18 +4842,19 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
-            return "DataTypes.Color.X11.black";
+            return "black";
         }
 
         public void SetDefault()
         {
             Set = true;
-            Value = "DataTypes.Color.X11.black";
+            Value = "black";
         }
         
         public string TranslateToString()
@@ -4629,6 +4871,7 @@ namespace csdot.Attributes.Types
         
     public class PenWidth : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -4645,9 +4888,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 1;
@@ -4685,6 +4929,7 @@ namespace csdot.Attributes.Types
     }
     public class Peripheries : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -4701,9 +4946,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public int GetDefault()
         {
             return 1;
@@ -4741,6 +4987,7 @@ namespace csdot.Attributes.Types
     }
     public class Pin : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -4757,9 +5004,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return false;
@@ -4789,6 +5037,7 @@ namespace csdot.Attributes.Types
     }
     public class Pos : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -4805,9 +5054,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             bool converted = DataTypes.point.TryParse(i_value, out DataTypes.point o_intVal);
@@ -4823,6 +5073,7 @@ namespace csdot.Attributes.Types
     }
     public class Quantum : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -4839,9 +5090,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 0.0;
@@ -4879,6 +5131,7 @@ namespace csdot.Attributes.Types
     }
     public class Rank : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -4895,9 +5148,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -4923,10 +5177,11 @@ namespace csdot.Attributes.Types
         
     public class RankDir : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
-        private string m_value = "Rankdir.TB";
+        private string m_value = "TB";
         public string Value
         {
             get
@@ -4939,18 +5194,19 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
-            return "Rankdir.TB";
+            return "TB";
         }
 
         public void SetDefault()
         {
             Set = true;
-            Value = "Rankdir.TB";
+            Value = "TB";
         }
         
         public string TranslateToString()
@@ -4965,8 +5221,78 @@ namespace csdot.Attributes.Types
         #endregion
     }
         
+    public class RankSep : IAttribute
+    {
+    
+        #region Properties
+
+        public bool Set { get; set; } = false;
+        private List<double> m_value = new List<double>();
+        public double Value
+        {
+            get
+            {
+                return m_value[0];
+            }
+            set
+            {
+                Set = true;
+                m_value.Clear();
+                m_value.Add(value);
+            }
+        }
+
+        public List<double> ValueList
+        {
+            get
+            {
+                return m_value;
+            }
+            set
+            {
+                Set = true;
+                m_value = value;
+            }
+        }
+
+        #endregion  
+        
+        #region Member Functions
+    
+        public double GetMinimum()
+        {
+            return 0.02;
+        }
+
+        public void SetMinimum()
+        {
+            Set = true;
+            Value = 0.02;
+        }
+        
+        public void TranslateToValue(string i_value)
+        {
+            bool converted = double.TryParse(i_value, out double o_intVal);
+            if(converted)
+                Value = o_intVal;
+        } 
+            
+        public string TranslateToString()
+        {
+    	    var valueBuilder = "";
+            if(ValueList.Count == 0)
+        	    return valueBuilder;
+            int i;
+            for(i = 0; i <= ValueList.Count-2; i++)
+        	    valueBuilder = valueBuilder + ValueList[i].ToString() + ", ";
+            valueBuilder = valueBuilder + ValueList[i];
+            return "ranksep = \"" +  valueBuilder +  "\"";
+        }
+        #endregion
+    }
     public class Rects : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -4983,9 +5309,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             bool converted = DataTypes.Rect.TryParse(i_value, out DataTypes.Rect o_intVal);
@@ -5001,6 +5328,7 @@ namespace csdot.Attributes.Types
     }
     public class Regular : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -5017,9 +5345,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return false;
@@ -5049,6 +5378,7 @@ namespace csdot.Attributes.Types
     }
     public class Remincross : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -5065,9 +5395,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return true;
@@ -5097,6 +5428,7 @@ namespace csdot.Attributes.Types
     }
     public class RepulsiveForce : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -5113,9 +5445,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 1.0;
@@ -5153,6 +5486,7 @@ namespace csdot.Attributes.Types
     }
     public class Resolution : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -5169,9 +5503,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             bool converted = double.TryParse(i_value, out double o_intVal);
@@ -5187,6 +5522,7 @@ namespace csdot.Attributes.Types
     }
     public class Root : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -5203,9 +5539,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
@@ -5224,6 +5561,7 @@ namespace csdot.Attributes.Types
     }
     public class Rotate : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -5240,9 +5578,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public int GetDefault()
         {
             return 0;
@@ -5269,6 +5608,7 @@ namespace csdot.Attributes.Types
     }
     public class Rotation : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -5285,9 +5625,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 0;
@@ -5314,6 +5655,7 @@ namespace csdot.Attributes.Types
     }
     public class SameHead : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -5330,9 +5672,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -5358,6 +5701,7 @@ namespace csdot.Attributes.Types
         
     public class SameTail : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -5374,9 +5718,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -5402,6 +5747,7 @@ namespace csdot.Attributes.Types
         
     public class SamplePoints : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -5418,9 +5764,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public int GetDefault()
         {
             return 8;
@@ -5447,6 +5794,7 @@ namespace csdot.Attributes.Types
     }
     public class Scale : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -5463,9 +5811,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             bool converted = DataTypes.point.TryParse(i_value, out DataTypes.point o_intVal);
@@ -5481,6 +5830,7 @@ namespace csdot.Attributes.Types
     }
     public class SearchSize : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -5497,9 +5847,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public int GetDefault()
         {
             return 30;
@@ -5526,10 +5877,11 @@ namespace csdot.Attributes.Types
     }
     public class Shape : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
-        private string m_value = "DataTypes.ShapeTypes.ellipse";
+        private string m_value = "ellipse";
         public string Value
         {
             get
@@ -5542,18 +5894,19 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
-            return "DataTypes.ShapeTypes.ellipse";
+            return "ellipse";
         }
 
         public void SetDefault()
         {
             Set = true;
-            Value = "DataTypes.ShapeTypes.ellipse";
+            Value = "ellipse";
         }
         
         public string TranslateToString()
@@ -5570,6 +5923,7 @@ namespace csdot.Attributes.Types
         
     public class ShapeFile : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -5586,9 +5940,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -5614,6 +5969,7 @@ namespace csdot.Attributes.Types
         
     public class ShowBoxes : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -5630,9 +5986,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public int GetDefault()
         {
             return 0;
@@ -5670,6 +6027,7 @@ namespace csdot.Attributes.Types
     }
     public class Sides : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -5686,9 +6044,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public int GetDefault()
         {
             return 4;
@@ -5726,6 +6085,7 @@ namespace csdot.Attributes.Types
     }
     public class Skew : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -5742,9 +6102,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 0.0;
@@ -5782,10 +6143,11 @@ namespace csdot.Attributes.Types
     }
     public class Smoothing : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
-        private string m_value = "DataTypes.smoothTypes.none";
+        private string m_value = "none";
         public string Value
         {
             get
@@ -5798,18 +6160,19 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
-            return "DataTypes.smoothTypes.none";
+            return "none";
         }
 
         public void SetDefault()
         {
             Set = true;
-            Value = "DataTypes.smoothTypes.none";
+            Value = "none";
         }
         
         public string TranslateToString()
@@ -5826,6 +6189,7 @@ namespace csdot.Attributes.Types
         
     public class Sortv : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -5842,9 +6206,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public int GetDefault()
         {
             return 0;
@@ -5882,6 +6247,7 @@ namespace csdot.Attributes.Types
     }
     public class SPLines : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -5898,9 +6264,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
@@ -5919,6 +6286,7 @@ namespace csdot.Attributes.Types
     }
     public class StyleSheet : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -5935,9 +6303,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -5963,6 +6332,7 @@ namespace csdot.Attributes.Types
         
     public class TailLP : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -5979,9 +6349,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             bool converted = DataTypes.point.TryParse(i_value, out DataTypes.point o_intVal);
@@ -5997,6 +6368,7 @@ namespace csdot.Attributes.Types
     }
     public class TailClip : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -6013,9 +6385,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public bool GetDefault()
         {
             return true;
@@ -6045,6 +6418,7 @@ namespace csdot.Attributes.Types
     }
     public class Tailhref : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -6061,9 +6435,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -6089,6 +6464,7 @@ namespace csdot.Attributes.Types
         
     public class TailLabel : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -6105,9 +6481,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -6133,6 +6510,7 @@ namespace csdot.Attributes.Types
         
     public class TailTarget : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -6149,9 +6527,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string TranslateToString()
         {
             return "tailtarget = \"" +  Value +  "\"";
@@ -6166,6 +6545,7 @@ namespace csdot.Attributes.Types
         
     public class TailToolTip : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -6182,9 +6562,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -6210,6 +6591,7 @@ namespace csdot.Attributes.Types
         
     public class TailURL : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -6226,9 +6608,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -6254,6 +6637,7 @@ namespace csdot.Attributes.Types
         
     public class Target : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -6270,9 +6654,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string TranslateToString()
         {
             return "Target = \"" +  Value +  "\"";
@@ -6287,6 +6672,7 @@ namespace csdot.Attributes.Types
         
     public class ToolTip : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -6303,9 +6689,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -6331,6 +6718,7 @@ namespace csdot.Attributes.Types
         
     public class TrueColor : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -6347,9 +6735,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             if (i_value.ToLower() == "yes" || i_value.ToLower() == "true" || i_value == "0")
@@ -6368,6 +6757,7 @@ namespace csdot.Attributes.Types
     }
     public class url : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -6384,9 +6774,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string TranslateToString()
         {
             return "URL = \"" +  Value +  "\"";
@@ -6401,6 +6792,7 @@ namespace csdot.Attributes.Types
         
     public class VoroMargin : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -6417,9 +6809,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 0.05;
@@ -6457,6 +6850,7 @@ namespace csdot.Attributes.Types
     }
     public class Weight : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -6473,9 +6867,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 1;
@@ -6502,6 +6897,7 @@ namespace csdot.Attributes.Types
     }
     public class Width : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -6518,9 +6914,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 0.75;
@@ -6558,6 +6955,7 @@ namespace csdot.Attributes.Types
     }
     public class XDotVersion : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -6574,9 +6972,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string TranslateToString()
         {
             return "xdotversion = \"" +  Value +  "\"";
@@ -6591,6 +6990,7 @@ namespace csdot.Attributes.Types
         
     public class XLabel : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -6607,9 +7007,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public string GetDefault()
         {
             return "";
@@ -6635,6 +7036,7 @@ namespace csdot.Attributes.Types
         
     public class XLP : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -6651,9 +7053,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public void TranslateToValue(string i_value)
         {
             bool converted = DataTypes.point.TryParse(i_value, out DataTypes.point o_intVal);
@@ -6669,6 +7072,7 @@ namespace csdot.Attributes.Types
     }
     public class Z : IAttribute
     {
+    
         #region Properties
 
         public bool Set { get; set; } = false;
@@ -6685,9 +7089,10 @@ namespace csdot.Attributes.Types
                 m_value = value;
             }
         }
-        #endregion  
-
+        #endregion
+        
         #region Member Functions
+    
         public double GetDefault()
         {
             return 0;

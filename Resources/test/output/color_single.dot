@@ -1,0 +1,4 @@
+graph 
+{
+	ethernet [ color = "red", label = "ethernet", shape = "circle" ]
+}
