@@ -8,5 +8,7 @@ namespace csdot.Attributes
 	{
 		public bool Set { get; set; }
 		public string TranslateToString();
+
+		public void TranslateToValue(string i_value);
 	}
 }

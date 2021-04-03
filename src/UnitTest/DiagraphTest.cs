@@ -82,7 +82,7 @@ namespace UnitTest
 			graph.AddElement(edge);
 
 			DotDocument ddoc = new DotDocument();
-			ddoc.SaveToFile(graph, "C:\\git\\csdot\\Resources\\test\\output\\full_digraph.dot");
+			ddoc.SaveToFile(graph, "..\\..\\..\\..\\..\\Resources\\test\\output\\full_digraph.dot");
 			Assert.Pass();
 		}
 

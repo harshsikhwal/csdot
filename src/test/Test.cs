@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using csdot.Attributes.DataTypes;
+using csdot;
 
 namespace csdot
 {
@@ -91,6 +92,12 @@ namespace csdot
 			Console.WriteLine("Transition graph:\n");
 
 			Console.WriteLine(str);
+
+			//DotDocument docObj = new DotDocument();
+			//Graph loadedGraph = docObj.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\unknown\\dot.dot");
+			//str = loadedGraph.ElementToString();
+			//Console.WriteLine("Loaded graph:\n");
+			//Console.WriteLine(str);
 		}
 	}
 

@@ -71,7 +71,7 @@ namespace UnitTest
 			graph.AddElement(cluster_1);
 
 			DotDocument ddoc = new DotDocument();
-			ddoc.SaveToFile(graph, "C:\\git\\csdot\\Resources\\test\\output\\clusters_1.dot");
+			ddoc.SaveToFile(graph, "..\\..\\..\\..\\..\\Resources\\test\\output\\clusters_1.dot");
 			Assert.Pass();
 		}
 
@@ -150,7 +150,7 @@ namespace UnitTest
 			graph.AddElement(edge);
 
 			DotDocument ddoc = new DotDocument();
-			ddoc.SaveToFile(graph, "C:\\git\\csdot\\Resources\\test\\output\\clusters_2.dot");
+			ddoc.SaveToFile(graph, "..\\..\\..\\..\\..\\Resources\\test\\output\\clusters_2.dot");
 			Assert.Pass();
 		}
 	}

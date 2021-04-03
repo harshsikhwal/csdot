@@ -96,7 +96,7 @@ namespace UnitTest
 			graph.AddElement(edge);
 
 			DotDocument ddoc = new DotDocument();
-			ddoc.SaveToFile(graph, "C:\\git\\csdot\\Resources\\test\\output\\edge_subgraph.dot");
+			ddoc.SaveToFile(graph, "..\\..\\..\\..\\..\\Resources\\test\\output\\edge_subgraph.dot");
 			Assert.Pass();
 		}
 	}

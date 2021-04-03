@@ -93,7 +93,7 @@ namespace UnitTest
 			graph.AddElement(edge);
 
 			DotDocument ddoc = new DotDocument();
-			ddoc.SaveToFile(graph, "C:\\git\\csdot\\Resources\\test\\output\\showing_a_path.dot");
+			ddoc.SaveToFile(graph, "..\\..\\..\\..\\..\\Resources\\test\\output\\showing_a_path.dot");
 			Assert.Pass();
 
 			Assert.Pass();

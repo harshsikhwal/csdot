@@ -32,12 +32,12 @@ namespace UnitTest
 			graph.AddElement(ipv4);
 
 			DotDocument ddoc = new DotDocument();
-			ddoc.SaveToFile(graph, "C:\\git\\csdot\\Resources\\test\\output\\set_and_unset1.dot");
+			ddoc.SaveToFile(graph, "..\\..\\..\\..\\..\\Resources\\test\\output\\set_and_unset1.dot");
 
 			Node element = graph.GetElement(ipv4.uid) as Node;
 			element.Attribute.color.Set = false;
 
-			ddoc.SaveToFile(graph, "C:\\git\\csdot\\Resources\\test\\output\\set_and_unset2.dot");
+			ddoc.SaveToFile(graph, "..\\..\\..\\..\\..\\Resources\\test\\output\\set_and_unset2.dot");
 
 			Assert.Pass();
 		}
@@ -55,18 +55,18 @@ namespace UnitTest
 			graph.AddElement(ethernet);
 
 			DotDocument ddoc = new DotDocument();
-			ddoc.SaveToFile(graph, "C:\\git\\csdot\\Resources\\test\\output\\color_single.dot");
+			ddoc.SaveToFile(graph, "..\\..\\..\\..\\..\\Resources\\test\\output\\color_single.dot");
 
 			ethernet = graph.GetElement(ethernet.uid) as Node;
 			// ethernet.Attribute.color.ValueList = new List<string>() { "green", "brown", "red", "black" };
 			ddoc = new DotDocument();
-			ddoc.SaveToFile(graph, "C:\\git\\csdot\\Resources\\test\\output\\color_multiple.dot");
+			ddoc.SaveToFile(graph, "..\\..\\..\\..\\..\\Resources\\test\\output\\color_multiple.dot");
 
 
 			ethernet = graph.GetElement(ethernet.uid) as Node;
 			ethernet.Attribute.color.Value = "brown";
 			ddoc = new DotDocument();
-			ddoc.SaveToFile(graph, "C:\\git\\csdot\\Resources\\test\\output\\color_multiple_replace_single");
+			ddoc.SaveToFile(graph, "..\\..\\..\\..\\..\\Resources\\test\\output\\color_multiple_replace_single");
 
 
 		}
