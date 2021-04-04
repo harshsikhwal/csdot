@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
 using System.IO;
+using csdot.Attributes.DataTypes;
 
 namespace csdot
 {
@@ -14,7 +15,7 @@ namespace csdot
 
         #region LoadDigraph
 
-        
+
         //public Graph LoadDigraph(string i_fileLocation)
         //{
         //    #region NewImplementaion
@@ -23,7 +24,7 @@ namespace csdot
 
         //    if (!File.Exists(i_fileLocation))
         //        throw new FileNotFoundException($"The localtion {i_fileLocation} is not accessible");
-            
+
         //    string dotFile = File.ReadAllText(i_fileLocation, Encoding.UTF8);
         //    dotFile = GetRefactoredContent(dotFile);
         //    string[] dotTokens = dotFile.Split(' ');
@@ -33,10 +34,10 @@ namespace csdot
         //    if (!dotTokens.Contains("graph") && !dotTokens.Contains("digraph"))
         //        throw new Exception("graph/digraph keyword should be present for a valid dot file");
 
-        //    for (int i =0; i < dotTokens.Length; i++)
+        //    for (int i = 0; i < dotTokens.Length; i++)
         //    {
         //        // forming Graph
-        //        if(dotTokens[i] == "graph" || dotTokens[i] == "digraph")
+        //        if (dotTokens[i] == "graph" || dotTokens[i] == "digraph")
         //        {
         //            bool strict = false;
         //            string name = "Default";
@@ -51,11 +52,28 @@ namespace csdot
         //        }
 
         //        //forming Nodes
-        //        if (i+1 < dotTokens.Length && dotTokens[i+1] == "[")
+        //        if (i + 1 < dotTokens.Length && dotTokens[i + 1] == "[")
         //        {
         //            List<string> nodeProperties = GetProperties(dotTokens, i + 1, out int endIndex);
         //            Node newNode = GetNode(dotTokens[i], nodeProperties);
         //            loadedGraph.AddElement(newNode);
+        //            i = endIndex;
+        //        }
+
+        //        //forming ages
+        //        if (dotTokens[i] == "->" || dotTokens[i] == "--")
+        //        {
+        //            List<Transition> transitions = GetTransitions(dotTokens, i, loadedGraph, out int endIndex);
+        //            List<string> properties = null;
+        //            int index = endIndex;
+        //            if (dotTokens[index + 1] == "[")
+        //            {
+        //                properties = GetProperties(dotTokens, index+1, out int outIndex);
+        //                index = outIndex;
+        //            }
+        //            Edge newEdge = GetEdge(transitions, properties);
+        //            loadedGraph.AddElement(newEdge);
+        //            i = index;
         //        }
 
 
@@ -327,7 +345,7 @@ namespace csdot
         #endregion  //Methods
 
         #region Utility Methods
-        
+
         //private string GetRefactoredContent(string i_dotFile)
         //{
         //    i_dotFile = i_dotFile.Replace(";", " ; ");
@@ -357,21 +375,37 @@ namespace csdot
         //private Node GetNode(string i_name, List<string> i_properties)
         //{
         //    Node newNode = new Node(i_name);
-        //    for (int i = 0; i <i_properties.Count; i+=2)
+        //    for (int i = 0; i < i_properties.Count; i += 2)
         //    {
         //        if (newNode.attributeMap.TryGetValue(i_properties[i], out var attribute))
         //            attribute.TranslateToValue(i_properties[i + 1]);
         //        else
-        //            throw new Exception($"{i_properties[i]} attribute is not valid or not supported");
+        //            throw new Exception($"{i_properties[i]} attribute is not valid or not supported for Node");
         //    }
         //    return newNode;
+        //}
+
+        //private Edge GetEdge(List<Transition> i_transitions, List<string> i_properties)
+        //{
+        //    Edge newEdge = new Edge(i_transitions); 
+        //    if (null != i_properties)
+        //    {
+        //        for (int i = 0; i < i_properties.Count; i += 2)
+        //        {
+        //            if (newEdge.attributeMap.TryGetValue(i_properties[i], out var attribute))
+        //                attribute.TranslateToValue(i_properties[i + 1]);
+        //            else
+        //                throw new Exception($"{i_properties[i]} attribute is not valid or not supported for Edge");
+        //        }
+        //    }
+        //    return newEdge;
         //}
 
         //private List<string> GetProperties(string[] i_dotTokens, int i_startIndex, out int o_endIndex)
         //{
         //    List<string> properties = new List<string>();
         //    int i = i_startIndex;
-        //    while(i_dotTokens[i] != "]")
+        //    while (i_dotTokens[i] != "]")
         //    {
         //        if (i_dotTokens[i] == "=")
         //        {
@@ -382,6 +416,54 @@ namespace csdot
         //    }
         //    o_endIndex = i;
         //    return properties;
+        //}
+
+        //private List<Transition> GetTransitions(string[] i_dotTokens, int i_stratIndex, Graph i_graph, out int o_endIndex)
+        //{
+        //    List<Transition> transtions = new List<Transition>();
+        //    int i = i_stratIndex - 1;
+        //    while(true)
+        //    {
+        //        if (i + 1 >= i_dotTokens.Length)
+        //            break;
+
+        //        // checking if there is a continuos chain of edges
+        //        if (i_dotTokens[i + 1] == "->" || i_dotTokens[i + 1] == "--")
+        //        {
+        //            Node node;
+        //            string edgeType = "";
+        //            if (i_dotTokens[i + 1] == "->")
+        //                edgeType = EdgeOp.directed;
+        //            if (i_dotTokens[i + 1] == "--")
+        //                edgeType = EdgeOp.undirected;
+        //            node = i_graph.GetElementByName(i_dotTokens[i]) as Node;
+        //            if (null == node)
+        //            {
+        //                node = new Node(i_dotTokens[i]);
+        //            }
+        //            transtions.Add(new Transition(node, edgeType));
+        //            i += 2;
+        //        }
+        //        else if (i_dotTokens [i + 1] == "{")
+        //        {
+        //            // will be a subgraph not mplemented till yet
+        //            throw new NotImplementedException("subgraphs are not implemented");
+        //        }
+        //        else
+        //        {
+        //            // this means this the last node of the edge 
+        //            Node node;
+        //            node = i_graph.GetElementByName(i_dotTokens[i]) as Node;
+        //            if (null == node)
+        //            {
+        //                node = new Node(i_dotTokens[i]);
+        //            }
+        //            transtions.Add(new Transition(node, EdgeOp.unspecified));
+        //            break;
+        //        }
+        //    }
+        //    o_endIndex = i;
+        //    return transtions;
         //}
 
 

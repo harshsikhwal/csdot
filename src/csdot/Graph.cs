@@ -33,12 +33,12 @@ namespace csdot
 
 		public void AddElement(IDot i_dot)
 		{
-			m_elements.Add(i_dot.uid, i_dot);	
+			m_elements.Add(i_dot.uid, i_dot);
 		}
 
-		public void AddElements(params IDot [] i_dot)
+		public void AddElements(params IDot[] i_dot)
 		{
-			foreach(var e in i_dot)
+			foreach (var e in i_dot)
 			{
 				m_elements.Add(e.uid, e);
 			}
@@ -54,6 +54,23 @@ namespace csdot
 			IDot dot = m_elements[i_uid];
 			return dot;
 		}
+
+		//public IDot GetElementByName(string i_name, string i_elementType = "node")
+		//{
+		//	foreach(var element in m_elements)
+  //          {
+		//		if (element.Value.ID == i_name)
+		//		{ 
+		//			if(i_elementType == "node" && null != (element.Value as Node))
+		//				return element.Value as Node;
+		//			if (i_elementType == "edge" && null != (element.Value as Edge))
+		//				return element.Value as Edge;
+		//		}
+  //          }
+			
+		//	// it means we did not find any element with the specific name 
+		//	return null;
+		//}
 
 		public string ElementToString()
 		{

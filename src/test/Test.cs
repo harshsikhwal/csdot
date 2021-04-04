@@ -93,12 +93,12 @@ namespace csdot
 
 			Console.WriteLine(str);
 
-			//DotDocument docObj = new DotDocument();
-			//Graph loadedGraph = docObj.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\unknown\\dot.dot");
-			//str = loadedGraph.ElementToString();
-			//Console.WriteLine("Loaded graph:\n");
-			//Console.WriteLine(str);
-		}
+            //DotDocument docObj = new DotDocument();
+            //Graph loadedGraph = docObj.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\unknown\\dot.dot");
+            //str = loadedGraph.ElementToString();
+            //Console.WriteLine("Loaded graph:\n");
+            //Console.WriteLine(str);
+        }
 	}
 
 	public class _class

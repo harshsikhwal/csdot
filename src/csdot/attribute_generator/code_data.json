@@ -1140,7 +1140,7 @@
             "default": "ellipse",
             "minimum": "nil",
             "type": "string",
-            "use": "N",
+            "use": "NE",
             "alternate_type": ""
         },
         {

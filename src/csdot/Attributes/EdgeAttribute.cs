@@ -55,6 +55,7 @@ namespace csdot.Attributes
         public Pos pos = new Pos();
         public SameHead samehead = new SameHead();
         public SameTail sametail = new SameTail();
+        public Shape shape = new Shape();
         public ShowBoxes showboxes = new ShowBoxes();
         public TailLP tail_lp = new TailLP();
         public TailClip tailclip = new TailClip();
@@ -264,6 +265,10 @@ namespace csdot.Attributes
             if (sametail.Set)
             {
                 attribute = ("" == attribute) ? attribute + " " + sametail.TranslateToString() : attribute + ", " + sametail.TranslateToString();
+            }
+            if (shape.Set)
+            {
+                attribute = ("" == attribute) ? attribute + " " + shape.TranslateToString() : attribute + ", " + shape.TranslateToString();
             }
             if (showboxes.Set)
             {
