@@ -16,291 +16,248 @@ namespace csdot
         #region LoadDigraph
 
 
-        //public Graph LoadDigraph(string i_fileLocation)
-        //{
-        //    #region NewImplementaion
+        public Graph LoadDigraph(string i_fileLocation)
+        {
+            #region NewImplementaion
 
-        //    Graph loadedGraph = null;
+            Graph loadedGraph = null;
 
-        //    if (!File.Exists(i_fileLocation))
-        //        throw new FileNotFoundException($"The localtion {i_fileLocation} is not accessible");
+            if (!File.Exists(i_fileLocation))
+                throw new FileNotFoundException($"The localtion {i_fileLocation} is not accessible");
 
-        //    string dotFile = File.ReadAllText(i_fileLocation, Encoding.UTF8);
-        //    dotFile = GetRefactoredContent(dotFile);
-        //    string[] dotTokens = dotFile.Split(' ');
-        //    dotTokens = dotTokens.Where(s => !string.IsNullOrEmpty(s)).ToArray();
-        //    dotTokens = dotTokens.Where(s => !string.IsNullOrWhiteSpace(s)).ToArray();
+            string dotFile = File.ReadAllText(i_fileLocation, Encoding.UTF8);
+            dotFile = GetRefactoredContent(dotFile);
+            string[] dotTokens = dotFile.Split(' ');
+            dotTokens = dotTokens.Where(s => !string.IsNullOrEmpty(s)).ToArray();
+            dotTokens = dotTokens.Where(s => !string.IsNullOrWhiteSpace(s)).ToArray();
 
-        //    if (!dotTokens.Contains("graph") && !dotTokens.Contains("digraph"))
-        //        throw new Exception("graph/digraph keyword should be present for a valid dot file");
+            if (!dotTokens.Contains("graph") && !dotTokens.Contains("digraph"))
+                throw new Exception("graph/digraph keyword should be present for a valid dot file");
 
-        //    for (int i = 0; i < dotTokens.Length; i++)
-        //    {
-        //        // forming Graph
-        //        if (dotTokens[i] == "graph" || dotTokens[i] == "digraph")
-        //        {
-        //            bool strict = false;
-        //            string name = "Default";
-        //            if (i != 0 && dotTokens[i - 1] == "strict")
-        //                strict = true;
-        //            if (dotTokens[i + 1] != "{")
-        //            {
-        //                name = dotTokens[i + 1];
-        //                i += 1;
-        //            }
-        //            loadedGraph = GetGraph(strict, name);
-        //        }
+            loadedGraph = ParseGraph(loadedGraph, dotTokens) as Graph;
 
-        //        //forming Nodes
-        //        if (i + 1 < dotTokens.Length && dotTokens[i + 1] == "[")
-        //        {
-        //            List<string> nodeProperties = GetProperties(dotTokens, i + 1, out int endIndex);
-        //            Node newNode = GetNode(dotTokens[i], nodeProperties);
-        //            loadedGraph.AddElement(newNode);
-        //            i = endIndex;
-        //        }
+            return loadedGraph;
 
-        //        //forming ages
-        //        if (dotTokens[i] == "->" || dotTokens[i] == "--")
-        //        {
-        //            List<Transition> transitions = GetTransitions(dotTokens, i, loadedGraph, out int endIndex);
-        //            List<string> properties = null;
-        //            int index = endIndex;
-        //            if (dotTokens[index + 1] == "[")
-        //            {
-        //                properties = GetProperties(dotTokens, index+1, out int outIndex);
-        //                index = outIndex;
-        //            }
-        //            Edge newEdge = GetEdge(transitions, properties);
-        //            loadedGraph.AddElement(newEdge);
-        //            i = index;
-        //        }
+            #endregion
 
+            #region OldImplementattion
+            /*
+            if (!File.Exists(i_fileLocation))
+            {
+                //File does not exist
+                return -1;
+            }
+            CultureInfo ci;
+            ci = new CultureInfo("en-US");
+            string dotFile = File.ReadAllText(i_fileLocation, Encoding.UTF8);
+            //2nd Pass, need to implement 1st Pass
+            dotFile = dotFile.Replace(";", " ; ");
+            dotFile = dotFile.Replace(",", " , ");
+            dotFile = dotFile.Replace("=", " ");
+            dotFile = dotFile.Replace("\"", " ");
+            dotFile = dotFile.Replace("[", " [ ");
+            dotFile = dotFile.Replace("]", " ] ");
+            dotFile = dotFile.Replace("(", " ");
+            dotFile = dotFile.Replace(")", " ");
+            dotFile = dotFile.Replace("\n", " \n ");
+            dotFile = dotFile.Replace("{", " { ");
+            dotFile = dotFile.Replace("}", " } ");
+            string[] dotFileSplitTemp = dotFile.Split(' ');
+            string[] dotFileSplit = new string[dotFileSplitTemp.Length];
+            int j = 0;
+            for (int i = 0; i < dotFileSplitTemp.Length; i++)
+            {
+                if (dotFileSplitTemp[i].Length >= 1)
+                {
+                    dotFileSplit[j++] = dotFileSplitTemp[i];
+                }
+            }
+            var length = j;
+            for (int i = 0; i < length; i++)
+            {
+                if (dotFileSplit[i].Equals("}"))
+                {
+                    break;
+                }
+                else if (dotFileSplit[i].Equals("digraph"))
+                {
+                    this.m_name = dotFileSplit[i + 1];
+                    i++;
+                }
+                else if (dotFileSplit[i].Equals("{"))
+                {
+                    continue;
+                }
+                else if (dotFileSplit[i].Equals("["))
+                {
+                    DotNode n = new DotNode(dotFileSplit[i - 1]);
+                    i++;
+                    DotAttribute a = new DotAttribute();
+                    List<string> dotLabelList = new List<string>();
+                    string tempstr = "";
+                    while (i != length)
+                    {
+                        if (dotFileSplit[i].Equals("]"))
+                        {
+                            break;
+                        }
+                        else if (dotFileSplit[i].Equals("\n") || dotFileSplit[i].Equals(","))
+                        {
+                            //i++;
+                        }
+                        else if (dotFileSplit[i].Equals("shape"))
+                        {
+                            a.Shape = dotFileSplit[i + 1];
+                            i++;
+                        }
+                        else if (dotFileSplit[i].Equals("color"))
+                        {
+                            a.Color = dotFileSplit[i + 1];
+                            i++;
+                        }
+                        else if (dotFileSplit[i].Equals("label"))
+                        {
+                            i++;
+                            tempstr = "";
+                            while (true)
+                            {
+                                if (dotFileSplit[i].Equals("]"))
+                                {
+                                    i--;
+                                    break;
+                                }
+                                else if (dotFileSplit[i].Equals(","))
+                                {
+                                    if ((dotFileSplit[i + 1].Equals("color") || dotFileSplit[i + 1].Equals("shape")))
+                                    {
+                                        break;
+                                    }
+                                }
+                                else if (dotFileSplit[i].Equals(n.Name))
+                                {
+                                    a.Label = dotFileSplit[i];
+                                }
+                                else if (dotFileSplit[i].Equals("\n"))
+                                {
+                                    //do nothing
+                                }
+                                else if (dotFileSplit[i].Equals(";"))
+                                {
+                                    a.AddLabelAsInLabelList(tempstr);
+                                    tempstr = "";
+                                }
+                                else
+                                {
+                                    if (tempstr == "")
+                                    {
+                                        tempstr = dotFileSplit[i];
+                                    }
+                                    else
+                                    {
+                                        tempstr += dotFileSplit[i];
+                                    }
 
-        //    }
+                                    //dotLabelList.Add(dotFileSplit[i]);
+                                }
+                                i++;
+                            }
+                            if (tempstr != "")
+                            {
+                                a.AddLabelAsInLabelList(tempstr);
+                            }
+                        }
+                        i++;
+                    }
+                    n.SetAttribute(a);
+                    this.AddNode(n);
+                }
 
-        //    return loadedGraph;
-
-        //    #endregion
-
-        //    #region OldImplementattion
-        //    /*
-        //    if (!File.Exists(i_fileLocation))
-        //    {
-        //        //File does not exist
-        //        return -1;
-        //    }
-        //    CultureInfo ci;
-        //    ci = new CultureInfo("en-US");
-        //    string dotFile = File.ReadAllText(i_fileLocation, Encoding.UTF8);
-        //    //2nd Pass, need to implement 1st Pass
-        //    dotFile = dotFile.Replace(";", " ; ");
-        //    dotFile = dotFile.Replace(",", " , ");
-        //    dotFile = dotFile.Replace("=", " ");
-        //    dotFile = dotFile.Replace("\"", " ");
-        //    dotFile = dotFile.Replace("[", " [ ");
-        //    dotFile = dotFile.Replace("]", " ] ");
-        //    dotFile = dotFile.Replace("(", " ");
-        //    dotFile = dotFile.Replace(")", " ");
-        //    dotFile = dotFile.Replace("\n", " \n ");
-        //    dotFile = dotFile.Replace("{", " { ");
-        //    dotFile = dotFile.Replace("}", " } ");
-        //    string[] dotFileSplitTemp = dotFile.Split(' ');
-        //    string[] dotFileSplit = new string[dotFileSplitTemp.Length];
-        //    int j = 0;
-        //    for (int i = 0; i < dotFileSplitTemp.Length; i++)
-        //    {
-        //        if (dotFileSplitTemp[i].Length >= 1)
-        //        {
-        //            dotFileSplit[j++] = dotFileSplitTemp[i];
-        //        }
-        //    }
-        //    var length = j;
-        //    for (int i = 0; i < length; i++)
-        //    {
-        //        if (dotFileSplit[i].Equals("}"))
-        //        {
-        //            break;
-        //        }
-        //        else if (dotFileSplit[i].Equals("digraph"))
-        //        {
-        //            this.m_name = dotFileSplit[i + 1];
-        //            i++;
-        //        }
-        //        else if (dotFileSplit[i].Equals("{"))
-        //        {
-        //            continue;
-        //        }
-        //        else if (dotFileSplit[i].Equals("["))
-        //        {
-        //            DotNode n = new DotNode(dotFileSplit[i - 1]);
-        //            i++;
-        //            DotAttribute a = new DotAttribute();
-        //            List<string> dotLabelList = new List<string>();
-        //            string tempstr = "";
-        //            while (i != length)
-        //            {
-        //                if (dotFileSplit[i].Equals("]"))
-        //                {
-        //                    break;
-        //                }
-        //                else if (dotFileSplit[i].Equals("\n") || dotFileSplit[i].Equals(","))
-        //                {
-        //                    //i++;
-        //                }
-        //                else if (dotFileSplit[i].Equals("shape"))
-        //                {
-        //                    a.Shape = dotFileSplit[i + 1];
-        //                    i++;
-        //                }
-        //                else if (dotFileSplit[i].Equals("color"))
-        //                {
-        //                    a.Color = dotFileSplit[i + 1];
-        //                    i++;
-        //                }
-        //                else if (dotFileSplit[i].Equals("label"))
-        //                {
-        //                    i++;
-        //                    tempstr = "";
-        //                    while (true)
-        //                    {
-        //                        if (dotFileSplit[i].Equals("]"))
-        //                        {
-        //                            i--;
-        //                            break;
-        //                        }
-        //                        else if (dotFileSplit[i].Equals(","))
-        //                        {
-        //                            if ((dotFileSplit[i + 1].Equals("color") || dotFileSplit[i + 1].Equals("shape")))
-        //                            {
-        //                                break;
-        //                            }
-        //                        }
-        //                        else if (dotFileSplit[i].Equals(n.Name))
-        //                        {
-        //                            a.Label = dotFileSplit[i];
-        //                        }
-        //                        else if (dotFileSplit[i].Equals("\n"))
-        //                        {
-        //                            //do nothing
-        //                        }
-        //                        else if (dotFileSplit[i].Equals(";"))
-        //                        {
-        //                            a.AddLabelAsInLabelList(tempstr);
-        //                            tempstr = "";
-        //                        }
-        //                        else
-        //                        {
-        //                            if (tempstr == "")
-        //                            {
-        //                                tempstr = dotFileSplit[i];
-        //                            }
-        //                            else
-        //                            {
-        //                                tempstr += dotFileSplit[i];
-        //                            }
-
-        //                            //dotLabelList.Add(dotFileSplit[i]);
-        //                        }
-        //                        i++;
-        //                    }
-        //                    if (tempstr != "")
-        //                    {
-        //                        a.AddLabelAsInLabelList(tempstr);
-        //                    }
-        //                }
-        //                i++;
-        //            }
-        //            n.SetAttribute(a);
-        //            this.AddNode(n);
-        //        }
-
-        //        else if (dotFileSplit[i].Equals("->"))
-        //        {
-        //            DotTransition t = new DotTransition(dotFileSplit[i - 1], dotFileSplit[i + 1]);
-        //            i += 2;
-        //            if (dotFileSplit[i].Equals("["))
-        //            {
-        //                i++;
-        //                DotAttribute a = new DotAttribute();
-        //                List<string> dotLabelList = new List<string>();
-        //                string tempstr = "";
-        //                while (i != length)
-        //                {
-        //                    if (dotFileSplit[i].Equals("]"))
-        //                    {
-        //                        i--;
-        //                        break;
-        //                    }
-        //                    if (dotFileSplit[i].Equals("shape"))
-        //                    {
-        //                        a.Shape = dotFileSplit[i + 1];
-        //                        i += 2;
-        //                    }
-        //                    if (dotFileSplit[i].Equals("color"))
-        //                    {
-        //                        a.Color = dotFileSplit[i + 1];
-        //                        i += 2;
-        //                    }
-        //                    else if (dotFileSplit[i].Equals("label"))
-        //                    {
-        //                        i++;
-        //                        tempstr = "";
-        //                        while (true)
-        //                        {
-        //                            if (dotFileSplit[i].Equals("]"))
-        //                            {
-        //                                break;
-        //                            }
-        //                            else if (dotFileSplit[i].Equals(","))
-        //                            {
-        //                                if ((dotFileSplit[i + 1].Equals("color") || dotFileSplit[i + 1].Equals("shape")))
-        //                                {
-        //                                    break;
-        //                                }
-        //                            }
-        //                            else if (dotFileSplit[i].Equals("\n"))
-        //                            {
-        //                                //do nothing 
-        //                            }
-        //                            else if (dotFileSplit[i].Equals(";"))
-        //                            {
-        //                                a.AddLabelAsInLabelList(tempstr);
-        //                                tempstr = "";
-        //                            }
-        //                            else
-        //                            {
-        //                                if (tempstr == "")
-        //                                {
-        //                                    tempstr = dotFileSplit[i];
-        //                                }
-        //                                else
-        //                                {
-        //                                    tempstr += ", " + dotFileSplit[i];
-        //                                }
-        //                            }
-        //                            i++;
-        //                        }
-        //                        if (tempstr != "")
-        //                        {
-        //                            a.AddLabelAsInLabelList(tempstr);
-        //                        }
-        //                    }
-        //                    if (dotFileSplit[i].Equals("\n") || dotFileSplit[i].Equals(","))
-        //                    {
-        //                        i++;
-        //                    }
-        //                }
-        //                t.SetAttribute(a);
-        //                this.AddTransition(t);
-        //            }
-        //        }
-        //    }
+                else if (dotFileSplit[i].Equals("->"))
+                {
+                    DotTransition t = new DotTransition(dotFileSplit[i - 1], dotFileSplit[i + 1]);
+                    i += 2;
+                    if (dotFileSplit[i].Equals("["))
+                    {
+                        i++;
+                        DotAttribute a = new DotAttribute();
+                        List<string> dotLabelList = new List<string>();
+                        string tempstr = "";
+                        while (i != length)
+                        {
+                            if (dotFileSplit[i].Equals("]"))
+                            {
+                                i--;
+                                break;
+                            }
+                            if (dotFileSplit[i].Equals("shape"))
+                            {
+                                a.Shape = dotFileSplit[i + 1];
+                                i += 2;
+                            }
+                            if (dotFileSplit[i].Equals("color"))
+                            {
+                                a.Color = dotFileSplit[i + 1];
+                                i += 2;
+                            }
+                            else if (dotFileSplit[i].Equals("label"))
+                            {
+                                i++;
+                                tempstr = "";
+                                while (true)
+                                {
+                                    if (dotFileSplit[i].Equals("]"))
+                                    {
+                                        break;
+                                    }
+                                    else if (dotFileSplit[i].Equals(","))
+                                    {
+                                        if ((dotFileSplit[i + 1].Equals("color") || dotFileSplit[i + 1].Equals("shape")))
+                                        {
+                                            break;
+                                        }
+                                    }
+                                    else if (dotFileSplit[i].Equals("\n"))
+                                    {
+                                        //do nothing 
+                                    }
+                                    else if (dotFileSplit[i].Equals(";"))
+                                    {
+                                        a.AddLabelAsInLabelList(tempstr);
+                                        tempstr = "";
+                                    }
+                                    else
+                                    {
+                                        if (tempstr == "")
+                                        {
+                                            tempstr = dotFileSplit[i];
+                                        }
+                                        else
+                                        {
+                                            tempstr += ", " + dotFileSplit[i];
+                                        }
+                                    }
+                                    i++;
+                                }
+                                if (tempstr != "")
+                                {
+                                    a.AddLabelAsInLabelList(tempstr);
+                                }
+                            }
+                            if (dotFileSplit[i].Equals("\n") || dotFileSplit[i].Equals(","))
+                            {
+                                i++;
+                            }
+                        }
+                        t.SetAttribute(a);
+                        this.AddTransition(t);
+                    }
+                }
+            }
             
-        //    return 0;*/
-        //    #endregion
+            return 0;*/
+            #endregion
 
-        //}
+        }
 
         #endregion
 
@@ -308,7 +265,7 @@ namespace csdot
 
         public void SaveToFile(Graph i_graph, string i_fileLocation)
         {
-            
+
             if (File.Exists(i_fileLocation))
             {
                 File.Delete(i_fileLocation);
@@ -346,127 +303,263 @@ namespace csdot
 
         #region Utility Methods
 
-        //private string GetRefactoredContent(string i_dotFile)
-        //{
-        //    i_dotFile = i_dotFile.Replace(";", " ; ");
-        //    i_dotFile = i_dotFile.Replace("\t", "");
-        //    i_dotFile = i_dotFile.Replace("\r", "");
-        //    i_dotFile = i_dotFile.Replace(",", " , ");
-        //    i_dotFile = i_dotFile.Replace("=", " = ");
-        //    i_dotFile = i_dotFile.Replace("\"", " ");
-        //    i_dotFile = i_dotFile.Replace("[", " [ ");
-        //    i_dotFile = i_dotFile.Replace("]", " ] ");
-        //    //i_dotFile = i_dotFile.Replace("(", " ");
-        //    //i_dotFile = i_dotFile.Replace(")", " ");
-        //    i_dotFile = i_dotFile.Replace("\n", " ");
-        //    i_dotFile = i_dotFile.Replace("{", " { ");
-        //    i_dotFile = i_dotFile.Replace("}", " } ");
-        //    return i_dotFile;
-        //}
+        private IElement ParseGraph(IElement i_graph, string[] i_dotTokens, int i_startIndex = 0, int i_endIndex = 0)
+        {
+            Stack<string> paranthesis = new Stack<string>();
+            i_endIndex = i_endIndex == 0 ? i_dotTokens.Length : i_endIndex;
+            for (int i = i_startIndex; i < i_endIndex; i++)
+            {
+                // forming Graph
+                if (i_dotTokens[i] == "graph" || i_dotTokens[i] == "digraph")
+                {
+                    bool strict = false;
+                    string name = "Default";
+                    if (i != 0 && i_dotTokens[i - 1] == "strict")
+                        strict = true;
+                    if (i_dotTokens[i + 1] != "{")
+                    {
+                        name = i_dotTokens[i + 1];
+                        i += 1;
+                    }
+                    i_graph = GetGraph(strict, name);
+                }
 
+                //forming subgraphs or clusters with no keywords
+                if (i_dotTokens[i] == "{")
+                {
+                    if (paranthesis.Count == 0)
+                        paranthesis.Push("{");
+                    else
+                    {
+                        // it means there is a cluster or subgrapgh
+                        paranthesis.Push("{");
+                        IDot subgraphOrCluster = GetSubgraphOrCluster(i_dotTokens, i, out int endIndex);
+                        i_graph.AddElement(subgraphOrCluster);
+                        i = endIndex;
+                    }
+                }
 
-        //private Graph GetGraph(bool i_strict, string i_name)
-        //{
-        //    Graph newGraph = new Graph(i_name);
-        //    newGraph.strict = i_strict;
-        //    return newGraph;
-        //}
+                //forming subgraphs or clusters with keywords
+                if (i_dotTokens[i].ToLower() == "subgraph" || i_dotTokens[i].ToLower().Contains("cluster"))
+                {
+                    // it means there is a cluster or subgrapgh
+                    paranthesis.Push("{");
+                    int index = Array.IndexOf(i_dotTokens, "{", i);
+                    IDot subgraphOrCluster = GetSubgraphOrCluster(i_dotTokens, index, out int endIndex);
+                    i_graph.AddElement(subgraphOrCluster);
+                    i = endIndex;
+                }
 
-        //private Node GetNode(string i_name, List<string> i_properties)
-        //{
-        //    Node newNode = new Node(i_name);
-        //    for (int i = 0; i < i_properties.Count; i += 2)
-        //    {
-        //        if (newNode.attributeMap.TryGetValue(i_properties[i], out var attribute))
-        //            attribute.TranslateToValue(i_properties[i + 1]);
-        //        else
-        //            throw new Exception($"{i_properties[i]} attribute is not valid or not supported for Node");
-        //    }
-        //    return newNode;
-        //}
+                //forming graph properties
+                if (i_dotTokens[i] == "=")
+                {
+                    if (i_graph.attributes.TryGetValue(i_dotTokens[i-1], out var attribute))
+                        attribute.TranslateToValue(i_dotTokens[i + 1]);
+                    else
+                        throw new Exception($"{i_dotTokens[i-1]} attribute is not valid or not supported for Graph");
+                    i += 1;
+                }
+                
+                //forming Nodes
+                if (i + 1 < i_dotTokens.Length && i_dotTokens[i + 1] == "[")
+                {
+                    List<string> nodeProperties = GetProperties(i_dotTokens, i + 1, out int endIndex);
+                    Node newNode = GetNode(i_dotTokens[i], nodeProperties);
+                    i_graph.AddElement(newNode);
+                    i = endIndex;
+                }
 
-        //private Edge GetEdge(List<Transition> i_transitions, List<string> i_properties)
-        //{
-        //    Edge newEdge = new Edge(i_transitions); 
-        //    if (null != i_properties)
-        //    {
-        //        for (int i = 0; i < i_properties.Count; i += 2)
-        //        {
-        //            if (newEdge.attributeMap.TryGetValue(i_properties[i], out var attribute))
-        //                attribute.TranslateToValue(i_properties[i + 1]);
-        //            else
-        //                throw new Exception($"{i_properties[i]} attribute is not valid or not supported for Edge");
-        //        }
-        //    }
-        //    return newEdge;
-        //}
+                //forming Nondes with no properties
+                if ( (i-1 > 0 && i_dotTokens[i-1] == "{") || 
+                     (i-1 > 0 && i_dotTokens[i-1] != "=" && i_dotTokens[i - 1] != "]" && i_dotTokens[i - 1] != "->" && i_dotTokens[i - 1] != "--" ))
+                {
 
-        //private List<string> GetProperties(string[] i_dotTokens, int i_startIndex, out int o_endIndex)
-        //{
-        //    List<string> properties = new List<string>();
-        //    int i = i_startIndex;
-        //    while (i_dotTokens[i] != "]")
-        //    {
-        //        if (i_dotTokens[i] == "=")
-        //        {
-        //            properties.Add(i_dotTokens[i - 1]);
-        //            properties.Add(i_dotTokens[i + 1]);
-        //        }
-        //        i++;
-        //    }
-        //    o_endIndex = i;
-        //    return properties;
-        //}
+                    if (i_dotTokens[i] != "[" && i_dotTokens[i] != "]" && i_dotTokens[i] != "{" && i_dotTokens[i] != "}" && i_dotTokens[i] != "->" && i_dotTokens[i] != "--"
+                        && i_dotTokens[i] != ";" && i_dotTokens[i] != ",")
+                    {
+                        if (i + 1 < i_dotTokens.Length && (i_dotTokens[i + 1] == ";" ||
+                            (i_dotTokens[i + 1] != "=" && i_dotTokens[i + 1] != "[" && i_dotTokens[i + 1] != "->" && i_dotTokens[i + 1] != "--")))
+                        {
+                            Node newNode = GetNode(i_dotTokens[i], null);
+                            i_graph.AddElement(newNode);
+                            if (i_dotTokens[i + 1] == ";")
+                                i += 1;
+                        }
+                    }
+                }
 
-        //private List<Transition> GetTransitions(string[] i_dotTokens, int i_stratIndex, Graph i_graph, out int o_endIndex)
-        //{
-        //    List<Transition> transtions = new List<Transition>();
-        //    int i = i_stratIndex - 1;
-        //    while(true)
-        //    {
-        //        if (i + 1 >= i_dotTokens.Length)
-        //            break;
+                //forming edges
+                if (i_dotTokens[i] == "->" || i_dotTokens[i] == "--")
+                {
+                    List<Transition> transitions = GetTransitions(i_dotTokens, i, i_graph, out int endIndex);
+                    List<string> properties = null;
+                    int index = endIndex;
+                    if (i_dotTokens[index + 1] == "[")
+                    {
+                        properties = GetProperties(i_dotTokens, index + 1, out int outIndex);
+                        index = outIndex;
+                    }
+                    Edge newEdge = GetEdge(transitions, properties);
+                    i_graph.AddElement(newEdge);
+                    i = index;
+                }
 
-        //        // checking if there is a continuos chain of edges
-        //        if (i_dotTokens[i + 1] == "->" || i_dotTokens[i + 1] == "--")
-        //        {
-        //            Node node;
-        //            string edgeType = "";
-        //            if (i_dotTokens[i + 1] == "->")
-        //                edgeType = EdgeOp.directed;
-        //            if (i_dotTokens[i + 1] == "--")
-        //                edgeType = EdgeOp.undirected;
-        //            node = i_graph.GetElementByName(i_dotTokens[i]) as Node;
-        //            if (null == node)
-        //            {
-        //                node = new Node(i_dotTokens[i]);
-        //            }
-        //            transtions.Add(new Transition(node, edgeType));
-        //            i += 2;
-        //        }
-        //        else if (i_dotTokens [i + 1] == "{")
-        //        {
-        //            // will be a subgraph not mplemented till yet
-        //            throw new NotImplementedException("subgraphs are not implemented");
-        //        }
-        //        else
-        //        {
-        //            // this means this the last node of the edge 
-        //            Node node;
-        //            node = i_graph.GetElementByName(i_dotTokens[i]) as Node;
-        //            if (null == node)
-        //            {
-        //                node = new Node(i_dotTokens[i]);
-        //            }
-        //            transtions.Add(new Transition(node, EdgeOp.unspecified));
-        //            break;
-        //        }
-        //    }
-        //    o_endIndex = i;
-        //    return transtions;
-        //}
+                //for parathesis checking
+                if (i_dotTokens[i] == "}")
+                {
+                    if (paranthesis.Peek() == "{")
+                        paranthesis.Pop();
+                }
 
+            }
+            if (paranthesis.Count != 0)
+                throw new Exception($"Error in parsing the file has unbalanced parenthesis");
+            return i_graph;
+        }
+        
+        private string GetRefactoredContent(string i_dotFile)
+        {
+            i_dotFile = i_dotFile.Replace(";", " ; ");
+            i_dotFile = i_dotFile.Replace("\t", "");
+            i_dotFile = i_dotFile.Replace("\r", "");
+            i_dotFile = i_dotFile.Replace(",", " , ");
+            i_dotFile = i_dotFile.Replace("=", " = ");
+            i_dotFile = i_dotFile.Replace("\"", " ");
+            i_dotFile = i_dotFile.Replace("[", " [ ");
+            i_dotFile = i_dotFile.Replace("]", " ] ");
+            //i_dotFile = i_dotFile.Replace("(", " ");
+            //i_dotFile = i_dotFile.Replace(")", " ");
+            i_dotFile = i_dotFile.Replace("\n", " ");
+            i_dotFile = i_dotFile.Replace("{", " { ");
+            i_dotFile = i_dotFile.Replace("}", " } ");
+            return i_dotFile;
+        }
 
+        private Graph GetGraph(bool i_strict, string i_name)
+        {
+            Graph newGraph = new Graph(i_name);
+            newGraph.strict = i_strict;
+            return newGraph;
+        }
+
+        private Node GetNode(string i_name, List<string> i_properties)
+        {
+            Node newNode = new Node(i_name);
+            if (null != i_properties)
+            {
+                for (int i = 0; i < i_properties.Count; i += 2)
+                {
+                    if (newNode.attributes.TryGetValue(i_properties[i], out var attribute))
+                        attribute.TranslateToValue(i_properties[i + 1]);
+                    else
+                        throw new Exception($"{i_properties[i]} attribute is not valid or not supported for Node");
+                }
+            }
+            return newNode;
+        }
+
+        private Edge GetEdge(List<Transition> i_transitions, List<string> i_properties)
+        {
+            Edge newEdge = new Edge(i_transitions);
+            if (null != i_properties)
+            {
+                for (int i = 0; i < i_properties.Count; i += 2)
+                {
+                    if (newEdge.attributes.TryGetValue(i_properties[i], out var attribute))
+                        attribute.TranslateToValue(i_properties[i + 1]);
+                    else
+                        throw new Exception($"{i_properties[i]} attribute is not valid or not supported for Edge");
+                }
+            }
+            return newEdge;
+        }
+
+        private List<string> GetProperties(string[] i_dotTokens, int i_startIndex, out int o_endIndex)
+        {
+            List<string> properties = new List<string>();
+            int i = i_startIndex;
+            while (i_dotTokens[i] != "]")
+            {
+                if (i_dotTokens[i] == "=")
+                {
+                    properties.Add(i_dotTokens[i - 1]);
+                    properties.Add(i_dotTokens[i + 1]);
+                }
+                i++;
+            }
+            o_endIndex = i;
+            return properties;
+        }
+
+        private List<Transition> GetTransitions(string[] i_dotTokens, int i_stratIndex, IElement i_graph, out int o_endIndex)
+        {
+            List<Transition> transtions = new List<Transition>();
+            int i = i_stratIndex - 1;
+            while (true)
+            {
+                if (i + 1 >= i_dotTokens.Length)
+                    break;
+
+                // checking if there is a continuos chain of edges
+                if (i_dotTokens[i + 1] == "->" || i_dotTokens[i + 1] == "--")
+                {
+                    Node node;
+                    string edgeType = "";
+                    if (i_dotTokens[i + 1] == "->")
+                        edgeType = EdgeOp.directed;
+                    if (i_dotTokens[i + 1] == "--")
+                        edgeType = EdgeOp.undirected;
+                    node = i_graph.GetElementByName(i_dotTokens[i]) as Node;
+                    if (null == node)
+                    {
+                        node = new Node(i_dotTokens[i]);
+                    }
+                    transtions.Add(new Transition(node, edgeType));
+                    i += 2;
+                }
+                else if (i_dotTokens[i + 1] == "{")
+                {
+                    // will be a subgraph not mplemented till yet
+                    throw new NotImplementedException("subgraphs are not implemented");
+                }
+                else
+                {
+                    // this means this the last node of the edge 
+                    Node node;
+                    node = i_graph.GetElementByName(i_dotTokens[i]) as Node;
+                    if (null == node)
+                    {
+                        node = new Node(i_dotTokens[i]);
+                    }
+                    transtions.Add(new Transition(node, EdgeOp.unspecified));
+                    break;
+                }
+            }
+            o_endIndex = i;
+            return transtions;
+        }
+
+        private IDot GetSubgraphOrCluster(string[] i_dotTokens, int i_startIndex, out int o_endIndex)
+        {
+            if (!i_dotTokens.Contains("}"))
+                throw new Exception($"no matching }} braces found for the subgraph");
+
+            int i = i_startIndex;
+            if (i_dotTokens[i-1].ToLower().Contains("cluster"))
+            {
+                Cluster loaddedCluster = new Cluster(i_dotTokens[i-1]);
+                o_endIndex = Array.IndexOf(i_dotTokens, "}", i);
+                loaddedCluster = ParseGraph(loaddedCluster, i_dotTokens, i, o_endIndex+1) as Cluster;
+                return loaddedCluster;
+            }
+            else
+            {
+                Subgraph loaddedSubgraph = new Subgraph();
+                o_endIndex = Array.IndexOf(i_dotTokens, "}", i);
+                loaddedSubgraph = ParseGraph(loaddedSubgraph, i_dotTokens, i, o_endIndex+1) as Subgraph;
+                return loaddedSubgraph;
+            }
+        }
         #endregion // Utility Methods
 
     }

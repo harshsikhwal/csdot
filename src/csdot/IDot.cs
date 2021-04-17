@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using csdot.Attributes;
 
 namespace csdot
 {
@@ -14,6 +15,8 @@ namespace csdot
 			get;
 			set;
 		}
+		
+		public Dictionary<string, IAttribute> attributes { get; }
 
 		public string ElementToString();
 

@@ -93,11 +93,17 @@ namespace csdot
 
 			Console.WriteLine(str);
 
-            //DotDocument docObj = new DotDocument();
-            //Graph loadedGraph = docObj.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\unknown\\dot.dot");
-            //str = loadedGraph.ElementToString();
-            //Console.WriteLine("Loaded graph:\n");
-            //Console.WriteLine(str);
+            DotDocument docObj1 = new DotDocument();
+            Graph loadedGraph1 = docObj1.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\unknown\\dot.dot");
+            str = loadedGraph1.ElementToString(1);
+            Console.WriteLine("Loaded graph: 1\n");
+            Console.WriteLine(str);
+
+            DotDocument docObj2 = new DotDocument();
+            Graph loadedGraph2 = docObj2.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\graphs_grevian\\subgraphs2.dot");
+            str = loadedGraph2.ElementToString(1);
+            Console.WriteLine("Loaded graph: 1\n");
+            Console.WriteLine(str);
         }
 	}
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using csdot.Attributes;
 
 namespace csdot
 {
@@ -9,12 +10,23 @@ namespace csdot
 		public string type { get; set; } = "comment";
 		public Guid uid { get; }
 		public string ID { get; set; }
+		private Dictionary<string, IAttribute> attributeMap = new Dictionary<string, IAttribute>();
+
+		public Dictionary<string, IAttribute> attributes
+		{
+			get
+			{
+				return attributeMap;
+			}
+		}
 
 		public Comment(string i_id)
 		{
 			ID = i_id;
 		}
 
+		
+		
 		public string ElementToString()
 		{
 			// TODO: check for multiline and add the same?

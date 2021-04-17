@@ -1,5 +1,5 @@
 graph {
-    splines=line;
+    splines=true;
     subgraph cluster_0 {
         label="Subgraph A";
         a; b; c
