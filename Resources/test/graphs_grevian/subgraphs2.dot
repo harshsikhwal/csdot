@@ -1,13 +1,19 @@
-graph {
+graph 
+{
     splines=true;
-    subgraph cluster_0 {
+    subgraph cluster_0 
+	{
         label="Subgraph A";
-        a; b; c
+        a; 
+		b; 
+		c
     }
 
-    subgraph cluster_1 {
+    subgraph cluster_1 
+	{
         label="Subgraph B";
-        d; e;
+        d; 
+		e;
     }
 
     a -- e;

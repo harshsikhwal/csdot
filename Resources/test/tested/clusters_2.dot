@@ -3,14 +3,14 @@ graph
 	splines = True
 	cluster cluster_0
 	{
-		 label = "Subgraph A"
+		label = "Subgraph A"
 		a;
 		b;
 		c;
 	}
 	cluster cluster_1
 	{
-		 label = "Subgraph B"
+		label = "Subgraph B"
 		d;
 		e;
 	}
