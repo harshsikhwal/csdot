@@ -16,7 +16,7 @@ namespace UnitTest
 			graph = new Graph("");
 		}
 
-		[Test]
+		// [Test]
 		public void edge_subgraph()
 		{
 			graph.Attribute.rankdir.Value = Rankdir.LR;

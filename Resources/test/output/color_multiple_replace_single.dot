@@ -1,4 +1,0 @@
-graph 
-{
-	ethernet [ color = "brown", label = "ethernet", shape = "circle" ]
-}

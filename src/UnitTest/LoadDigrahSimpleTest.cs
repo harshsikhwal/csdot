@@ -8,7 +8,7 @@ namespace UnitTest
 {
     class LoadDigrahSimpleTest
     {
-        [Test]
+        // [Test]
         public void BasicLoadTest()
         {
             DotDocument docObj = new DotDocument();
@@ -23,6 +23,14 @@ namespace UnitTest
             Assert.IsTrue(udp.Attribute.shape.Value == "rectangle", "shape Attribute is not matching");
             Assert.IsTrue(udp.Attribute.label.Value == "udp(udp.port)", "lable Attribute is not matching");
             Assert.Pass();
+        }
+
+        // [Test]
+        public void Cluster1Test()
+		{
+            DotDocument docObj = new DotDocument();
+            Graph loadedGraph = docObj.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\tested\\cluster1.dot");
+
         }
     }
 }

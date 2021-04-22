@@ -18,7 +18,7 @@ namespace UnitTest
 			graph.type = "digraph";
 		}
 
-		[Test]
+		// [Test]
 		public void clusters_1()
 		{
 			Cluster cluster_0 = new Cluster("cluster_0");
@@ -75,7 +75,7 @@ namespace UnitTest
 			Assert.Pass();
 		}
 
-		[Test]
+		// [Test]
 		public void clusters_2()
 		{
 			graph = new Graph("");

@@ -14,7 +14,7 @@ namespace UnitTest
 			graph = new Graph("test");
 		}
 
-		[Test]
+		// [Test]
 		public void set_and_unset()
 		{
 			Node ethernet = new Node("ethernet");

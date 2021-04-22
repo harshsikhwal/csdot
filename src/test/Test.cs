@@ -8,9 +8,24 @@ namespace csdot
 {
 	class Test
 	{
+		public static void LoadTest()
+		{
+			DotDocument doc = new DotDocument();
+			Graph loadedGraph = doc.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\unknown\\attr_widgets.dot");
+			var str = loadedGraph.ElementToString(1);
+			Console.WriteLine("Loaded graph: showing_a_path.dot\n");
+			Console.WriteLine(str);
+			doc.SaveToFile(loadedGraph, "..\\..\\..\\..\\..\\Resources\\test\\dot_files\\test.dot");
+		}
+
+		public static void SaveTest()
+		{
+
+		}
+
 		public static void Main(string[] args)
 		{
-			
+			/*
 			Graph graph = new Graph("Test");
 			Node node = new Node("node1");
 			// Console.WriteLine("node1 key: " + node.uid.ToString());
@@ -104,7 +119,15 @@ namespace csdot
             str = loadedGraph2.ElementToString(1);
             Console.WriteLine("Loaded graph: 1\n");
             Console.WriteLine(str);
-        }
+
+			DotDocument docObj3 = new DotDocument();
+			Graph loadedGraph3 = docObj3.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\tested\\cluster1.dot");
+			str = loadedGraph2.ElementToString(0);
+			Console.WriteLine("Loaded graph: 1\n");
+			Console.WriteLine(str);
+			*/
+			LoadTest();
+		}
 	}
 
 	public class _class

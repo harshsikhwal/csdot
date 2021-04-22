@@ -13,7 +13,7 @@ namespace UnitTest
 			graph = new Graph("test");
 		}
 
-		[Test]
+		// [Test]
 		public void Test1()
 		{
 			Node ethernet = new Node("ethernet");
