@@ -25,7 +25,7 @@ namespace csdot
 
 		public static void Main(string[] args)
 		{
-			/*
+            /*
 			Graph graph = new Graph("Test");
 			Node node = new Node("node1");
 			// Console.WriteLine("node1 key: " + node.uid.ToString());
@@ -107,26 +107,75 @@ namespace csdot
 			Console.WriteLine("Transition graph:\n");
 
 			Console.WriteLine(str);
-
+			*/
+            string str;
             DotDocument docObj1 = new DotDocument();
             Graph loadedGraph1 = docObj1.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\unknown\\dot.dot");
             str = loadedGraph1.ElementToString(1);
-            Console.WriteLine("Loaded graph: 1\n");
+            Console.WriteLine("\nLoaded graph: 1\n");
             Console.WriteLine(str);
 
-            DotDocument docObj2 = new DotDocument();
-            Graph loadedGraph2 = docObj2.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\graphs_grevian\\subgraphs2.dot");
-            str = loadedGraph2.ElementToString(1);
-            Console.WriteLine("Loaded graph: 1\n");
+            //         DotDocument docObj3 = new DotDocument();
+            //         Graph loadedGraph3 = docObj3.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\dot_files\\cluster1.dot");
+            //         str = loadedGraph3.ElementToString(1);
+            //         Console.WriteLine("\nLoaded graph: 2\n");
+            //         Console.WriteLine(str);
+
+            DotDocument docObj4 = new DotDocument();
+            Graph loadedGraph4 = docObj4.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\Issues\\[LoadDigraph] graph-digraph is not preserved\\full_digraph.dot");
+            str = loadedGraph4.ElementToString(1);
+            Console.WriteLine("\nLoaded graph: 3\n");
             Console.WriteLine(str);
 
-			DotDocument docObj3 = new DotDocument();
-			Graph loadedGraph3 = docObj3.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\tested\\cluster1.dot");
-			str = loadedGraph2.ElementToString(0);
-			Console.WriteLine("Loaded graph: 1\n");
+            DotDocument docObj5 = new DotDocument();
+            Graph loadedGraph5 = docObj5.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\Issues\\[LoadDigraph] Subgraph name can be avoided if no ID is associated\\rank.dot");
+            str = loadedGraph5.ElementToString(1);
+            Console.WriteLine("\nLoaded graph: 4\n");
+            Console.WriteLine(str);
+
+            DotDocument docObj6 = new DotDocument();
+            Graph loadedGraph6 = docObj6.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\Issues\\[LoadDigraph] Label data is accepted as node\\cluster2.dot");
+            str = loadedGraph6.ElementToString(1);
+            Console.WriteLine("\nLoaded graph: 5\n");
+            Console.WriteLine(str);
+
+            DotDocument docObj7 = new DotDocument();
+            Graph loadedGraph7 = docObj7.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\Issues\\[LoadDigraph] label does not take all of string\\ne2.dot");
+            str = loadedGraph7.ElementToString(1);
+            Console.WriteLine("\nLoaded graph: 6\n");
+            Console.WriteLine(str);
+
+            DotDocument docObj8 = new DotDocument();
+            Graph loadedGraph8 = docObj8.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\Issues\\[LoadDigraph] edge to subgraph\\edge_subgraph.dot");
+            str = loadedGraph8.ElementToString(1);
+            Console.WriteLine("\nLoaded graph: 7\n");
+            Console.WriteLine(str);
+
+            DotDocument docObj9 = new DotDocument();
+            Graph loadedGraph9 = docObj9.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\Issues\\[LoadDigraph] edge to subgraph\\large_graphs1.dot");
+            str = loadedGraph9.ElementToString(1);
+            Console.WriteLine("\nLoaded graph: 8\n");
+            Console.WriteLine(str);
+
+            DotDocument docObj10 = new DotDocument();
+            Graph loadedGraph10 = docObj10.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\Issues\\[LoadDigraph] edge to subgraph\\large_graphs2.dot");
+            str = loadedGraph10.ElementToString(1);
+            Console.WriteLine("\nLoaded graph: 9\n");
+            Console.WriteLine(str);
+
+            DotDocument docObj11 = new DotDocument();
+			Graph loadedGraph11 = docObj11.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\Issues\\[LoadDigraph] Add support for nested subgraphs\\nested_cluster.dot");
+			str = loadedGraph11.ElementToString(1);
+			Console.WriteLine("\nLoaded graph: 10\n");
 			Console.WriteLine(str);
-			*/
-			LoadTest();
+
+			DotDocument docObj12 = new DotDocument();
+			Graph loadedGraph12 = docObj12.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\Issues\\[LoadDigraph] Add support for nested subgraphs\\subgraph_cluster.dot");
+			str = loadedGraph12.ElementToString(1);
+			Console.WriteLine("\nLoaded graph: 11\n");
+			Console.WriteLine(str);
+
+			//LoadTest();
 		}
 	}
 

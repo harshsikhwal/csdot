@@ -1,6 +1,6 @@
 graph 
 {
-    rankdir=LR; // Left to Right, instead of Top to Bottom
+    rankdir=LR;
     a -- { b c d };
     b -- { c e };
     c -- { e f };

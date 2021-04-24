@@ -34,7 +34,8 @@ namespace csdot
             if (!dotTokens.Contains("graph") && !dotTokens.Contains("digraph"))
                 throw new Exception("graph/digraph keyword should be present for a valid dot file");
 
-            loadedGraph = ParseGraph(loadedGraph, dotTokens) as Graph;
+            Dictionary<string, List<int>> codeBlocks= GetCodeBlocks(dotTokens);
+            loadedGraph = ParseGraph(loadedGraph, dotTokens, codeBlocks) as Graph;
 
             return loadedGraph;
 
@@ -303,17 +304,19 @@ namespace csdot
 
         #region Utility Methods
 
-        private IElement ParseGraph(IElement i_graph, string[] i_dotTokens, int i_startIndex = 0, int i_endIndex = 0)
+        private IElement ParseGraph(IElement i_graph, string[] i_dotTokens, Dictionary<string, List<int>> i_codeBlocks, int i_startIndex = 0, int i_endIndex = 0)
         {
             Stack<string> paranthesis = new Stack<string>();
             i_endIndex = i_endIndex == 0 ? i_dotTokens.Length : i_endIndex;
+            bool grapghFound = false;
             for (int i = i_startIndex; i < i_endIndex; i++)
             {
                 // forming Graph
-                if (i_dotTokens[i] == "graph" || i_dotTokens[i] == "digraph")
+                if ((i_dotTokens[i] == "graph" || i_dotTokens[i] == "digraph") && !grapghFound)
                 {
                     bool strict = false;
-                    string name = "Default";
+                    string name = "";
+                    string graphType = i_dotTokens[i] == "graph" ? "graph" : "digraph";
                     if (i != 0 && i_dotTokens[i - 1] == "strict")
                         strict = true;
                     if (i_dotTokens[i + 1] != "{")
@@ -321,7 +324,8 @@ namespace csdot
                         name = i_dotTokens[i + 1];
                         i += 1;
                     }
-                    i_graph = GetGraph(strict, name);
+                    i_graph = GetGraph(strict, name, graphType);
+                    grapghFound = true;
                 }
 
                 //forming subgraphs or clusters with no keywords
@@ -333,7 +337,7 @@ namespace csdot
                     {
                         // it means there is a cluster or subgrapgh
                         paranthesis.Push("{");
-                        IDot subgraphOrCluster = GetSubgraphOrCluster(i_dotTokens, i, out int endIndex);
+                        IDot subgraphOrCluster = GetSubgraphOrCluster(i_dotTokens, i_codeBlocks, i, out int endIndex);
                         i_graph.AddElement(subgraphOrCluster);
                         i = endIndex;
                     }
@@ -343,21 +347,41 @@ namespace csdot
                 if (i_dotTokens[i].ToLower() == "subgraph" || i_dotTokens[i].ToLower().Contains("cluster"))
                 {
                     // it means there is a cluster or subgrapgh
+                    
+                    // this check is if the word subgraph is present between any quotes
                     paranthesis.Push("{");
                     int index = Array.IndexOf(i_dotTokens, "{", i);
-                    IDot subgraphOrCluster = GetSubgraphOrCluster(i_dotTokens, index, out int endIndex);
-                    i_graph.AddElement(subgraphOrCluster);
-                    i = endIndex;
+                    if (index != -1)
+                    {
+                        IDot subgraphOrCluster = GetSubgraphOrCluster(i_dotTokens, i_codeBlocks, index, out int endIndex);
+                        i_graph.AddElement(subgraphOrCluster);
+                        i = endIndex;
+                    }
                 }
 
                 //forming graph properties
                 if (i_dotTokens[i] == "=")
                 {
-                    if (i_graph.attributes.TryGetValue(i_dotTokens[i-1], out var attribute))
-                        attribute.TranslateToValue(i_dotTokens[i + 1]);
+                    string att;
+                    string value;
+                    if (i_dotTokens[i - 1] == "\"")
+                        att = GetString(i_dotTokens, i - 1, "rev", out int endIndex);
                     else
-                        throw new Exception($"{i_dotTokens[i-1]} attribute is not valid or not supported for Graph");
-                    i += 1;
+                        att = i_dotTokens[i - 1];
+                    if (i_dotTokens[i + 1] == "\"")
+                    {
+                        value = GetString(i_dotTokens, i + 1, "front", out int end);
+                        i = end;
+                    }
+                    else
+                    {
+                        value = i_dotTokens[i + 1];
+                        i += 1;
+                    }
+                    if (i_graph.attributes.TryGetValue(att, out var attribute))
+                        attribute.TranslateToValue(value);
+                    else
+                        throw new Exception($"{att} attribute is not valid or not supported for Graph");
                 }
                 
                 //forming Nodes
@@ -371,19 +395,27 @@ namespace csdot
 
                 //forming Nondes with no properties
                 if ( (i-1 > 0 && i_dotTokens[i-1] == "{") || 
-                     (i-1 > 0 && i_dotTokens[i-1] != "=" && i_dotTokens[i - 1] != "]" && i_dotTokens[i - 1] != "->" && i_dotTokens[i - 1] != "--" ))
+                     (i-1 > 0 && i_dotTokens[i-1] != "=" && i_dotTokens[i - 1] != "]" && i_dotTokens[i - 1] != "->" && i_dotTokens[i - 1] != "--"))
                 {
 
                     if (i_dotTokens[i] != "[" && i_dotTokens[i] != "]" && i_dotTokens[i] != "{" && i_dotTokens[i] != "}" && i_dotTokens[i] != "->" && i_dotTokens[i] != "--"
-                        && i_dotTokens[i] != ";" && i_dotTokens[i] != ",")
+                        && i_dotTokens[i] != ";" && i_dotTokens[i] != "," && i_dotTokens[i] != "\"")
                     {
                         if (i + 1 < i_dotTokens.Length && (i_dotTokens[i + 1] == ";" ||
                             (i_dotTokens[i + 1] != "=" && i_dotTokens[i + 1] != "[" && i_dotTokens[i + 1] != "->" && i_dotTokens[i + 1] != "--")))
                         {
-                            Node newNode = GetNode(i_dotTokens[i], null);
-                            i_graph.AddElement(newNode);
-                            if (i_dotTokens[i + 1] == ";")
-                                i += 1;
+                            if ( i_dotTokens[i + 1] == "\"" && (i_dotTokens[i + 2] == "=" && i_dotTokens[i + 2] == "[" && i_dotTokens[i + 2] == "->" && i_dotTokens[i + 2] != "--"
+                                && i_dotTokens[i + 2] == "]"))
+                            {
+                                // do nothing
+                            }
+                            else
+                            {
+                                Node newNode = GetNode(i_dotTokens[i], null);
+                                i_graph.AddElement(newNode);
+                                if (i_dotTokens[i + 1] == ";")
+                                    i += 1;
+                            }
                         }
                     }
                 }
@@ -391,10 +423,10 @@ namespace csdot
                 //forming edges
                 if (i_dotTokens[i] == "->" || i_dotTokens[i] == "--")
                 {
-                    List<Transition> transitions = GetTransitions(i_dotTokens, i, i_graph, out int endIndex);
+                    List<Transition> transitions = GetTransitions(i_dotTokens, i_codeBlocks, i, i_graph, out int endIndex);
                     List<string> properties = null;
                     int index = endIndex;
-                    if (i_dotTokens[index + 1] == "[")
+                    if (index + 1 < i_dotTokens.Length && i_dotTokens[index + 1] == "[")
                     {
                         properties = GetProperties(i_dotTokens, index + 1, out int outIndex);
                         index = outIndex;
@@ -424,7 +456,7 @@ namespace csdot
             i_dotFile = i_dotFile.Replace("\r", "");
             i_dotFile = i_dotFile.Replace(",", " , ");
             i_dotFile = i_dotFile.Replace("=", " = ");
-            i_dotFile = i_dotFile.Replace("\"", " ");
+            i_dotFile = i_dotFile.Replace("\"", " \" ");
             i_dotFile = i_dotFile.Replace("[", " [ ");
             i_dotFile = i_dotFile.Replace("]", " ] ");
             //i_dotFile = i_dotFile.Replace("(", " ");
@@ -435,10 +467,57 @@ namespace csdot
             return i_dotFile;
         }
 
-        private Graph GetGraph(bool i_strict, string i_name)
+        private Dictionary<string,List<int>> GetCodeBlocks(string[] i_dotTokens)
         {
-            Graph newGraph = new Graph(i_name);
+            Dictionary<string, List<int>> codeBlocks = new Dictionary<string, List<int>>()
+            {
+                { "{", new List<int>() },
+            };
+            Stack<int> indices = new Stack<int>();
+            Stack<string> braces = new Stack<string>();
+            
+            //storing indices of all curly braces
+            for(int i =0; i< i_dotTokens.Length; i++)
+            {
+                if (i_dotTokens[i] == "{")
+                {
+                    codeBlocks["{"].Add(i);
+                }
+            }
+            List<int> closingIndices = new List<int>(codeBlocks["{"].Count);
+            closingIndices.AddRange(Enumerable.Repeat(0, codeBlocks["{"].Count));
+            //deciding ending braces for each
+            for (int i = 0; i < i_dotTokens.Length; i++)
+            {
+                if (i_dotTokens[i] == "{")
+                {
+                    braces.Push("{");
+                    indices.Push(i);
+                }
+                else if (i_dotTokens[i] == "}")
+                {
+                    if (braces.Peek() == "{")
+                    {
+                        braces.Pop();
+                        int index = codeBlocks["{"].IndexOf(indices.Pop());
+                        if (index != -1)
+                            closingIndices[index] = i;
+                        else
+                            throw new Exception("somehow indices were not found bug in parsing");
+                    }
+                    else
+                        throw new Exception("braces dont match please check the file");
+                }
+            }
+            codeBlocks["}"] = closingIndices;
+            return codeBlocks;
+        }
+        
+        private Graph GetGraph(bool i_strict, string i_name, string i_type)
+        {
+            Graph newGraph = i_name == "" ? new Graph() : new Graph(i_name);
             newGraph.strict = i_strict;
+            newGraph.type = i_type;
             return newGraph;
         }
 
@@ -482,8 +561,14 @@ namespace csdot
             {
                 if (i_dotTokens[i] == "=")
                 {
-                    properties.Add(i_dotTokens[i - 1]);
-                    properties.Add(i_dotTokens[i + 1]);
+                    if (i_dotTokens[i - 1] == "\"")
+                        properties.Add(GetString(i_dotTokens, i - 1, "rev", out int endIndex));
+                    else
+                        properties.Add(i_dotTokens[i - 1]);
+                    if (i_dotTokens[i + 1] == "\"")
+                        properties.Add(GetString(i_dotTokens, i + 1, "front", out int endIndex));
+                    else
+                        properties.Add(i_dotTokens[i + 1]);
                 }
                 i++;
             }
@@ -491,7 +576,33 @@ namespace csdot
             return properties;
         }
 
-        private List<Transition> GetTransitions(string[] i_dotTokens, int i_stratIndex, IElement i_graph, out int o_endIndex)
+        private string GetString(string[] i_dotTokens, int i_startIndex, string i_direction, out int o_endIndex)
+        {
+            string properties = "";
+            int i = 0;
+            if (i_direction == "front")
+            {
+                i = i_startIndex + 1;
+                while (i_dotTokens[i] != "\"")
+                {
+                    properties += i_dotTokens[i] + " ";
+                    i++;
+                }
+            }
+            else if (i_direction == "rev")
+            {
+                i = i_startIndex - 1;
+                while (i_dotTokens[i] != "\"")
+                {
+                    properties += i_dotTokens[i] + " ";
+                    i--;
+                }
+            }
+            o_endIndex = i;
+            return properties.Trim();
+        }
+
+        private List<Transition> GetTransitions(string[] i_dotTokens, Dictionary<string, List<int>> i_codeBlocks, int i_stratIndex, IElement i_graph, out int o_endIndex)
         {
             List<Transition> transtions = new List<Transition>();
             int i = i_stratIndex - 1;
@@ -517,10 +628,66 @@ namespace csdot
                     transtions.Add(new Transition(node, edgeType));
                     i += 2;
                 }
-                else if (i_dotTokens[i + 1] == "{")
+                else if (i_dotTokens[i].ToLower() == "subgraph" || i_dotTokens[i] == "{" || i_dotTokens[i + 1] == "{")
                 {
                     // will be a subgraph not mplemented till yet
-                    throw new NotImplementedException("subgraphs are not implemented");
+                    int startIndex = -1;
+                    int endIndex = -1;
+                    bool hasId = false;
+                    IDot element;
+                    string type = "";
+                    if (i_dotTokens[i] == "{")
+                        startIndex = i;
+                    else
+                    {
+                        startIndex = Array.IndexOf(i_dotTokens, "{", i);
+                        if (i_dotTokens[startIndex - 1].ToLower() == "subgraph")
+                            type = "subgraph";
+                        hasId = true;
+                    }
+                    endIndex = i_codeBlocks["}"][i_codeBlocks["{"].IndexOf(startIndex)];
+                    if (startIndex == -1 || endIndex == -1)
+                        throw new Exception("braces not matching");
+                    if (hasId)
+                    {
+                        if (i_dotTokens[startIndex-1].ToLower().Contains("cluster"))
+                        {
+                            Cluster loaddedCluster = new Cluster(i_dotTokens[i - 1]);
+                            element = ParseGraph(loaddedCluster, i_dotTokens, i_codeBlocks, startIndex, endIndex + 1) as Cluster;
+                        }
+                        else
+                        {
+                            Subgraph loaddedSubgraph = new Subgraph();
+                            element = ParseGraph(loaddedSubgraph, i_dotTokens, i_codeBlocks, startIndex, endIndex + 1) as Subgraph;
+                            element.type = type;
+                        }
+                    }
+                    else
+                    {
+                        Subgraph loaddedSubgraph = new Subgraph();
+                        element = ParseGraph(loaddedSubgraph, i_dotTokens, i_codeBlocks, startIndex, endIndex + 1) as Subgraph;
+                        //element.type = "";
+                    }
+
+                    if (endIndex + 1 >= i_dotTokens.Length && i_dotTokens[endIndex + 1] == ";")
+                        endIndex += 1;
+
+                    if (endIndex + 1 >= i_dotTokens.Length && (i_dotTokens[endIndex+1] == "->" || i_dotTokens[endIndex + 1] == "--"))
+                    {
+                        string edgeType = "";
+                        if (i_dotTokens[i + 1] == "->")
+                            edgeType = EdgeOp.directed;
+                        if (i_dotTokens[i + 1] == "--")
+                            edgeType = EdgeOp.undirected;
+                        transtions.Add(new Transition(element, edgeType));
+                        i = endIndex + 1;
+                    }
+                    else
+                    {
+                        transtions.Add(new Transition(element, EdgeOp.unspecified));
+                        i = endIndex + 1;
+                        break;
+                    }
                 }
                 else
                 {
@@ -539,7 +706,7 @@ namespace csdot
             return transtions;
         }
 
-        private IDot GetSubgraphOrCluster(string[] i_dotTokens, int i_startIndex, out int o_endIndex)
+        private IDot GetSubgraphOrCluster(string[] i_dotTokens, Dictionary<string, List<int>> i_codeBlocks, int i_startIndex, out int o_endIndex)
         {
             if (!i_dotTokens.Contains("}"))
                 throw new Exception($"no matching }} braces found for the subgraph");
@@ -548,15 +715,16 @@ namespace csdot
             if (i_dotTokens[i-1].ToLower().Contains("cluster"))
             {
                 Cluster loaddedCluster = new Cluster(i_dotTokens[i-1]);
-                o_endIndex = Array.IndexOf(i_dotTokens, "}", i);
-                loaddedCluster = ParseGraph(loaddedCluster, i_dotTokens, i, o_endIndex+1) as Cluster;
+                o_endIndex = i_codeBlocks["}"][i_codeBlocks["{"].IndexOf(i_startIndex)];
+                loaddedCluster = ParseGraph(loaddedCluster, i_dotTokens, i_codeBlocks, i, o_endIndex+1) as Cluster;
                 return loaddedCluster;
             }
             else
             {
                 Subgraph loaddedSubgraph = new Subgraph();
-                o_endIndex = Array.IndexOf(i_dotTokens, "}", i);
-                loaddedSubgraph = ParseGraph(loaddedSubgraph, i_dotTokens, i, o_endIndex+1) as Subgraph;
+                o_endIndex = i_codeBlocks["}"][i_codeBlocks["{"].IndexOf(i_startIndex)];
+                loaddedSubgraph = ParseGraph(loaddedSubgraph, i_dotTokens, i_codeBlocks, i, o_endIndex+1) as Subgraph;
+                loaddedSubgraph.type = "";
                 return loaddedSubgraph;
             }
         }
