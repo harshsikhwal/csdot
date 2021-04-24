@@ -164,15 +164,21 @@ namespace csdot
             Console.WriteLine(str);
 
             DotDocument docObj11 = new DotDocument();
-			Graph loadedGraph11 = docObj11.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\Issues\\[LoadDigraph] Add support for nested subgraphs\\nested_cluster.dot");
-			str = loadedGraph11.ElementToString(1);
-			Console.WriteLine("\nLoaded graph: 10\n");
-			Console.WriteLine(str);
+            Graph loadedGraph11 = docObj11.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\Issues\\[LoadDigraph] Add support for nested subgraphs\\nested_cluster.dot");
+            str = loadedGraph11.ElementToString(1);
+            Console.WriteLine("\nLoaded graph: 10\n");
+            Console.WriteLine(str);
 
-			DotDocument docObj12 = new DotDocument();
-			Graph loadedGraph12 = docObj12.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\Issues\\[LoadDigraph] Add support for nested subgraphs\\subgraph_cluster.dot");
-			str = loadedGraph12.ElementToString(1);
-			Console.WriteLine("\nLoaded graph: 11\n");
+            DotDocument docObj12 = new DotDocument();
+            Graph loadedGraph12 = docObj12.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\Issues\\[LoadDigraph] Add support for nested subgraphs\\subgraph_cluster.dot");
+            str = loadedGraph12.ElementToString(1);
+            Console.WriteLine("\nLoaded graph: 11\n");
+            Console.WriteLine(str);
+
+            DotDocument docObj13 = new DotDocument();
+			Graph loadedGraph13 = docObj13.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\Issues\\[LoadDigraph] Returns null when reading subgraph present in a dot file\\flowchart2.dot");
+			str = loadedGraph13.ElementToString(1);
+			Console.WriteLine("\nLoaded graph: 12\n");
 			Console.WriteLine(str);
 
 			//LoadTest();

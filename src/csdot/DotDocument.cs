@@ -404,8 +404,7 @@ namespace csdot
                         if (i + 1 < i_dotTokens.Length && (i_dotTokens[i + 1] == ";" ||
                             (i_dotTokens[i + 1] != "=" && i_dotTokens[i + 1] != "[" && i_dotTokens[i + 1] != "->" && i_dotTokens[i + 1] != "--")))
                         {
-                            if ( i_dotTokens[i + 1] == "\"" && (i_dotTokens[i + 2] == "=" && i_dotTokens[i + 2] == "[" && i_dotTokens[i + 2] == "->" && i_dotTokens[i + 2] != "--"
-                                && i_dotTokens[i + 2] == "]"))
+                            if (i_dotTokens[i + 1] == "\"" && (i_dotTokens[i + 2] == "=" || i_dotTokens[i + 2] == "[" || i_dotTokens[i + 2] == "->" || i_dotTokens[i + 2] == "--" || i_dotTokens[i + 2] == "]"))
                             {
                                 // do nothing
                             }
@@ -616,14 +615,20 @@ namespace csdot
                 {
                     Node node;
                     string edgeType = "";
+                    string nodeStr = "";
                     if (i_dotTokens[i + 1] == "->")
                         edgeType = EdgeOp.directed;
                     if (i_dotTokens[i + 1] == "--")
                         edgeType = EdgeOp.undirected;
-                    node = i_graph.GetElementByName(i_dotTokens[i]) as Node;
+                    if (i_dotTokens[i] == "\"")
+                    {
+                        nodeStr = GetString(i_dotTokens, i, "rev", out int endIndex);
+                    }
+                    nodeStr = nodeStr == "" ? i_dotTokens[i] : nodeStr;
+                    node = i_graph.GetElementByName(nodeStr) as Node;
                     if (null == node)
                     {
-                        node = new Node(i_dotTokens[i]);
+                        node = new Node(nodeStr);
                     }
                     transtions.Add(new Transition(node, edgeType));
                     i += 2;
@@ -688,6 +693,36 @@ namespace csdot
                         i = endIndex + 1;
                         break;
                     }
+                }
+                else if (i_dotTokens[i] == "\"")
+                {
+                    Node node;
+                    string edgeType = "";
+                    string nodeStr = GetString(i_dotTokens, i, "front", out int endIndex);
+                    int end = endIndex;
+                    node = i_graph.GetElementByName(nodeStr) as Node;
+                    if (null == node)
+                    {
+                        node = new Node(nodeStr);
+                    }
+                    if (i_dotTokens[end + 1] == ";")
+                        end ++;
+                    if (i_dotTokens[end + 1] == "->")
+                    {
+                        edgeType = EdgeOp.directed;
+                        end++;
+                    }
+                    else if (i_dotTokens[end + 1] == "--")
+                    {
+                        edgeType = EdgeOp.undirected;
+                        end++;
+                    }
+                    else
+                        edgeType = EdgeOp.unspecified;
+                    transtions.Add(new Transition(node, edgeType));
+                    i = end;
+                    if (edgeType == "")
+                        break;
                 }
                 else
                 {
