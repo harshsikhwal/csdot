@@ -18,6 +18,40 @@ namespace csdot
 			doc.SaveToFile(loadedGraph, "..\\..\\..\\..\\..\\Resources\\test\\dot_files\\test.dot");
 		}
 
+		public static void CustomAttribute()
+		{
+			Graph graph = new Graph("new_graph");
+
+			// Add node
+			Node node = new Node("A");
+			node.Attribute.area.Value = 36;
+			node.Attribute.color.Value = "black";
+			graph.AddElement(node);
+
+			node = new Node("custom_attribute");
+			node.Attribute.color.Value = "white";
+			node.Attribute.CustomAttribute.Add("NodeFileName", "C:\\Values");
+			graph.AddElement(node);
+
+			
+
+			// Add edge
+
+			// Add subgraph
+
+			Subgraph subgraph = new Subgraph("test");
+			node = new Node("subgraph_node_A");
+			node.Attribute.area.Value = 3;
+			node.Attribute.CustomAttribute.Add("Test", "Val");
+			subgraph.AddElement(node);
+			graph.AddElement(subgraph);
+			// Add cluster
+
+			DotDocument doc = new DotDocument();
+			doc.SaveToFile(graph, "C:\\git\\csdot\\Resources\\test\\dot_files\\test.dot");
+		}
+
+
 		public static void SaveTest()
 		{
 
@@ -25,7 +59,8 @@ namespace csdot
 
 		public static void Main(string[] args)
 		{
-            /*
+			CustomAttribute();
+			/*
 			Graph graph = new Graph("Test");
 			Node node = new Node("node1");
 			// Console.WriteLine("node1 key: " + node.uid.ToString());
@@ -107,7 +142,7 @@ namespace csdot
 			Console.WriteLine("Transition graph:\n");
 
 			Console.WriteLine(str);
-			*/
+			/*
             string str;
             DotDocument docObj1 = new DotDocument();
             Graph loadedGraph1 = docObj1.LoadDigraph("..\\..\\..\\..\\..\\Resources\\test\\unknown\\dot.dot");
@@ -180,7 +215,7 @@ namespace csdot
 			str = loadedGraph13.ElementToString(1);
 			Console.WriteLine("\nLoaded graph: 12\n");
 			Console.WriteLine(str);
-
+			*/
 			//LoadTest();
 		}
 	}

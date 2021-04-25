@@ -18,31 +18,36 @@ node_attribute_code = initial_code +"""
 namespace csdot.Attributes
 {
 	public class NodeAttribute : IDotAttribute
-	{"""
+	{
+        public Dictionary<string, string> CustomAttribute = new Dictionary<string, string>();"""
 
 cluster_attribute_code = initial_code + """
 namespace csdot.Attributes
 {
 	public class ClusterAttribute : IDotAttribute
-	{"""
+	{
+        public Dictionary<string, string> CustomAttribute = new Dictionary<string, string>();"""
 
 graph_attribute_code = initial_code + """
 namespace csdot.Attributes
 {
 	public class GraphAttribute : IDotAttribute
-	{"""
+	{
+        public Dictionary<string, string> CustomAttribute = new Dictionary<string, string>();"""
 
 subgraph_attribute_code = initial_code + """
 namespace csdot.Attributes
 {
 	public class SubgraphAttribute : IDotAttribute
-	{"""
+	{
+        public Dictionary<string, string> CustomAttribute = new Dictionary<string, string>();"""
 
 edge_attribute_code = initial_code + """
 namespace csdot.Attributes
 {
     public class EdgeAttribute : IDotAttribute
-	{"""
+	{
+        public Dictionary<string, string> CustomAttribute = new Dictionary<string, string>();"""
 
 # end initial cs file code
 
@@ -52,6 +57,27 @@ if_begin_attr = """
 		public string AttributesToString()
 		{
 			string attribute = "";"""
+
+custom_attribute_graph = """
+            if(CustomAttribute.Count > 0)
+			{
+                foreach (KeyValuePair<string, string> entry in CustomAttribute)
+                {
+                    var attr =  entry.Key + " = \\"" + entry.Value + "\\""; 
+                    attribute = ("" == attribute) ? attribute + attr : attribute + "\\n" + attr;
+                }
+            }"""
+
+custom_attribute_node = """
+            if(CustomAttribute.Count > 0)
+			{
+                foreach (KeyValuePair<string, string> entry in CustomAttribute)
+                {
+                    var attr =  entry.Key + " = \\"" + entry.Value + "\\"";
+                    attribute = ("" == attribute) ? attribute + " " + attr : attribute + ", " + attr;
+                }
+            }"""
+
 
 if_end_attr = """
 			return attribute;
@@ -431,11 +457,11 @@ if __name__ == '__main__':
     # form the specific attribute class
 
     attribute_code = attribute_code + "\n}"
-    node_attribute_code = node_attribute_code + node_class + "\n" + if_begin_attr + node_if + if_end_attr
-    subgraph_attribute_code = subgraph_attribute_code + subgraph_class + "\n" + if_begin_attr + subgraph_if + if_end_attr
-    graph_attribute_code = graph_attribute_code + graph_class + "\n" + if_begin_attr + graph_if + if_end_attr
-    cluster_attribute_code = cluster_attribute_code + cluster_class + "\n" + if_begin_attr + cluster_if + if_end_attr
-    edge_attribute_code = edge_attribute_code + edge_class + "\n" + if_begin_attr + edge_if + if_end_attr
+    node_attribute_code = node_attribute_code + node_class + "\n" + if_begin_attr + node_if + custom_attribute_node + if_end_attr
+    subgraph_attribute_code = subgraph_attribute_code + subgraph_class + "\n" + if_begin_attr + subgraph_if + custom_attribute_node + if_end_attr
+    graph_attribute_code = graph_attribute_code + graph_class + "\n" + if_begin_attr + graph_if + custom_attribute_node + if_end_attr
+    cluster_attribute_code = cluster_attribute_code + cluster_class + "\n" + if_begin_attr + cluster_if + custom_attribute_graph + if_end_attr
+    edge_attribute_code = edge_attribute_code + edge_class + "\n" + if_begin_attr + edge_if + custom_attribute_node + if_end_attr
 
     # Create dirs
     # shutil.rmtree("Attributes")

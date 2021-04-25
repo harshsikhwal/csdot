@@ -7,6 +7,7 @@ namespace csdot.Attributes
 {
 	public class GraphAttribute : IDotAttribute
 	{
+        public Dictionary<string, string> CustomAttribute = new Dictionary<string, string>();
         public _Background _background = new _Background();
         public BB bb = new BB();
         public BGColor bgcolor = new BGColor();
@@ -430,6 +431,14 @@ namespace csdot.Attributes
             if (xdotversion.Set)
             {
                 attribute = ("" == attribute) ? attribute + xdotversion.TranslateToString() : attribute + "\n" + xdotversion.TranslateToString();
+            }
+            if(CustomAttribute.Count > 0)
+			{
+                foreach (KeyValuePair<string, string> entry in CustomAttribute)
+                {
+                    var attr =  entry.Key + " = \"" + entry.Value + "\"";
+                    attribute = ("" == attribute) ? attribute + " " + attr : attribute + ", " + attr;
+                }
             }
 			return attribute;
 		}

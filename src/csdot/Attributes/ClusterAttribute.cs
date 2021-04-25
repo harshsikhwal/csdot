@@ -7,6 +7,7 @@ namespace csdot.Attributes
 {
 	public class ClusterAttribute : IDotAttribute
 	{
+        public Dictionary<string, string> CustomAttribute = new Dictionary<string, string>();
         public Area area = new Area();
         public BGColor bgcolor = new BGColor();
         public _Class _class = new _Class();
@@ -150,6 +151,14 @@ namespace csdot.Attributes
             if (URL.Set)
             {
                 attribute = ("" == attribute) ? attribute + URL.TranslateToString() : attribute + "\n" + URL.TranslateToString();
+            }
+            if(CustomAttribute.Count > 0)
+			{
+                foreach (KeyValuePair<string, string> entry in CustomAttribute)
+                {
+                    var attr =  entry.Key + " = \"" + entry.Value + "\""; 
+                    attribute = ("" == attribute) ? attribute + attr : attribute + "\n" + attr;
+                }
             }
 			return attribute;
 		}

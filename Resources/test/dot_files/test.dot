@@ -1,4 +1,9 @@
-graph D
+graph new_graph
 {
-	A -> B -> C -> D 
+	A [ area = 36, color = "black" ]
+	custom_attribute [ color = "white", NodeFileName = "C:\Values" ]
+	subgraph test
+	{
+		subgraph_node_A [ area = 3, Test = "Val" ]
+	}
 }

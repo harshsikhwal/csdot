@@ -7,6 +7,7 @@ namespace csdot.Attributes
 {
 	public class NodeAttribute : IDotAttribute
 	{
+        public Dictionary<string, string> CustomAttribute = new Dictionary<string, string>();
         public Area area = new Area();
         public _Class _class = new _Class();
         public Color color = new Color();
@@ -235,6 +236,14 @@ namespace csdot.Attributes
             if (z.Set)
             {
                 attribute = ("" == attribute) ? attribute + " " + z.TranslateToString() : attribute + ", " + z.TranslateToString();
+            }
+            if(CustomAttribute.Count > 0)
+			{
+                foreach (KeyValuePair<string, string> entry in CustomAttribute)
+                {
+                    var attr =  entry.Key + " = \"" + entry.Value + "\"";
+                    attribute = ("" == attribute) ? attribute + " " + attr : attribute + ", " + attr;
+                }
             }
 			return attribute;
 		}

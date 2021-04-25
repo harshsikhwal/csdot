@@ -7,6 +7,7 @@ namespace csdot.Attributes
 {
     public class EdgeAttribute : IDotAttribute
 	{
+        public Dictionary<string, string> CustomAttribute = new Dictionary<string, string>();
         public ArrowHead arrowhead = new ArrowHead();
         public ArrowSize arrowsize = new ArrowSize();
         public ArrowTail arrowtail = new ArrowTail();
@@ -325,6 +326,14 @@ namespace csdot.Attributes
             if (xlp.Set)
             {
                 attribute = ("" == attribute) ? attribute + " " + xlp.TranslateToString() : attribute + ", " + xlp.TranslateToString();
+            }
+            if(CustomAttribute.Count > 0)
+			{
+                foreach (KeyValuePair<string, string> entry in CustomAttribute)
+                {
+                    var attr =  entry.Key + " = \"" + entry.Value + "\"";
+                    attribute = ("" == attribute) ? attribute + " " + attr : attribute + ", " + attr;
+                }
             }
 			return attribute;
 		}
