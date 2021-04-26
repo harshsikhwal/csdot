@@ -12,8 +12,6 @@
 
 A c# library to process Dot language used by Graphviz.
 
-Currently it can generate DOT and dump as a file
-
 Development occurs at GitHub, where you can report issues and request enhancement.
 
 ## Usage:
@@ -187,10 +185,18 @@ Please refer doc: *csdot\Docs\Attribute Status.docs* for more info
 
 To load and save a file, you need to create a DotDocument object.
 
-The current release do not support Loading of the graph, but you can save it by calling the API mentioned below:
+To save, you can call the API mentioned below:
 ```csharp
 public void SaveToFile(Graph i_graph, string i_fileLocation)
 ```
+
+To load a graph you can call:
+```csharp
+public Graph LoadDigraph(string i_fileLocation)
+```
+
+This will load the dot from the given file location and return a graph object.
+
 
 ## License:
 Distributed under MIT license.
