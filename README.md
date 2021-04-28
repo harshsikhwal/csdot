@@ -23,6 +23,7 @@ A c# library to process the Dot language used by Graphviz.
 * Listed on Graphviz - Resources [https://graphviz.org/resources/]
 
 Development occurs at GitHub, where you can report issues and request enhancement.
+Requires python(2-3) to build. 
 
 ## Usage:
 
