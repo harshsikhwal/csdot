@@ -1,8 +1,0 @@
-E:\Archive\git\m\csdot\csdot\csdot\obj\Debug\netstandard2.0\csdot.AssemblyInfoInputs.cache
-E:\Archive\git\m\csdot\csdot\csdot\obj\Debug\netstandard2.0\csdot.AssemblyInfo.cs
-E:\Archive\git\m\csdot\csdot\csdot\bin\Debug\netstandard2.0\csdot.deps.json
-E:\Archive\git\m\csdot\csdot\csdot\bin\Debug\netstandard2.0\csdot.dll
-E:\Archive\git\m\csdot\csdot\csdot\bin\Debug\netstandard2.0\csdot.pdb
-E:\Archive\git\m\csdot\csdot\csdot\obj\Debug\netstandard2.0\csdot.dll
-E:\Archive\git\m\csdot\csdot\csdot\obj\Debug\netstandard2.0\csdot.pdb
-E:\Archive\git\m\csdot\csdot\csdot\obj\Debug\netstandard2.0\csdot.csprojAssemblyReference.cache
