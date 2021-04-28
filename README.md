@@ -185,7 +185,7 @@ is one such example.
 * vertices
 * viewport
 
-These will be added in the upcoming versions and well as LoadDiagraph feature. 
+These will be added in the upcoming versions.
 
 The attributes having List as their secondary datatype and string as their first datatype, like color, fillcolor takes string Value. There is no list defined for such attributes. However for ranksep, a secondary holder, ValueList is added to support double datatype. 
 
