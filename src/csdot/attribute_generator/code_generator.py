@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -- coding: utf-8 --
+
 import json
 import os
 import shutil
