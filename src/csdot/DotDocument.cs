@@ -304,7 +304,7 @@ namespace csdot
 
         #region Utility Methods
 
-        private IElement ParseGraph(IElement i_graph, string[] i_dotTokens, Dictionary<string, List<int>> i_codeBlocks, int i_startIndex = 0, int i_endIndex = 0)
+        private IElement ParseGraph(IElement i_graph, string[] i_dotTokens, Dictionary<string, List<int>> i_codeBlocks, int i_startIndex = 0, int i_endIndex = 0, string type="graph")
         {
             Stack<string> paranthesis = new Stack<string>();
             i_endIndex = i_endIndex == 0 ? i_dotTokens.Length : i_endIndex;
@@ -381,7 +381,14 @@ namespace csdot
                     if (i_graph.attributes.TryGetValue(att, out var attribute))
                         attribute.TranslateToValue(value);
                     else
-                        throw new Exception($"{att} attribute is not valid or not supported for Graph");
+                    {
+                        if (type == "subgraph")
+                            (i_graph as Subgraph).Attribute.CustomAttribute.Add(att, value);
+                        else if (type == "cluster")
+                            (i_graph as Cluster).Attribute.CustomAttribute.Add(att, value);
+                        else
+                            (i_graph as Graph).Attribute.CustomAttribute.Add(att, value);
+                    }
                 }
                 
                 //forming Nodes
@@ -530,7 +537,7 @@ namespace csdot
                     if (newNode.attributes.TryGetValue(i_properties[i], out var attribute))
                         attribute.TranslateToValue(i_properties[i + 1]);
                     else
-                        throw new Exception($"{i_properties[i]} attribute is not valid or not supported for Node");
+                        newNode.Attribute.CustomAttribute.Add(i_properties[i], i_properties[i + 1]);
                 }
             }
             return newNode;
@@ -546,7 +553,7 @@ namespace csdot
                     if (newEdge.attributes.TryGetValue(i_properties[i], out var attribute))
                         attribute.TranslateToValue(i_properties[i + 1]);
                     else
-                        throw new Exception($"{i_properties[i]} attribute is not valid or not supported for Edge");
+                        newEdge.Attribute.CustomAttribute.Add(i_properties[i], i_properties[i + 1]);
                 }
             }
             return newEdge;
@@ -751,14 +758,14 @@ namespace csdot
             {
                 Cluster loaddedCluster = new Cluster(i_dotTokens[i-1]);
                 o_endIndex = i_codeBlocks["}"][i_codeBlocks["{"].IndexOf(i_startIndex)];
-                loaddedCluster = ParseGraph(loaddedCluster, i_dotTokens, i_codeBlocks, i, o_endIndex+1) as Cluster;
+                loaddedCluster = ParseGraph(loaddedCluster, i_dotTokens, i_codeBlocks, i, o_endIndex+1, "cluster") as Cluster;
                 return loaddedCluster;
             }
             else
             {
                 Subgraph loaddedSubgraph = new Subgraph();
                 o_endIndex = i_codeBlocks["}"][i_codeBlocks["{"].IndexOf(i_startIndex)];
-                loaddedSubgraph = ParseGraph(loaddedSubgraph, i_dotTokens, i_codeBlocks, i, o_endIndex+1) as Subgraph;
+                loaddedSubgraph = ParseGraph(loaddedSubgraph, i_dotTokens, i_codeBlocks, i, o_endIndex+1, "subgraph") as Subgraph;
                 loaddedSubgraph.type = "";
                 return loaddedSubgraph;
             }

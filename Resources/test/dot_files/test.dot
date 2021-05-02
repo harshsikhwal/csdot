@@ -1,9 +1,11 @@
 graph new_graph
 {
+	"myAttr" = "myVal"
 	A [ area = 36, color = "black" ]
 	custom_attribute [ color = "white", NodeFileName = "C:\Values" ]
 	subgraph test
 	{
+		"mySubAttr" = "mySubVal" 
 		subgraph_node_A [ area = 3, Test = "Val" ]
 	}
 }
