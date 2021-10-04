@@ -105,7 +105,7 @@ namespace csdot
 		public string ElementToString()
 		{
 			string attrStr = Attribute.AttributesToString();
-			string clusterbuilder = type + " " + ID + "\n{\n";
+			string clusterbuilder = type + " " + "cluster_" + ID + "\n{\n";
 
 			if (attrStr != "")
 				clusterbuilder = clusterbuilder + attrStr + "\n";
@@ -130,7 +130,7 @@ namespace csdot
 			}
 
 			string attrStr = Attribute.AttributesToString();
-			string clusterbuilder = type + " " + ID + "\n" + bspacing + "{\n";
+			string clusterbuilder = type + " " + "cluster_" + ID + "\n" + bspacing + "{\n";
 
 			if (attrStr != "")
 				clusterbuilder = clusterbuilder + spacing + attrStr + "\n";
